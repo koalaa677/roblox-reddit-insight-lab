@@ -206,3 +206,4 @@ node scripts/estimate-pipeline-budget.mjs 5
 - 不优先做公司级监控平台能力
 
 第一阶段重点是作品集展示和面试讲解，其次才是内部参考工具。
+Deployment test.
