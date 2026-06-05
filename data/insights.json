@@ -1,0 +1,544 @@
+{
+  "meta": {
+    "projectName": "Roblox Reddit Insight Lab",
+    "version": "MVP Demo 1.0",
+    "datasetType": "demo",
+    "updatedAt": "2026/6/1 15:13:56",
+    "period": "近 7 天示例样本",
+    "trendLabels": ["D-6", "D-5", "D-4", "D-3", "D-2", "昨日", "今日"],
+    "displayWindowDays": 7,
+    "sourceNote": "当前为作品演示数据，用于展示产品流程。接入 Reddit API 后可替换为真实帖子与评论。",
+    "refreshPolicy": "默认展示近 7 天热点游戏。刷新时只抓取最新评论，已抓取评论保留在本地。",
+    "cleanupPolicy": "手动清理时只清理 7 天之前的评论，7 天内评论不清理。",
+    "crawlScope": {
+      "overview": "洞察看板抓取 Roblox Reddit 整体论坛内容，用于计算 Top 5 热门游戏。",
+      "targeted": "定向分析抓取具体游戏对应的 Reddit 子社区或关键词范围。",
+      "watchlist": "当前关注游戏直接抓取对应子社区或固定关键词范围。"
+    }
+  },
+  "watchlist": [
+    {
+      "id": "focus-forest99",
+      "gameId": "forest99",
+      "name": "99 Nights in the Forest",
+      "cnName": "森林99",
+      "status": "常驻关注",
+      "reason": "当前重点观察目标，合作生存节奏清晰，适合作为蛋仔派对限时组队玩法的参考对象。"
+    }
+  ],
+  "games": [
+    {
+      "id": "forest99",
+      "rank": 1,
+      "name": "99 Nights in the Forest",
+      "cnName": "森林99",
+      "aliases": [
+        "森林99",
+        "99 Nights",
+        "Forest 99",
+        "99 nights forest",
+        "forest survival"
+      ],
+      "genre": "生存 / 合作 / 恐怖氛围",
+      "heatScore": 92,
+      "sampleCount": 48,
+      "mentions": 318,
+      "posts": 24,
+      "comments": [
+        {
+          "id": "f99-c01",
+          "sentiment": "positive",
+          "tags": [
+            "co-op",
+            "teamwork"
+          ],
+          "score": 36,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "The best part is when everyone finally understands their role. One person gathers wood, one watches the camp, and someone else takes risks outside.",
+          "translatedText": "最好玩的部分是大家终于明白自己该做什么的时候。一个人收集木头，一个人守营地，另一个人冒险去外面探索。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-c02",
+          "sentiment": "negative",
+          "tags": [
+            "repetition",
+            "late game"
+          ],
+          "score": 22,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "After a few runs the middle part starts to feel the same. I wish there were more random events between the big nights.",
+          "translatedText": "玩了几轮之后，中间阶段开始感觉差不多。我希望重要夜晚之间能有更多随机事件。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-c03",
+          "sentiment": "suggestion",
+          "tags": [
+            "onboarding",
+            "difficulty"
+          ],
+          "score": 18,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "New players need a clearer first objective. My friends spent the first night running around without knowing what mattered.",
+          "translatedText": "新玩家需要更清晰的第一个目标。我朋友们第一晚一直到处乱跑，不知道什么才重要。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-c04",
+          "sentiment": "positive",
+          "tags": [
+            "tension",
+            "session design"
+          ],
+          "score": 30,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "The day and night rhythm is simple but it works. Daytime feels safe enough to plan, then night makes everyone panic in a fun way.",
+          "translatedText": "昼夜节奏很简单但有效。白天足够安全，可以计划；到了晚上，大家会以一种好玩的方式紧张起来。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-c05",
+          "sentiment": "negative",
+          "tags": [
+            "balance",
+            "solo"
+          ],
+          "score": 11,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "It is rough when teammates leave early. The game seems balanced around a group that actually communicates.",
+          "translatedText": "队友早早退出时体验很糟。这个游戏似乎是围绕真正会沟通的小队来平衡的。",
+          "usedInReport": false
+        }
+      ],
+      "sentiment": {
+        "positive": 46,
+        "negative": 31,
+        "suggestion": 18,
+        "neutral": 5
+      },
+      "trend": [
+        42,
+        48,
+        57,
+        66,
+        70,
+        83,
+        92
+      ],
+      "tags": [
+        "co-op",
+        "survival",
+        "horror-lite",
+        "resource loop",
+        "difficulty"
+      ],
+      "recommendation": "强烈建议研究",
+      "oneLine": "合作生存和资源压力形成强记忆点，适合拆解为蛋仔派对的限时组队玩法。",
+      "cover": {
+        "tone": "forest",
+        "label": "Survival Loop",
+        "asset": "assets/forest99-cover.svg"
+      },
+      "sourceLinks": {
+        "roblox": "https://www.roblox.com/games/79546208627805/99-Nights-in-the-Forest",
+        "reddit": "https://www.reddit.com/r/99nightsintheforest/"
+      },
+      "summary": {
+        "overall": "玩家对 99 Nights in the Forest 的讨论集中在合作生存、夜晚压力、资源收集和难度节奏。正面声音认为它有明确目标和持续紧张感；负面声音主要集中在后期重复、平衡和新手引导不足。",
+        "pros": [
+          "合作分工清晰，玩家容易形成“有人探索、有人守家、有人收资源”的小队策略。",
+          "夜晚机制带来稳定的情绪峰值，让短局体验有明显起伏。",
+          "资源循环简单直接，适合玩家快速理解并反复游玩。"
+        ],
+        "cons": [
+          "部分玩家认为后期内容重复，缺少足够的新事件或目标变化。",
+          "新手在前几局容易不知道优先做什么，死亡后挫败感较强。",
+          "难度曲线和奖励反馈存在争议，部分玩家觉得失败成本偏高。"
+        ],
+        "suggestions": [
+          "增加更多夜晚事件、随机任务和可解锁营地能力。",
+          "强化新手提示，让玩家理解资源优先级和团队分工。",
+          "提供更清晰的局后成长反馈，降低连续失败带来的流失风险。"
+        ],
+        "eggyIdeas": [
+          "可参考“白天收集、夜晚防守”的昼夜节奏，改造成蛋仔派对限时合作闯关活动。",
+          "把恐怖压力弱化为轻紧张氛围，保留团队分工、随机事件和营地建设。",
+          "用蛋仔派对擅长的道具和机关替代纯战斗压力，形成更合家欢的生存派对玩法。"
+        ],
+        "risks": [
+          "恐怖氛围如果照搬，可能与蛋仔派对品牌调性冲突。",
+          "资源生存玩法需要持续内容变化，否则容易被认为重复。",
+          "多人合作对匹配体验要求较高，独狼玩家体验需要额外设计。"
+        ],
+        "decision": "建议作为重点竞品拆解，但复刻时应保留合作生存节奏，弱化恐怖表达，并增加更轻量的派对化任务。"
+      }
+    },
+    {
+      "id": "dress-to-impress",
+      "rank": 2,
+      "name": "Dress To Impress",
+      "cnName": "DTI 时装竞赛",
+      "aliases": [
+        "DTI",
+        "dress game",
+        "fashion game",
+        "Dress To Impress"
+      ],
+      "genre": "时装 / 社交 / 评分",
+      "heatScore": 84,
+      "sampleCount": 36,
+      "mentions": 246,
+      "posts": 18,
+      "comments": [
+        {
+          "id": "dti-c01",
+          "sentiment": "positive",
+          "tags": [
+            "avatar",
+            "sharing"
+          ],
+          "score": 28,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "I like that every round gives a clear theme. Even if I lose, I still want to screenshot the outfit.",
+          "translatedText": "我喜欢每一轮都有明确主题。即使输了，我也还是想给自己的造型截图。",
+          "usedInReport": true
+        },
+        {
+          "id": "dti-c02",
+          "sentiment": "negative",
+          "tags": [
+            "voting",
+            "fairness"
+          ],
+          "score": 19,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "The voting can feel random. Sometimes the best outfit does not win because friends vote for each other.",
+          "translatedText": "投票有时感觉很随机。有时候最好的造型赢不了，因为朋友之间会互相投票。",
+          "usedInReport": true
+        }
+      ],
+      "sentiment": {
+        "positive": 52,
+        "negative": 22,
+        "suggestion": 21,
+        "neutral": 5
+      },
+      "trend": [
+        66,
+        68,
+        75,
+        79,
+        80,
+        82,
+        84
+      ],
+      "tags": [
+        "ugc expression",
+        "social voting",
+        "avatar",
+        "fashion"
+      ],
+      "recommendation": "可以观察",
+      "oneLine": "角色表达和主题评分带来强社交传播，但对美术资产和社区审美运营要求较高。",
+      "cover": {
+        "tone": "fashion",
+        "label": "Social Expression",
+        "asset": "assets/dti-cover.svg"
+      },
+      "sourceLinks": {
+        "roblox": "https://www.roblox.com/games/15101393044/Dress-To-Impress",
+        "reddit": "https://www.reddit.com/r/DressToImpressRoblox/"
+      },
+      "summary": {
+        "overall": "玩家讨论集中在装扮表达、主题创意、评分公平性和服装更新。它适合研究社交表达和玩家创作欲，但直接复刻成本偏高。",
+        "pros": [
+          "主题明确，玩家很快知道每局目标。",
+          "角色外观表达强，适合截图和社媒传播。",
+          "评分机制能制造讨论和争议。"
+        ],
+        "cons": [
+          "评分公平性经常引发争议。",
+          "新服装和主题需要持续更新。",
+          "对美术内容供给依赖较强。"
+        ],
+        "suggestions": [
+          "增加更清晰的主题解释。",
+          "优化评分权重，减少纯人气投票偏差。",
+          "增加更多非付费可获得服装。"
+        ],
+        "eggyIdeas": [
+          "可借鉴主题挑战和短局投票，把装扮替换成蛋仔外观、动作和道具搭配。"
+        ],
+        "risks": [
+          "如果美术资源更新不足，玩家很快会疲劳。"
+        ],
+        "decision": "适合观察社交表达和主题挑战结构，暂不建议作为第一优先复刻对象。"
+      }
+    },
+    {
+      "id": "blox-fruits",
+      "rank": 3,
+      "name": "Blox Fruits",
+      "cnName": "水果战斗",
+      "aliases": [
+        "Blox Fruits",
+        "blox fruit",
+        "bloxfruit"
+      ],
+      "genre": "战斗 / 成长 / 收集",
+      "heatScore": 77,
+      "sampleCount": 31,
+      "mentions": 211,
+      "posts": 16,
+      "comments": [
+        {
+          "id": "bf-c01",
+          "sentiment": "negative",
+          "tags": [
+            "grind",
+            "new players"
+          ],
+          "score": 24,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "The grind is the main reason my newer friends quit. They like the idea but not the hours needed to catch up.",
+          "translatedText": "刷取是我那些新朋友退坑的主要原因。他们喜欢这个概念，但不喜欢追赶所需的时间。",
+          "usedInReport": true
+        }
+      ],
+      "sentiment": {
+        "positive": 40,
+        "negative": 38,
+        "suggestion": 17,
+        "neutral": 5
+      },
+      "trend": [
+        81,
+        79,
+        76,
+        74,
+        75,
+        76,
+        77
+      ],
+      "tags": [
+        "progression",
+        "combat",
+        "grind",
+        "updates"
+      ],
+      "recommendation": "谨慎研究",
+      "oneLine": "成长目标和内容量强，但肝度争议明显，更适合作为长期留存结构参考。",
+      "cover": {
+        "tone": "combat",
+        "label": "Progression",
+        "asset": "assets/blox-cover.svg"
+      },
+      "sourceLinks": {
+        "roblox": "https://www.roblox.com/games/2753915549/Blox-Fruits",
+        "reddit": "https://www.reddit.com/r/bloxfruits/"
+      },
+      "summary": {
+        "overall": "玩家讨论集中在成长路线、战斗体验、更新节奏和刷取压力。优点是目标长期明确，缺点是新手和轻度用户门槛较高。",
+        "pros": [
+          "长线成长目标明确。",
+          "收集和战斗组合带来持续动力。"
+        ],
+        "cons": [
+          "刷取压力大。",
+          "新手追赶成本高。"
+        ],
+        "suggestions": [
+          "降低早期重复刷取。",
+          "强化阶段性目标奖励。"
+        ],
+        "eggyIdeas": [
+          "可借鉴长期成长和能力收集，但不建议照搬重度刷取。"
+        ],
+        "risks": [
+          "与蛋仔派对轻量体验差异较大。"
+        ],
+        "decision": "适合拆解成长系统，不适合直接复刻为核心玩法。"
+      }
+    },
+    {
+      "id": "brookhaven",
+      "rank": 4,
+      "name": "Brookhaven RP",
+      "cnName": "Brookhaven 角色扮演",
+      "aliases": [
+        "Brookhaven",
+        "Brookhaven RP",
+        "roleplay roblox"
+      ],
+      "genre": "角色扮演 / 社交 / 沙盒",
+      "heatScore": 71,
+      "sampleCount": 28,
+      "mentions": 184,
+      "posts": 11,
+      "comments": [
+        {
+          "id": "bh-c01",
+          "sentiment": "positive",
+          "tags": [
+            "roleplay",
+            "friends"
+          ],
+          "score": 16,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "Brookhaven works because you can make your own story with friends. It does not need a strict goal every time.",
+          "translatedText": "Brookhaven 好玩是因为你可以和朋友创造自己的故事。它不需要每次都有严格目标。",
+          "usedInReport": true
+        }
+      ],
+      "sentiment": {
+        "positive": 43,
+        "negative": 27,
+        "suggestion": 20,
+        "neutral": 10
+      },
+      "trend": [
+        69,
+        68,
+        70,
+        70,
+        71,
+        72,
+        71
+      ],
+      "tags": [
+        "roleplay",
+        "social",
+        "sandbox",
+        "housing"
+      ],
+      "recommendation": "可以观察",
+      "oneLine": "开放角色扮演和社交想象空间强，但玩法目标弱，适合参考社交场景而非关卡玩法。",
+      "cover": {
+        "tone": "city",
+        "label": "Roleplay Space",
+        "asset": "assets/brookhaven-cover.svg"
+      },
+      "sourceLinks": {
+        "roblox": "https://www.roblox.com/games/4924922222/Brookhaven-RP",
+        "reddit": "https://www.reddit.com/r/BrookhavenRP/"
+      },
+      "summary": {
+        "overall": "玩家主要讨论社交、角色扮演、房屋、载具和自由度。它的价值在于社交空间，而非明确胜负玩法。",
+        "pros": [
+          "自由度高。",
+          "适合朋友一起扮演。"
+        ],
+        "cons": [
+          "目标感较弱。",
+          "内容依赖玩家自发创造。"
+        ],
+        "suggestions": [
+          "提供更多主题活动和场景任务。"
+        ],
+        "eggyIdeas": [
+          "可借鉴为蛋仔派对社交大厅、主题房间和轻剧情互动。"
+        ],
+        "risks": [
+          "过度开放可能让新用户不知道做什么。"
+        ],
+        "decision": "适合社交场景参考，不适合直接复刻为主玩法。"
+      }
+    },
+    {
+      "id": "rivals",
+      "rank": 5,
+      "name": "Rivals",
+      "cnName": "Rivals 对战",
+      "aliases": [
+        "Rivals",
+        "roblox rivals",
+        "shooter roblox"
+      ],
+      "genre": "竞技 / 射击 / 对战",
+      "heatScore": 66,
+      "sampleCount": 22,
+      "mentions": 132,
+      "posts": 9,
+      "comments": [
+        {
+          "id": "rv-c01",
+          "sentiment": "suggestion",
+          "tags": [
+            "matchmaking",
+            "new players"
+          ],
+          "score": 13,
+          "source": "Reddit demo sample",
+          "url": "https://www.reddit.com/",
+          "originalText": "The game needs better matchmaking. New players get destroyed before they learn the basics.",
+          "translatedText": "这个游戏需要更好的匹配。新玩家还没学会基础就被打爆了。",
+          "usedInReport": true
+        }
+      ],
+      "sentiment": {
+        "positive": 39,
+        "negative": 35,
+        "suggestion": 19,
+        "neutral": 7
+      },
+      "trend": [
+        52,
+        55,
+        58,
+        60,
+        63,
+        65,
+        66
+      ],
+      "tags": [
+        "pvp",
+        "skill",
+        "matchmaking",
+        "balance"
+      ],
+      "recommendation": "暂不建议复刻",
+      "oneLine": "竞技反馈直接，但射击对战与蛋仔派对现有调性差距较大。",
+      "cover": {
+        "tone": "arena",
+        "label": "Competitive Loop",
+        "asset": "assets/rivals-cover.svg"
+      },
+      "sourceLinks": {
+        "roblox": "https://www.roblox.com/games/17625359962/RIVALS",
+        "reddit": "https://www.reddit.com/r/RivalsRoblox/"
+      },
+      "summary": {
+        "overall": "玩家讨论集中在匹配、公平性、武器平衡和竞技成就感。它适合研究 PvP 反馈，但不是蛋仔派对最自然的复刻方向。",
+        "pros": [
+          "对抗节奏直接。",
+          "胜负反馈强。"
+        ],
+        "cons": [
+          "平衡争议明显。",
+          "新手压力大。"
+        ],
+        "suggestions": [
+          "优化匹配与分段。",
+          "加强新手训练。"
+        ],
+        "eggyIdeas": [
+          "可借鉴短局竞技反馈，不建议照搬射击玩法。"
+        ],
+        "risks": [
+          "品类差异大，复刻风险高。"
+        ],
+        "decision": "暂不作为重点复刻对象。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "reddit": {
+    "hotScoreModel": {
+      "description": "Portfolio demo scoring model inspired by trend tracking tools. The production version can add Roblox live players, visits, favorites, or creator update signals.",
+      "weights": {
+        "redditMentions": 35,
+        "sevenDayGrowth": 25,
+        "positiveSentiment": 15,
+        "suggestionDensity": 15,
+        "sampleConfidence": 10
+      }
+    },
+    "rateLimitPolicy": {
+      "officialFreeOauthLimitQpm": 100,
+      "projectSoftLimitQpm": 30,
+      "requestIntervalMs": 2200,
+      "minRemainingBeforePause": 20,
+      "retryAfter429Seconds": 90,
+      "respectHeaders": [
+        "X-Ratelimit-Used",
+        "X-Ratelimit-Remaining",
+        "X-Ratelimit-Reset"
+      ]
+    },
+    "dailyCrawlBudget": {
+      "overviewSubreddit": "roblox",
+      "overview": {
+        "postsPerDay": 120,
+        "commentsPerDay": 400,
+        "commentPolicy": "Only fetch top-level comments from relevant/high-engagement posts; do not expand every MoreComments branch.",
+        "sorts": [
+          "new",
+          "hot"
+        ]
+      },
+      "perTrackedGame": {
+        "postsPerGamePerDay": 30,
+        "commentsPerGamePerDay": 120,
+        "maxCommentsPerPost": 8,
+        "minCommentScore": 1,
+        "sorts": [
+          "new",
+          "hot",
+          "top_week"
+        ]
+      },
+      "weeklyRetention": {
+        "overviewCommentsPerWeekTarget": 2800,
+        "commentsPerGamePerWeekTarget": 840,
+        "dedupeBy": [
+          "redditCommentId",
+          "normalizedBodyHash"
+        ]
+      }
+    },
+    "commentCleaning": {
+      "dropIfShorterThanChars": 20,
+      "dropIfMostlyEmoji": true,
+      "dropIfDuplicate": true,
+      "dropIfLowInformation": true,
+      "dropIfOffTopic": true,
+      "sentimentBuckets": [
+        "positive",
+        "negative",
+        "suggestion",
+        "other"
+      ],
+      "frontendLegacyBucketMap": {
+        "other": "neutral"
+      }
+    }
+  },
+  "ai": {
+    "tokenSavingPolicy": {
+      "neverSendAllRawComments": true,
+      "classifyLocallyFirst": true,
+      "cacheByCommentHash": true,
+      "translateOnlyQuotedOrDisplayedComments": true,
+      "maxRawCommentCharsForAi": 700
+    },
+    "dailyAiBudget": {
+      "maxSelectedCommentsPerGamePerDay": 40,
+      "maxOverviewCommentsForAiPerDay": 80,
+      "maxCommentsPerSentimentBucket": 10
+    },
+    "weeklyAiBudget": {
+      "maxSelectedCommentsPerGameForWeeklyReport": 80,
+      "useDailySummariesInsteadOfAllRawComments": true,
+      "maxEvidenceQuotesPerGame": 8
+    },
+    "analysisStages": [
+      {
+        "name": "comment_classification",
+        "input": "Only high-signal cleaned comments selected by local rules.",
+        "output": [
+          "sentiment",
+          "tags",
+          "painPoint",
+          "opportunity",
+          "evidenceScore"
+        ]
+      },
+      {
+        "name": "daily_game_summary",
+        "input": "Daily metrics plus representative comments by sentiment bucket.",
+        "output": [
+          "positiveDrivers",
+          "negativeRisks",
+          "playerSuggestions",
+          "gameplaySignals"
+        ]
+      },
+      {
+        "name": "weekly_decision_report",
+        "input": "Seven daily summaries plus top evidence comments.",
+        "output": [
+          "copyDecision",
+          "adaptationPlan",
+          "doNotCopy",
+          "eggyPartyValue",
+          "risks",
+          "validationActions"
+        ]
+      }
+    ],
+    "outputSchema": [
+      "overall",
+      "pros",
+      "cons",
+      "suggestions",
+      "eggyIdeas",
+      "risks",
+      "decision",
+      "evidenceCommentIds"
+    ]
+  }
+}

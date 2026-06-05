@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Roblox Reddit Insight Lab - 面向游戏出海的 AI 玩家评论洞察平台"
+    />
+    <title>Roblox Reddit Insight Lab</title>
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="styles.css?v=20260603-2" />
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="app.js?v=20260603-2" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="产品导航">
+        <div class="brand-lockup">
+          <div class="brand-mark">RI</div>
+          <div>
+            <p class="eyebrow">Roblox Reddit</p>
+            <h1>Insight Lab</h1>
+          </div>
+        </div>
+
+        <nav class="nav-stack" aria-label="主导航">
+          <a class="nav-item" href="#portfolio-brief">
+            <i data-lucide="briefcase-business"></i>
+            <span>项目概览</span>
+          </a>
+          <a class="nav-item is-active" href="#dashboard">
+            <i data-lucide="layout-dashboard"></i>
+            <span>洞察看板</span>
+          </a>
+          <a class="nav-item nav-parent" id="analysisNav" href="#game-detail" aria-expanded="false">
+            <i data-lucide="scan-search"></i>
+            <span>定向分析</span>
+            <i class="nav-chevron" data-lucide="chevron-down"></i>
+          </a>
+          <div class="subnav" id="analysisSubnav" aria-label="定向分析子标签"></div>
+          <a class="nav-item" href="#decision-report" data-jump-section="decision-report">
+            <i data-lucide="file-chart-column"></i>
+            <span>AI 报告</span>
+          </a>
+        </nav>
+
+        <section class="sidebar-panel">
+          <p class="panel-label">MVP 范围</p>
+          <p>
+            当前版本使用本地 JSON 演示数据。接入 Reddit 与 AI 接口后，可通过本地脚本更新同一份数据。
+          </p>
+        </section>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI 玩家评论洞察平台</p>
+            <h2>Roblox 热门游戏讨论监测</h2>
+          </div>
+          <div class="topbar-actions">
+            <span class="data-pill">
+              <i data-lucide="sparkles"></i>
+              Demo Dataset
+            </span>
+            <button class="icon-button" id="refreshButton" type="button" aria-label="更新数据">
+              <i data-lucide="refresh-cw"></i>
+            </button>
+            <button class="action-button" id="printButton" type="button">
+              <i data-lucide="printer"></i>
+              <span>导出 PDF</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="portfolio-brief" id="portfolio-brief" aria-labelledby="portfolioBriefTitle">
+          <div class="portfolio-brief-inner">
+            <div class="portfolio-brief-copy">
+              <p class="eyebrow">Portfolio Case</p>
+              <h2 id="portfolioBriefTitle">把 Reddit 玩家讨论变成可复刻判断</h2>
+              <p>
+                这个 Demo 面向游戏出海、AI 产品设计和系统设计展示：用低成本静态网页承载真实业务问题，
+                把 Roblox 热门玩法、玩家情绪、原评论证据和蛋仔派对可借鉴点串成一条可讲清楚的决策链。
+              </p>
+            </div>
+            <div class="portfolio-brief-meta">
+              <span>当前形态</span>
+              <strong>静态网站 + 本地 JSON</strong>
+              <small>可继续接入 Reddit API、AI 分析脚本和定时更新。</small>
+            </div>
+          </div>
+
+          <details class="brief-disclosure">
+            <summary>
+              <span>作品集能力拆解</span>
+              <small>展开查看业务、产品、AI 与扩展路径</small>
+            </summary>
+            <div class="brief-grid" aria-label="作品集能力亮点">
+              <article class="brief-card">
+                <i data-lucide="target"></i>
+                <span>业务问题</span>
+                <strong>海外玩法机会识别</strong>
+                <p>从 Roblox 热门游戏和 Reddit 讨论中筛选值得拆解的玩法方向。</p>
+              </article>
+              <article class="brief-card">
+                <i data-lucide="layers-3"></i>
+                <span>产品结构</span>
+                <strong>总览、定向、报告分层</strong>
+                <p>让决策者先看趋势，再看证据，最后看复刻建议。</p>
+              </article>
+              <article class="brief-card">
+                <i data-lucide="brain-circuit"></i>
+                <span>AI 价值</span>
+                <strong>摘要不替代证据</strong>
+                <p>保留英文原评论、中文翻译和引用标记，避免 AI 结论悬空。</p>
+              </article>
+              <article class="brief-card">
+                <i data-lucide="route"></i>
+                <span>扩展路径</span>
+                <strong>先 Demo，后自动化</strong>
+                <p>后续可用本地脚本接 Reddit、AI 分类、JSON 写入和静态部署。</p>
+              </article>
+            </div>
+            <div class="talk-track">
+              <div>
+                <p class="eyebrow">Interview Talk Track</p>
+                <h3>面试讲解线</h3>
+              </div>
+              <div class="talk-track-steps">
+                <span>业务背景</span>
+                <span>信息架构</span>
+                <span>证据链</span>
+                <span>复刻决策</span>
+              </div>
+            </div>
+            <div class="reference-upgrade">
+              <div>
+                <p class="eyebrow">Open-source Inspiration</p>
+                <h3>从通用工具转成垂直游戏洞察</h3>
+                <p>
+                  借鉴舆情分析工具的证据链报告结构，以及热点追踪工具的增量监控和兴趣筛选机制；
+                  但本项目不搬重型后端，只保留适合 Roblox 玩法研判的轻量闭环。
+                </p>
+              </div>
+              <div class="reference-upgrade-grid" aria-label="开源工具启发转化">
+                <article>
+                  <span>Hot Radar</span>
+                  <strong>热点评分模型</strong>
+                  <p>把提及量、增长率、情绪和建议密度合成一个可解释分数。</p>
+                </article>
+                <article>
+                  <span>Opinion Pipeline</span>
+                  <strong>评论证据链</strong>
+                  <p>先清洗和四分类，再让 AI 只分析高质量代表样本。</p>
+                </article>
+                <article>
+                  <span>Decision Report</span>
+                  <strong>复刻判断</strong>
+                  <p>从“玩家在聊什么”推进到“蛋仔派对该怎么验证”。</p>
+                </article>
+              </div>
+            </div>
+          </details>
+        </section>
+
+        <section class="workspace-section dashboard-section" id="dashboard" aria-labelledby="dashboardTitle">
+          <div class="section-intro">
+            <div class="section-copy">
+              <span class="section-index">01</span>
+              <div>
+                <p class="eyebrow">Overview Board</p>
+                <h2 id="dashboardTitle">洞察看板：先看 Roblox 讨论热度全局</h2>
+                <p>这个板块只展示当前 Roblox 热门讨论 Top 5，用于快速判断近期社媒热度。</p>
+              </div>
+            </div>
+            <div class="section-note">
+              <i data-lucide="info"></i>
+              <span>双击榜单游戏可进入对应的定向分析。</span>
+            </div>
+          </div>
+
+          <div class="dashboard-overview">
+            <div class="dashboard-summary-card">
+              <p class="eyebrow">Summary</p>
+              <h3>本期总览</h3>
+              <p id="dashboardSummary">
+                当前榜单聚焦 Reddit 上 Roblox 相关讨论，优先展示热度最高的 5 个游戏和它们的讨论强度。
+              </p>
+            </div>
+
+            <div class="status-panel">
+              <p class="panel-label">数据状态</p>
+              <div class="status-row">
+                <span>版本</span>
+                <strong id="datasetVersion">-</strong>
+              </div>
+              <div class="status-row">
+                <span>周期</span>
+                <strong id="datasetPeriod">-</strong>
+              </div>
+              <div class="status-row">
+                <span>更新时间</span>
+                <strong id="datasetTime">-</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-visuals" id="dashboardVisuals" aria-label="洞察看板数据可视化"></div>
+
+          <section class="ranking-panel dashboard-ranking" aria-labelledby="rankingTitle">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Trending Games</p>
+                <h2 id="rankingTitle">Roblox 讨论 Top 5</h2>
+              </div>
+              <p class="ranking-helper">这里只做总体热度排序；双击某个游戏后，下方会展示具体分析。</p>
+            </div>
+            <div class="game-list" id="gameList" aria-live="polite"></div>
+          </section>
+        </section>
+
+        <section class="workspace-section analysis-section" id="game-detail" aria-labelledby="analysisTitle">
+          <div class="section-intro analysis-intro">
+            <div class="section-copy">
+              <span class="section-index">02</span>
+              <div>
+                <p class="eyebrow">Targeted Analysis</p>
+                <h2 id="analysisTitle">定向分析：再拆一个具体游戏</h2>
+                <p>这个板块只看当前选中的游戏，集中展示热度、玩家评论证据和 AI 摘要。</p>
+              </div>
+            </div>
+            <div class="analysis-controls">
+              <label class="search-box" for="gameSearch">
+                <i data-lucide="search"></i>
+                <input
+                  id="gameSearch"
+                  type="search"
+                  placeholder="输入森林99 / 99 Nights / DTI"
+                  aria-label="搜索游戏"
+                />
+              </label>
+              <div class="analysis-matches" id="analysisMatches" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <article class="detail-panel">
+            <div class="detail-hero">
+              <div class="cover-art" id="coverArt" aria-hidden="true">
+                <span id="coverLabel">Insight</span>
+              </div>
+              <div class="detail-copy">
+                <div class="detail-kicker">
+                  <span id="gameRank">#1</span>
+                  <span id="gameGenre">-</span>
+                </div>
+                <h2 id="gameName">-</h2>
+                <div class="source-link-stack" id="gameSourceLinks" aria-label="游戏外部访问链接"></div>
+                <p id="gameOneLine">-</p>
+                <div class="tag-row" id="tagRow"></div>
+              </div>
+            </div>
+
+            <div class="detail-stats">
+              <div>
+                <span>热度分</span>
+                <strong id="detailHeat">0</strong>
+              </div>
+              <div>
+                <span>样本数</span>
+                <strong id="detailSamples">0</strong>
+              </div>
+              <div>
+                <span>提及次数</span>
+                <strong id="detailMentions">0</strong>
+              </div>
+              <div>
+                <span>建议等级</span>
+                <strong id="detailRecommendation">-</strong>
+              </div>
+            </div>
+
+            <div class="segmented-tabs" role="tablist" aria-label="详情内容切换">
+              <button class="is-active" type="button" data-tab="overview">概览</button>
+              <button type="button" data-tab="comments">评论证据</button>
+              <button type="button" data-tab="report">AI 摘要</button>
+            </div>
+
+            <section class="tab-panel is-active" id="overviewPanel" data-panel="overview">
+              <div class="overview-layout">
+                <div>
+                  <h3>热度趋势</h3>
+                  <div class="trend-chart" id="trendChart" aria-label="近 7 天热度趋势"></div>
+                </div>
+                <div>
+                  <h3>情绪占比</h3>
+                  <div class="sentiment-bars" id="sentimentBars"></div>
+                </div>
+              </div>
+              <div class="summary-block">
+                <h3>整体判断</h3>
+                <p id="overallSummary">-</p>
+              </div>
+            </section>
+
+            <section class="tab-panel" id="comments-panel" data-panel="comments">
+              <div class="comment-toolbar">
+                <h3>原评论追溯</h3>
+                <div class="filter-buttons" id="commentFilters">
+                  <button class="is-active" type="button" data-filter="all">全部</button>
+                  <button type="button" data-filter="positive">正面</button>
+                  <button type="button" data-filter="negative">负面</button>
+                  <button type="button" data-filter="suggestion">建议</button>
+                  <button type="button" data-filter="neutral">其他</button>
+                </div>
+              </div>
+              <div class="comment-workspace">
+                <aside class="comment-archive-panel" aria-label="评论证据库侧栏">
+                  <div class="archive-heading">
+                    <p class="eyebrow">Evidence Library</p>
+                    <h3>评论证据库</h3>
+                    <p>真实版会先全量抓取 Reddit 评论，再清洗、过滤无效样本，并按时间、游戏类型、游戏和情绪归档。</p>
+                  </div>
+                  <div class="pipeline-mini">
+                    <span>抓取</span>
+                    <span>清洗</span>
+                    <span>四分类</span>
+                    <span>归档</span>
+                  </div>
+                  <div id="commentArchive"></div>
+                </aside>
+                <div class="comment-list" id="commentList"></div>
+              </div>
+            </section>
+
+            <section class="tab-panel" id="report-panel" data-panel="report">
+              <div class="report-grid" id="reportGrid"></div>
+            </section>
+          </article>
+        </section>
+
+        <section class="workspace-section decision-report-section" id="decision-report" aria-labelledby="decisionReportTitle">
+          <div class="section-intro">
+            <div class="section-copy">
+              <span class="section-index">03</span>
+              <div>
+                <p class="eyebrow">Decision Report</p>
+                <h2 id="decisionReportTitle">AI 报告：复刻决策判断</h2>
+                <p>这里是给决策者看的详细报告，重点回答“值不值得复刻、该怎么改、风险在哪里”。</p>
+              </div>
+            </div>
+            <div class="section-note">
+              <i data-lucide="file-check-2"></i>
+              <span>随当前选中的游戏同步更新。</span>
+            </div>
+          </div>
+
+          <article class="decision-report-panel">
+            <div class="decision-switcher" aria-label="AI 报告对象切换">
+              <div>
+                <p class="eyebrow">Report Switch</p>
+                <h3>切换报告对象</h3>
+              </div>
+              <div class="decision-switcher-list" id="decisionReportNav"></div>
+            </div>
+
+            <div class="decision-hero">
+              <div>
+                <p class="eyebrow">Selected Target</p>
+                <h3 id="decisionGameName">-</h3>
+                <p id="decisionVerdictText">-</p>
+              </div>
+              <div class="verdict-card">
+                <span>复刻建议</span>
+                <strong id="decisionVerdict">-</strong>
+                <small id="decisionConfidence">-</small>
+              </div>
+            </div>
+
+            <div class="decision-metrics" id="decisionMetrics"></div>
+
+            <div class="decision-layout">
+              <section class="decision-narrative" id="decisionNarrative"></section>
+            </div>
+          </article>
+        </section>
+
+        <section class="workspace-section data-rule-footer-section" id="data-rules" aria-labelledby="dataRulesFooterTitle">
+          <div class="footer-rules-card">
+            <div class="footer-rules-heading">
+              <p class="eyebrow">Data Rules</p>
+              <h2 id="dataRulesFooterTitle">分析数据规则</h2>
+            </div>
+            <div id="dataRuleFooter"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <div class="modal-layer" id="watchAddModal" aria-hidden="true">
+      <section class="modal-card watch-add-modal" role="dialog" aria-modal="true" aria-labelledby="watchAddTitle">
+        <header class="modal-header">
+          <div>
+            <p class="eyebrow">Watchlist</p>
+            <h3 id="watchAddTitle">添加正在关注游戏</h3>
+          </div>
+          <button class="modal-close" type="button" data-modal-close="watchAddModal" aria-label="关闭">
+            <i data-lucide="x"></i>
+          </button>
+        </header>
+
+        <label class="modal-search" for="watchSearchInput">
+          <i data-lucide="search"></i>
+          <input id="watchSearchInput" type="search" placeholder="输入 Roblox 游戏名，例如 Forest 99 / DTI" />
+        </label>
+
+        <div class="watch-search-state" id="watchSearchState"></div>
+
+        <div class="modal-section">
+          <div class="modal-section-heading">
+            <span>当前 Top 5</span>
+            <small>点击即可加入正在关注</small>
+          </div>
+          <div class="modal-top-list" id="watchTopList"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal-layer" id="watchRemoveModal" aria-hidden="true">
+      <section class="modal-card confirm-modal" role="dialog" aria-modal="true" aria-labelledby="watchRemoveTitle">
+        <header class="modal-header">
+          <div>
+            <p class="eyebrow">Confirm</p>
+            <h3 id="watchRemoveTitle">确认移出正在关注？</h3>
+          </div>
+          <button class="modal-close" type="button" data-modal-close="watchRemoveModal" aria-label="关闭">
+            <i data-lucide="x"></i>
+          </button>
+        </header>
+        <p id="watchRemoveCopy">移出后不会立即删除已爬取和已分析的数据。</p>
+        <div class="retention-note">
+          <i data-lucide="archive"></i>
+          <span>系统仍按规则保留近 7 天数据；仅手动清理时删除 7 天前的数据。</span>
+        </div>
+        <div class="modal-actions">
+          <button class="ghost-button" type="button" data-modal-close="watchRemoveModal">取消</button>
+          <button class="danger-button" id="confirmRemoveWatch" type="button">确认移出</button>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
