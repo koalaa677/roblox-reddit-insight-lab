@@ -1,3 +1,5 @@
+在线访问：
+https://koalaa677.github.io/roblox-reddit-insight-lab/
 # Roblox Reddit Insight Lab
 
 面向游戏出海、AI 产品设计、系统设计和 ITBP 方向的个人作品集项目。
@@ -206,4 +208,3 @@ node scripts/estimate-pipeline-budget.mjs 5
 - 不优先做公司级监控平台能力
 
 第一阶段重点是作品集展示和面试讲解，其次才是内部参考工具。
-Deployment test.
