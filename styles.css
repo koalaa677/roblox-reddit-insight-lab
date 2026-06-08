@@ -2400,6 +2400,56 @@ a:focus-visible {
     #ffffff;
 }
 
+.decision-method-compact {
+  display: block;
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(29, 29, 31, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.decision-method-compact[open] {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.3fr) minmax(0, 1fr);
+  gap: 14px;
+  padding: 0 18px 18px;
+}
+
+.decision-method-compact > summary {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, auto);
+  gap: 14px;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 16px;
+  background: rgba(245, 245, 247, 0.72);
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.decision-method-compact[open] > summary {
+  margin: 0 -18px 2px;
+  border-bottom: 1px solid rgba(29, 29, 31, 0.08);
+}
+
+.decision-method-compact > summary::-webkit-details-marker {
+  display: none;
+}
+
+.decision-method-compact > summary span {
+  font-size: 15px;
+  font-weight: 820;
+}
+
+.decision-method-compact > summary small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 620;
+  text-align: right;
+}
+
 .decision-method-copy h3 {
   margin: 0;
   color: var(--ink);
@@ -3021,13 +3071,15 @@ a:focus-visible {
   }
 
   .brief-disclosure > summary,
-  .decision-disclosure > summary {
+  .decision-disclosure > summary,
+  .decision-method-compact > summary {
     grid-template-columns: 1fr;
     padding: 12px 14px;
   }
 
   .brief-disclosure > summary small,
-  .decision-disclosure > summary small {
+  .decision-disclosure > summary small,
+  .decision-method-compact > summary small {
     text-align: left;
   }
 

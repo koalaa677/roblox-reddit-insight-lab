@@ -1,232 +1,179 @@
 # Roblox Reddit Insight Lab
 
-面向游戏出海、AI 产品设计、系统设计和 ITBP 方向的个人作品集项目。
+Roblox Reddit Insight Lab is a lightweight market intelligence dashboard for tracking Roblox game discussions, organizing Reddit player feedback, and turning community signals into gameplay research reports.
 
-在线访问：
-https://koalaa677.github.io/roblox-reddit-insight-lab/
-
-一句话介绍：
-这是一个以《蛋仔派对》海外市场为背景的 Roblox + Reddit 玩家评论洞察 Demo，用于判断热门 Roblox 玩法是否值得被拆解、借鉴或复刻。
-
-适合展示方向：
-
-- 游戏出海与用户洞察
-- AI 产品设计
-- 数据看板与决策报告
-- 轻量级系统设计
-- ITBP / 业务分析场景拆解
-
-## 项目截图
-
-### 洞察看板
-
-![洞察看板](assets/screenshots/dashboard.png)
-
-### 定向分析
-
-![定向分析](assets/screenshots/game-analysis.png)
-
-### AI 复刻决策报告
-
-![AI 报告](assets/screenshots/ai-report.png)
-
-## 为什么做这个项目
-
-如果关注《蛋仔派对》海外市场，就需要持续观察 Roblox 上哪些玩法正在被玩家讨论，哪些玩法值得拆解，哪些玩法虽然热但不适合直接照搬。
-
-这个项目把问题拆成三个决策层级：
-
-1. **先看全局**：哪些 Roblox 游戏近期讨论热度最高。
-2. **再看单点**：某个游戏的趋势、情绪、评论证据是什么。
-3. **最后做判断**：该不该复刻、怎么复刻、哪些不能照搬、下一步怎么验证。
-
-当前版本不是正式公司系统，而是一个低成本、可部署、可讲解的静态网站 Demo。它用本地 JSON 模拟 Reddit 评论和 AI 分析结果，重点展示产品思考、信息架构、AI 证据链和后续自动化扩展路径。
-
-## 核心功能
-
-- **洞察看板**：展示 Roblox Reddit Top 5 热门讨论游戏，突出热度、类型和一句话判断。
-- **热点评分模型**：综合提及量、近 7 天增长率、正向情绪、建议密度和样本可信度。
-- **定向分析**：查看单个游戏的趋势图、情绪占比、外部链接、原评论证据和 AI 摘要。
-- **评论证据库**：按游戏和情绪归档评论，保留英文原文、中文翻译、标签、来源和 AI 引用标记。
-- **AI 报告**：独立给出复刻判断、迁移路径、不能照搬的点、蛋仔派对借鉴价值、风险和验证动作。
-- **关注游戏管理**：支持新增关注游戏、移除确认和定向分析跳转。
-
-## 页面结构
+Online site:
 
 ```text
-项目概览
-  -> 作品集定位、业务背景、开源工具启发转化
-
-洞察看板
-  -> Top 5 热门游戏
-  -> 热点评分拆解
-  -> 类型分布、情绪盘、证据流、复刻建议分布
-
-定向分析
-  -> 单游戏趋势
-  -> 情绪占比
-  -> 评论证据库
-  -> AI 摘要
-
-AI 报告
-  -> 复刻建议
-  -> 迁移路径
-  -> 风险与不可照搬点
-  -> 验证动作
-  -> 原评论证据
+https://koalaa677.github.io/roblox-reddit-insight-lab/
 ```
 
-## 热点评分模型
+## Screenshots
 
-当前 Demo 使用可解释评分模型，而不是只展示一个孤立热度数字：
+### Roblox Discussion Overview
+
+![Roblox Discussion Overview](assets/screenshots/dashboard.png)
+
+### Targeted Game Analysis
+
+![Targeted Game Analysis](assets/screenshots/game-analysis.png)
+
+### Analysis Report
+
+![Analysis Report](assets/screenshots/ai-report.png)
+
+## Features
+
+- **Roblox discussion overview**: shows the current Top 5 games by Reddit discussion heat, with genre, trend, score, and a short research judgment.
+- **Explainable hot score**: combines mentions, 7-day trend, positive sentiment, suggestion density, and sample confidence.
+- **Targeted game analysis**: drills into one selected game with official links, Reddit links, trend charts, sentiment split, comments, and summary.
+- **Comment evidence library**: keeps original English comments, Chinese translations, sentiment labels, tags, source links, and report citation state.
+- **Analysis report**: summarizes whether a gameplay loop is worth further research, what can be adapted, what should not be copied, and what validation actions should follow.
+- **Watchlist workflow**: supports adding tracked games, removing them with confirmation, and jumping directly into the related analysis.
+
+## Product Flow
+
+```text
+Roblox discussion overview
+  -> Top 5 trending games
+  -> hot score breakdown
+  -> genre mix, sentiment, evidence flow, recommendation mix
+
+Targeted analysis
+  -> selected game profile
+  -> Roblox and Reddit source links
+  -> 7-day heat trend
+  -> sentiment split
+  -> categorized comment evidence
+  -> concise AI summary
+
+Analysis report
+  -> overall recommendation
+  -> transferable gameplay elements
+  -> risks and non-transferable parts
+  -> validation actions
+  -> cited comment evidence
+```
+
+## Scoring Model
+
+The dashboard uses an explainable score instead of a single opaque popularity number:
 
 ```text
 Hot Score =
-  Reddit 提及量 * 35%
-+ 近 7 天增长率 * 25%
-+ 正向情绪占比 * 15%
-+ 建议密度 * 15%
-+ 样本可信度 * 10%
+  Reddit mentions * 35%
++ 7-day growth * 25%
++ positive sentiment * 15%
++ suggestion density * 15%
++ sample confidence * 10%
 ```
 
-真实接入后，样本可信度可以进一步补充 Roblox 官方游戏页指标，例如在线人数、访问增长、收藏增长和游戏更新频率。
+When connected to live data, the sample confidence layer can be expanded with Roblox-side signals such as concurrent users, visit growth, favorite growth, and game update frequency.
 
-## 评论证据链设计
+## Comment Evidence Pipeline
 
-当前 Demo 使用少量示例评论展示证据链，不代表已经全量爬取 Reddit。真实接入时，评论链路会按下面流程运行：
-
-```text
-Reddit 评论抓取
-  -> 去重、去广告、去纯表情和无意义短句
-  -> 情绪分类：正面 / 负面 / 建议 / 其他
-  -> 按时间倒序入库
-  -> 按游戏类型 -> 游戏 -> 情绪分类归档
-  -> AI 报告只引用代表性高质量评论
-```
-
-这样做的目的不是让 AI 替代判断，而是让 AI 结论可以回溯到玩家原话。
-
-## AI 报告逻辑
-
-AI 报告不是单纯复述评论，而是把数据整理成决策口径：
-
-- **热度信号**：当前讨论强度、Top 排名、近 7 天趋势。
-- **情绪信号**：正向吸引力、负面争议、玩家建议密度。
-- **证据信号**：是否有可回看的原评论和被引用样本。
-- **迁移判断**：哪些玩法循环适合蛋仔派对，哪些题材或机制不能照搬。
-- **验证动作**：先做低成本原型，再根据玩家反馈决定是否进入排期。
-
-## 后续 Reddit API 与 AI API 接入
-
-真实接入时建议继续保持“本地脚本生成 JSON，前端静态展示”的低成本架构：
+The public version uses a curated sample dataset with the same structure expected from the live pipeline. A production data pipeline can follow this flow:
 
 ```text
 Reddit API
-  -> 本地更新脚本
-  -> 评论清洗、去重、筛选
-  -> AI 翻译、情绪分类、标签提取、报告生成
-  -> 写入 data/insights.json
-  -> 静态网站展示
+  -> incremental comment collection
+  -> deduplication and low-value content filtering
+  -> sentiment classification: positive / negative / suggestion / other
+  -> time-based sorting
+  -> archive by game genre -> game -> sentiment type
+  -> select representative evidence for the analysis report
 ```
 
-抓取与 AI 成本策略已经整理在：
+This keeps report conclusions traceable back to player comments instead of relying on unsupported summaries.
+
+## AI Analysis Strategy
+
+The report is designed to minimize token usage while preserving decision quality:
+
+- Clean, deduplicate, and classify comments locally before sending anything to an AI model.
+- Send structured metrics, daily summaries, and selected high-quality evidence instead of the full raw comment set.
+- Ask the model for decision-ready outputs: recommendation, adaptation path, non-transferable risks, value, and validation actions.
+- Keep the original cited comments visible in the UI so conclusions remain auditable.
+
+Related configuration and strategy notes:
 
 ```text
 docs/reddit-ai-pipeline-strategy.md
 data/pipeline-config.json
 ```
 
-核心原则：
-
-- Reddit 抓评论不消耗 AI token，只消耗 Reddit API 请求额度。
-- AI token 只在把文本发送给模型分析时产生。
-- 项目按 30 QPM 软上限设计，低于 Reddit 免费 OAuth API 的公开 QPM 上限。
-- AI 不读取全部原始评论，先本地清洗、去重、规则分类，再抽样高质量评论。
-- 每个游戏每天最多送 40 条代表性评论给 AI，周报使用日摘要和精选证据生成。
-
-## 开源工具借鉴
-
-本项目参考了舆情分析工具和热点追踪工具的产品机制，但没有直接搬入完整系统。
-
-参考说明见：
+## Architecture
 
 ```text
-docs/open-source-reference-upgrade.md
+index.html
+  -> page structure
+
+styles.css
+  -> visual system, responsive layout, dashboard and report styles
+
+app.js
+  -> rendering, navigation, search, watchlist, comment filters, report switching
+
+data/insights.json
+  -> sample insight dataset with games, comments, reports, and source links
+
+data/pipeline-config.json
+  -> Reddit collection and AI analysis budget configuration
+
+docs/
+  -> deployment, API, pipeline, and reference notes
 ```
 
-借鉴点包括：
+The current implementation is a static frontend that reads a structured JSON snapshot. This keeps the display layer simple and makes it easy to connect a scheduled Reddit and AI analysis job later without changing the page contract.
 
-- 舆情分析工具的证据链报告结构：采集、清洗、分类、洞察、报告。
-- 热点追踪工具的增量监控机制：关键词筛选、定时刷新、缓存和 AI 精选分析。
-- 转化为 Roblox 游戏出海场景后，只保留热点评分、评论证据库、AI 复刻报告三条主线。
+## Local Development
 
-## 本地运行
-
-推荐使用本地静态服务器打开，避免浏览器直接打开 HTML 时拦截 JSON 数据读取。
+Use a local static server so the browser can load `data/insights.json`.
 
 ```powershell
 cd C:\Users\gaoyucheng01\Desktop\新建文件夹\roblox-reddit-insight-lab
 python -m http.server 4173 --bind 127.0.0.1
 ```
 
-然后访问：
+Open:
 
 ```text
 http://127.0.0.1:4173
 ```
 
-## 线上部署
+## Deployment
 
-当前项目已部署到 GitHub Pages：
+The project can be deployed as a static site. The repository includes:
 
-```text
-https://koalaa677.github.io/roblox-reddit-insight-lab/
-```
+- `.nojekyll` for GitHub Pages static file handling.
+- `.github/workflows/deploy-pages.yml` for GitHub Pages deployment.
+- `vercel.json` for Vercel static hosting.
 
-部署说明见：
+Deployment guide:
 
 ```text
 docs/deployment-guide.md
 ```
 
-项目已经包含：
+## Data And API Notes
 
-- `.nojekyll`：避免 GitHub Pages 对静态文件做 Jekyll 处理。
-- `.github/workflows/deploy-pages.yml`：GitHub Pages 自动部署工作流。
-- `vercel.json`：Vercel 静态部署配置。
+- Reddit collection does not consume AI tokens; it consumes Reddit API request quota.
+- AI token usage starts only when text or structured evidence is sent to a model.
+- API credentials should never be exposed in frontend code.
+- A practical live pipeline should run from a local script, scheduled job, or backend task that writes the same JSON schema consumed by the frontend.
 
-## 主要文件
+## Roadmap
 
-```text
-index.html                  页面结构
-styles.css                  Apple 风格视觉样式
-app.js                      页面渲染、导航、搜索、关注游戏、评论筛选、AI 报告切换
-data/insights.json          Demo 数据
-data/pipeline-config.json   Reddit 抓取与 AI 分析预算配置
-docs/                       部署、API、开源工具借鉴等说明文档
-assets/screenshots/         README 展示截图
-```
+- Connect Reddit API collection for selected subreddits and game keywords.
+- Add automated comment cleaning, deduplication, and four-way classification.
+- Generate daily summaries and weekly analysis reports from selected evidence.
+- Add data freshness indicators for collection volume, filtered volume, and cited evidence count.
+- Expand Roblox-side signals for online users, visits, favorites, and update cadence.
 
-## 面试讲解版本
+## Out Of Scope
 
-**1 分钟版本**
-
-这是一个面向游戏出海的 AI 玩家评论洞察 Demo。我用 Roblox 和 Reddit 作为数据场景，把热门游戏讨论转化为 Top 5 看板、单游戏分析和 AI 复刻决策报告，重点展示业务拆解、信息架构和 AI 证据链设计。
-
-**3 分钟版本**
-
-项目从《蛋仔派对》海外市场的问题出发：我们需要知道 Roblox 上哪些玩法正在被玩家讨论，哪些值得拆解。第一版没有做复杂后台，而是用静态网页和本地 JSON 搭出完整产品闭环。页面分为洞察看板、定向分析和 AI 报告。洞察看板看全局热度，定向分析看趋势和原评论，AI 报告负责判断能不能复刻、怎么改、风险是什么。这样既能展示产品思考，也能展示后续接 Reddit API 和 AI API 的扩展路径。
-
-**5 分钟版本**
-
-可以围绕四条线讲：业务背景、页面信息架构、AI 证据链、系统扩展。业务背景是 Roblox 热门玩法对蛋仔派对海外市场有参考价值；信息架构上先总览再下钻，避免把所有评论和报告堆在一个页面；AI 证据链上保留原文、翻译、情绪、标签和引用标记，保证总结能被追溯；系统扩展上当前是静态 Demo，后续可以用 Reddit API 抓取评论，用 AI 脚本生成结构化 JSON，再让前端直接展示。
-
-## 暂不做
-
-- 不做登录、权限、部门协作后台。
-- 不做数据库和复杂服务端。
-- 不接 Discord 抓取。
-- 不在前端暴露 Reddit 或 AI token。
-- 不优先做公司级监控平台能力。
-
-第一阶段重点是作品集展示和面试讲解，其次才是内部参考工具。
+- User login and permission management.
+- Database-backed collaboration workflows.
+- Discord collection.
+- Exposing Reddit or AI tokens in the browser.
+- Large-scale enterprise monitoring features.

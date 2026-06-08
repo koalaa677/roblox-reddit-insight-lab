@@ -58,7 +58,7 @@ function bindEvents() {
   });
 
   $("#refreshButton").addEventListener("click", () => {
-    showToast("当前是 Demo 数据。接入 Reddit 与 AI 接口后，这里会触发本地更新脚本。");
+    showToast("当前展示的是最近一次数据快照；刷新任务完成后会更新同一套指标与报告。");
   });
 
   $("#printButton").addEventListener("click", () => window.print());
@@ -132,7 +132,7 @@ function renderMeta() {
 function renderDashboardSummary() {
   const topGame = state.data.games[0];
   const totalMentions = state.data.games.reduce((sum, game) => sum + game.mentions, 0);
-  $("#dashboardSummary").textContent = `当前 Top 5 共覆盖 ${totalMentions} 次演示提及，最高热度是 ${topGame.cnName}。看板现在增加热点评分模型：把提及量、增长率、情绪和建议密度合成一个可解释分数，先看结论，再点进具体游戏看证据和复刻判断。`;
+  $("#dashboardSummary").textContent = `当前 Top 5 共覆盖 ${totalMentions} 次讨论提及，最高热度是 ${topGame.cnName}。看板把提及量、增长率、情绪和建议密度合成可解释分数，先看全局结论，再进入具体游戏查看证据与报告。`;
 }
 
 function renderDashboardVisuals() {
@@ -195,22 +195,22 @@ function renderDashboardVisuals() {
         <h3>评论证据流</h3>
       </div>
       <div class="pipeline-dashboard">
-        ${renderPipelineStep("有效样本", totalComments, "Demo 数据已去掉无意义短评")}
-        ${renderPipelineStep("AI 引用", quotedComments, "进入报告证据链")}
-        ${renderPipelineStep("待接入", "Reddit API", "真实版展示抓取量与过滤量")}
+        ${renderPipelineStep("有效样本", totalComments, "已过滤低价值短评")}
+        ${renderPipelineStep("报告引用", quotedComments, "进入报告证据链")}
+        ${renderPipelineStep("采集接口", "Reddit API", "展示抓取量与过滤量")}
       </div>
     </article>
 
     <article class="visual-card">
       <div class="visual-heading">
-        <p class="eyebrow">Decision Mix</p>
-        <h3>复刻建议分布</h3>
+        <p class="eyebrow">Recommendation Mix</p>
+        <h3>研究建议分布</h3>
       </div>
-      <div class="decision-stack" aria-label="复刻建议分布">
+      <div class="decision-stack" aria-label="研究建议分布">
         ${renderDecisionStackItem("强烈研究", recommendationGroups.strong, "#0071e3")}
         ${renderDecisionStackItem("继续观察", recommendationGroups.observe, "#17865d")}
         ${renderDecisionStackItem("谨慎研究", recommendationGroups.caution, "#bf7a00")}
-        ${renderDecisionStackItem("暂不复刻", recommendationGroups.no, "#d7352a")}
+        ${renderDecisionStackItem("暂缓研究", recommendationGroups.no, "#d7352a")}
       </div>
     </article>
   `;
@@ -498,7 +498,7 @@ function renderWatchSearchState() {
         <div>
           <span class="watch-status">新目标</span>
           <h4>${escapeHtml(query)}</h4>
-          <p>当前 Demo 未匹配到本地 Top 5。点击确定后，会先加入后台分析队列；接入 Roblox / Reddit 后再检索、爬取和 AI 分析。</p>
+          <p>当前数据快照未匹配到 Top 5。点击确定后，会先加入分析队列；后续采集任务会检索 Roblox / Reddit 并生成分析结果。</p>
         </div>
         <button type="button" data-add-custom="true">确定加入</button>
       </div>
@@ -945,7 +945,7 @@ function renderHotScoreModel(game) {
       <div class="score-model-total">
         <span>模型分</span>
         <strong>${model.score}</strong>
-        <small>Demo 口径；真实版可补充 Roblox 在线人数、访问增速或收藏增长。</small>
+        <small>当前口径可继续补充 Roblox 在线人数、访问增速或收藏增长。</small>
       </div>
       <div class="score-model-bars">
         ${model.components
@@ -1026,7 +1026,7 @@ function renderComment(comment, game) {
       <p class="translated">${escapeHtml(comment.translatedText)}</p>
       <div class="comment-meta">
         <span>${escapeHtml(comment.source)}</span>
-        <span>${comment.usedInReport ? "已被 AI 报告引用" : "补充样本"}</span>
+        <span>${comment.usedInReport ? "已被分析报告引用" : "补充样本"}</span>
         <span>${comment.tags.map((tag) => escapeHtml(tag)).join(" / ")}</span>
         <a href="${comment.url}" target="_blank" rel="noreferrer">查看来源</a>
       </div>
@@ -1196,6 +1196,7 @@ function renderDecisionReport(game) {
   const firstIdea = game.summary.eggyIdeas[0] ?? "先拆核心循环，再按蛋仔派对用户心智重写题材和表达。";
   const firstRisk = game.summary.risks[0] ?? "直接照搬题材、数值或社区语境会放大迁移风险。";
   const evidenceCount = game.comments.filter((comment) => comment.usedInReport).length;
+  const evidenceBasis = formatEvidenceBasis(evidenceCount || evidence.length);
 
   $("#decisionGameName").textContent = `${game.name} / ${game.cnName}`;
   $("#decisionVerdict").textContent = decision.label;
@@ -1210,24 +1211,16 @@ function renderDecisionReport(game) {
   ].join("");
 
   $("#decisionNarrative").innerHTML = `
-    ${renderDecisionMethodPanel(game, decision)}
-
-    <section class="decision-memo-grid" aria-label="决策备忘">
-      ${renderDecisionMemo("Should we copy?", "复刻判断", decision.label, decision.reason)}
-      ${renderDecisionMemo("How to adapt?", "迁移路径", "只迁移玩家已经验证过的核心循环，再用蛋仔派对的道具、关卡和社交表达重写体验。")}
-      ${renderDecisionMemo("What not to copy?", "不可照搬", firstRisk, "风险不是“不做”，而是要在原型阶段提前规避。")}
-    </section>
-
     <section class="decision-block decision-conclusion">
-      <p class="eyebrow">Final Call</p>
-      <h3>是否值得复刻参考</h3>
+      <p class="eyebrow">Recommendation</p>
+      <h3>报告结论</h3>
       <p>${escapeHtml(game.summary.decision)}</p>
       <p>${escapeHtml(decision.action)}</p>
     </section>
 
-    ${renderDecisionDisclosure("为什么值得看", "核心优点与玩家正向反馈", game.summary.pros)}
-    ${renderDecisionDisclosure("复刻到蛋仔派对应保留什么", "可迁移为蛋仔派对体验的玩法要素", game.summary.eggyIdeas)}
-    ${renderDecisionDisclosure("不能直接照搬的地方", "展开查看主要争议和迁移风险", [
+    ${renderDecisionDisclosure("为什么值得看", `核心优点与玩家正向反馈，${evidenceBasis}`, game.summary.pros)}
+    ${renderDecisionDisclosure("复刻到蛋仔派对应保留什么", `可迁移为蛋仔派对体验的玩法要素，${evidenceBasis}`, game.summary.eggyIdeas)}
+    ${renderDecisionDisclosure("不能直接照搬的地方", `主要争议和迁移风险，${evidenceBasis}`, [
       ...game.summary.cons.slice(0, 2),
       ...game.summary.risks,
     ])}
@@ -1252,6 +1245,8 @@ function renderDecisionReport(game) {
         ${evidence.map(renderDecisionEvidence).join("")}
       </div>
     </section>
+
+    ${renderDecisionMethodPanel(game, decision)}
   `;
 }
 
@@ -1260,15 +1255,19 @@ function renderDecisionMethodPanel(game, decision) {
     ["Collect", "Reddit 增量抓取", "按游戏关键词和 r/roblox 总论坛每日收集评论。"],
     ["Clean", "清洗与四分类", "剔除无效评论，归入正面、负面、建议、其他。"],
     ["Score", "热度与证据评分", `综合热度 ${game.heatScore}、样本 ${game.sampleCount}、趋势和情绪。`],
-    ["Report", "生成复刻报告", `输出 ${decision.label}，并绑定原评论证据。`],
+    ["Report", "生成分析报告", `输出 ${decision.label}，并绑定原评论证据。`],
   ];
 
   return `
-    <section class="decision-method-panel" aria-label="AI 报告生成流程">
+    <details class="decision-method-panel decision-method-compact" aria-label="分析报告生成流程">
+      <summary>
+        <span>分析生成口径</span>
+        <small>展开查看采集、清洗、评分和报告生成方式</small>
+      </summary>
       <div class="decision-method-copy">
         <p class="eyebrow">Method</p>
-        <h3>AI 报告不是直接读全量原文</h3>
-        <p>它先吃结构化指标和精选证据，再生成复刻判断，保证 token 可控、结论可追溯。</p>
+        <h3>结构化指标 + 精选证据</h3>
+        <p>报告先读取指标、摘要和代表性评论，再生成建议，保证 token 可控、结论可追溯。</p>
       </div>
       <div class="method-steps">
         ${steps
@@ -1283,7 +1282,7 @@ function renderDecisionMethodPanel(game, decision) {
           )
           .join("")}
       </div>
-    </section>
+    </details>
   `;
 }
 
@@ -1308,6 +1307,10 @@ function renderDecisionDisclosure(title, summary, items) {
       ${renderList(items)}
     </details>
   `;
+}
+
+function formatEvidenceBasis(count) {
+  return `基于 ${count} 条引用评论`;
 }
 
 function renderDecisionMetric(icon, label, value, caption) {
@@ -1363,7 +1366,7 @@ function getDecisionModel(game, trendDelta) {
       label: "建议继续验证",
       confidence,
       reason: `${game.cnName} 有明确讨论热度，但仍需要进一步确认玩法能否迁移到蛋仔派对的用户和内容生态。`,
-      action: "建议继续收集 Reddit 评论和玩法视频样本，先完成纸面玩法拆解，再决定是否做可玩 Demo。",
+      action: "建议继续收集 Reddit 评论和玩法视频样本，先完成纸面玩法拆解，再决定是否做可玩原型。",
     };
   }
 

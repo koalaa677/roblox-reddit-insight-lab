@@ -9,9 +9,9 @@
     />
     <title>Roblox Reddit Insight Lab</title>
     <link rel="preconnect" href="https://unpkg.com" />
-    <link rel="stylesheet" href="styles.css?v=20260603-2" />
+    <link rel="stylesheet" href="styles.css?v=20260608-1" />
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
-    <script src="app.js?v=20260603-2" defer></script>
+    <script src="app.js?v=20260608-1" defer></script>
   </head>
   <body>
     <div class="app-shell">
@@ -26,8 +26,8 @@
 
         <nav class="nav-stack" aria-label="主导航">
           <a class="nav-item" href="#portfolio-brief">
-            <i data-lucide="briefcase-business"></i>
-            <span>项目概览</span>
+            <i data-lucide="radar"></i>
+            <span>产品概览</span>
           </a>
           <a class="nav-item is-active" href="#dashboard">
             <i data-lucide="layout-dashboard"></i>
@@ -41,14 +41,14 @@
           <div class="subnav" id="analysisSubnav" aria-label="定向分析子标签"></div>
           <a class="nav-item" href="#decision-report" data-jump-section="decision-report">
             <i data-lucide="file-chart-column"></i>
-            <span>AI 报告</span>
+            <span>分析报告</span>
           </a>
         </nav>
 
         <section class="sidebar-panel">
-          <p class="panel-label">MVP 范围</p>
+          <p class="panel-label">数据口径</p>
           <p>
-            当前版本使用本地 JSON 演示数据。接入 Reddit 与 AI 接口后，可通过本地脚本更新同一份数据。
+            当前页面读取结构化数据快照；刷新任务可持续写入同一数据结构，保证看板和报告口径一致。
           </p>
         </section>
       </aside>
@@ -62,7 +62,7 @@
           <div class="topbar-actions">
             <span class="data-pill">
               <i data-lucide="sparkles"></i>
-              Demo Dataset
+              Insight Snapshot
             </span>
             <button class="icon-button" id="refreshButton" type="button" aria-label="更新数据">
               <i data-lucide="refresh-cw"></i>
@@ -77,70 +77,58 @@
         <section class="portfolio-brief" id="portfolio-brief" aria-labelledby="portfolioBriefTitle">
           <div class="portfolio-brief-inner">
             <div class="portfolio-brief-copy">
-              <p class="eyebrow">Portfolio Case</p>
-              <h2 id="portfolioBriefTitle">把 Reddit 玩家讨论变成可复刻判断</h2>
+              <p class="eyebrow">Market Intelligence</p>
+              <h2 id="portfolioBriefTitle">Roblox 玩家讨论洞察中心</h2>
               <p>
-                这个 Demo 面向游戏出海、AI 产品设计和系统设计展示：用低成本静态网页承载真实业务问题，
-                把 Roblox 热门玩法、玩家情绪、原评论证据和蛋仔派对可借鉴点串成一条可讲清楚的决策链。
+                聚合 Roblox 热门游戏与 Reddit 玩家讨论，形成热度趋势、情绪结构、评论证据和玩法迁移建议，
+                帮助研究团队快速筛选值得跟进的玩法机会。
               </p>
             </div>
             <div class="portfolio-brief-meta">
-              <span>当前形态</span>
-              <strong>静态网站 + 本地 JSON</strong>
-              <small>可继续接入 Reddit API、AI 分析脚本和定时更新。</small>
+              <span>监测范围</span>
+              <strong>Roblox + Reddit</strong>
+              <small>覆盖热点游戏、定向追踪、评论证据与分析报告。</small>
             </div>
           </div>
 
           <details class="brief-disclosure">
             <summary>
-              <span>作品集能力拆解</span>
-              <small>展开查看业务、产品、AI 与扩展路径</small>
+              <span>系统能力</span>
+              <small>展开查看监测、证据、报告与扩展方式</small>
             </summary>
-            <div class="brief-grid" aria-label="作品集能力亮点">
+            <div class="brief-grid" aria-label="系统能力亮点">
               <article class="brief-card">
                 <i data-lucide="target"></i>
-                <span>业务问题</span>
-                <strong>海外玩法机会识别</strong>
+                <span>热点发现</span>
+                <strong>玩法机会识别</strong>
                 <p>从 Roblox 热门游戏和 Reddit 讨论中筛选值得拆解的玩法方向。</p>
               </article>
               <article class="brief-card">
                 <i data-lucide="layers-3"></i>
-                <span>产品结构</span>
+                <span>分析结构</span>
                 <strong>总览、定向、报告分层</strong>
-                <p>让决策者先看趋势，再看证据，最后看复刻建议。</p>
+                <p>让研究人员先看趋势，再看证据，最后看可验证的行动建议。</p>
               </article>
               <article class="brief-card">
                 <i data-lucide="brain-circuit"></i>
-                <span>AI 价值</span>
+                <span>证据链</span>
                 <strong>摘要不替代证据</strong>
                 <p>保留英文原评论、中文翻译和引用标记，避免 AI 结论悬空。</p>
               </article>
               <article class="brief-card">
                 <i data-lucide="route"></i>
-                <span>扩展路径</span>
-                <strong>先 Demo，后自动化</strong>
-                <p>后续可用本地脚本接 Reddit、AI 分类、JSON 写入和静态部署。</p>
+                <span>扩展方式</span>
+                <strong>数据快照驱动</strong>
+                <p>采集、清洗、AI 分类和报告生成可以持续写入同一结构化数据。</p>
               </article>
-            </div>
-            <div class="talk-track">
-              <div>
-                <p class="eyebrow">Interview Talk Track</p>
-                <h3>面试讲解线</h3>
-              </div>
-              <div class="talk-track-steps">
-                <span>业务背景</span>
-                <span>信息架构</span>
-                <span>证据链</span>
-                <span>复刻决策</span>
-              </div>
             </div>
             <div class="reference-upgrade">
               <div>
-                <p class="eyebrow">Open-source Inspiration</p>
-                <h3>从通用工具转成垂直游戏洞察</h3>
+                <p class="eyebrow">Research Workflow</p>
+                <h3>从玩家讨论到玩法研判</h3>
                 <p>
-                  借鉴舆情分析工具的证据链报告结构，以及热点追踪工具的增量监控和兴趣筛选机制；
-                  但本项目不搬重型后端，只保留适合 Roblox 玩法研判的轻量闭环。
+                  系统将通用舆情分析里的采集、清洗、分类、证据追溯，转化为适合 Roblox 玩法研究的轻量流程；
+                  报告只突出趋势、迁移价值、风险和下一步验证动作。
                 </p>
               </div>
               <div class="reference-upgrade-grid" aria-label="开源工具启发转化">
@@ -156,7 +144,7 @@
                 </article>
                 <article>
                   <span>Decision Report</span>
-                  <strong>复刻判断</strong>
+                  <strong>行动建议</strong>
                   <p>从“玩家在聊什么”推进到“蛋仔派对该怎么验证”。</p>
                 </article>
               </div>
@@ -170,7 +158,7 @@
               <span class="section-index">01</span>
               <div>
                 <p class="eyebrow">Overview Board</p>
-                <h2 id="dashboardTitle">洞察看板：先看 Roblox 讨论热度全局</h2>
+                <h2 id="dashboardTitle">Roblox 讨论热度全局</h2>
                 <p>这个板块只展示当前 Roblox 热门讨论 Top 5，用于快速判断近期社媒热度。</p>
               </div>
             </div>
@@ -226,8 +214,8 @@
               <span class="section-index">02</span>
               <div>
                 <p class="eyebrow">Targeted Analysis</p>
-                <h2 id="analysisTitle">定向分析：再拆一个具体游戏</h2>
-                <p>这个板块只看当前选中的游戏，集中展示热度、玩家评论证据和 AI 摘要。</p>
+                <h2 id="analysisTitle">定向分析</h2>
+                <p>这个板块只看当前选中的游戏，集中展示热度、玩家评论证据和摘要结论。</p>
               </div>
             </div>
             <div class="analysis-controls">
@@ -283,7 +271,7 @@
             <div class="segmented-tabs" role="tablist" aria-label="详情内容切换">
               <button class="is-active" type="button" data-tab="overview">概览</button>
               <button type="button" data-tab="comments">评论证据</button>
-              <button type="button" data-tab="report">AI 摘要</button>
+              <button type="button" data-tab="report">摘要</button>
             </div>
 
             <section class="tab-panel is-active" id="overviewPanel" data-panel="overview">
@@ -345,8 +333,8 @@
               <span class="section-index">03</span>
               <div>
                 <p class="eyebrow">Decision Report</p>
-                <h2 id="decisionReportTitle">AI 报告：复刻决策判断</h2>
-                <p>这里是给决策者看的详细报告，重点回答“值不值得复刻、该怎么改、风险在哪里”。</p>
+                <h2 id="decisionReportTitle">分析报告</h2>
+                <p>这里汇总玩法机会、可迁移要素、风险边界和下一步验证动作。</p>
               </div>
             </div>
             <div class="section-note">
@@ -356,7 +344,7 @@
           </div>
 
           <article class="decision-report-panel">
-            <div class="decision-switcher" aria-label="AI 报告对象切换">
+            <div class="decision-switcher" aria-label="分析报告对象切换">
               <div>
                 <p class="eyebrow">Report Switch</p>
                 <h3>切换报告对象</h3>
