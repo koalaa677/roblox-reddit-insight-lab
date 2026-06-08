@@ -1,13 +1,13 @@
 {
   "meta": {
     "projectName": "Roblox Reddit Insight Lab",
-    "version": "MVP Demo 1.0",
-    "datasetType": "demo",
+    "version": "Insight Snapshot 1.0",
+    "datasetType": "sample",
     "updatedAt": "2026/6/1 15:13:56",
-    "period": "近 7 天示例样本",
+    "period": "近 7 天样本窗口",
     "trendLabels": ["D-6", "D-5", "D-4", "D-3", "D-2", "昨日", "今日"],
     "displayWindowDays": 7,
-    "sourceNote": "当前为作品演示数据，用于展示产品流程。接入 Reddit API 后可替换为真实帖子与评论。",
+    "sourceNote": "当前为结构化样本数据快照；接入 Reddit API 后可替换为同结构的真实帖子与评论。",
     "refreshPolicy": "默认展示近 7 天热点游戏。刷新时只抓取最新评论，已抓取评论保留在本地。",
     "cleanupPolicy": "手动清理时只清理 7 天之前的评论，7 天内评论不清理。",
     "crawlScope": {
@@ -53,7 +53,7 @@
             "teamwork"
           ],
           "score": 36,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "The best part is when everyone finally understands their role. One person gathers wood, one watches the camp, and someone else takes risks outside.",
           "translatedText": "最好玩的部分是大家终于明白自己该做什么的时候。一个人收集木头，一个人守营地，另一个人冒险去外面探索。",
@@ -67,7 +67,7 @@
             "late game"
           ],
           "score": 22,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "After a few runs the middle part starts to feel the same. I wish there were more random events between the big nights.",
           "translatedText": "玩了几轮之后，中间阶段开始感觉差不多。我希望重要夜晚之间能有更多随机事件。",
@@ -81,7 +81,7 @@
             "difficulty"
           ],
           "score": 18,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "New players need a clearer first objective. My friends spent the first night running around without knowing what mattered.",
           "translatedText": "新玩家需要更清晰的第一个目标。我朋友们第一晚一直到处乱跑，不知道什么才重要。",
@@ -95,7 +95,7 @@
             "session design"
           ],
           "score": 30,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "The day and night rhythm is simple but it works. Daytime feels safe enough to plan, then night makes everyone panic in a fun way.",
           "translatedText": "昼夜节奏很简单但有效。白天足够安全，可以计划；到了晚上，大家会以一种好玩的方式紧张起来。",
@@ -109,7 +109,7 @@
             "solo"
           ],
           "score": 11,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "It is rough when teammates leave early. The game seems balanced around a group that actually communicates.",
           "translatedText": "队友早早退出时体验很糟。这个游戏似乎是围绕真正会沟通的小队来平衡的。",
@@ -204,7 +204,7 @@
             "sharing"
           ],
           "score": 28,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "I like that every round gives a clear theme. Even if I lose, I still want to screenshot the outfit.",
           "translatedText": "我喜欢每一轮都有明确主题。即使输了，我也还是想给自己的造型截图。",
@@ -218,7 +218,7 @@
             "fairness"
           ],
           "score": 19,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "The voting can feel random. Sometimes the best outfit does not win because friends vote for each other.",
           "translatedText": "投票有时感觉很随机。有时候最好的造型赢不了，因为朋友之间会互相投票。",
@@ -307,7 +307,7 @@
             "new players"
           ],
           "score": 24,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "The grind is the main reason my newer friends quit. They like the idea but not the hours needed to catch up.",
           "translatedText": "刷取是我那些新朋友退坑的主要原因。他们喜欢这个概念，但不喜欢追赶所需的时间。",
@@ -393,7 +393,7 @@
             "friends"
           ],
           "score": 16,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "Brookhaven works because you can make your own story with friends. It does not need a strict goal every time.",
           "translatedText": "Brookhaven 好玩是因为你可以和朋友创造自己的故事。它不需要每次都有严格目标。",
@@ -478,7 +478,7 @@
             "new players"
           ],
           "score": 13,
-          "source": "Reddit demo sample",
+          "source": "Reddit sample snapshot",
           "url": "https://www.reddit.com/",
           "originalText": "The game needs better matchmaking. New players get destroyed before they learn the basics.",
           "translatedText": "这个游戏需要更好的匹配。新玩家还没学会基础就被打爆了。",
