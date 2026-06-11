@@ -1,7 +1,7 @@
 {
   "reddit": {
     "hotScoreModel": {
-      "description": "Portfolio demo scoring model inspired by trend tracking tools. The production version can add Roblox live players, visits, favorites, or creator update signals.",
+      "description": "Explainable scoring model inspired by trend tracking workflows. The production version can add Roblox live players, visits, favorites, or creator update signals.",
       "weights": {
         "redditMentions": 35,
         "sevenDayGrowth": 25,
@@ -12,8 +12,8 @@
     },
     "rateLimitPolicy": {
       "officialFreeOauthLimitQpm": 100,
-      "projectSoftLimitQpm": 30,
-      "requestIntervalMs": 2200,
+      "projectSoftLimitQpm": 10,
+      "requestIntervalMs": 6500,
       "minRemainingBeforePause": 20,
       "retryAfter429Seconds": 90,
       "respectHeaders": [
@@ -22,31 +22,35 @@
         "X-Ratelimit-Reset"
       ]
     },
+    "publicJsonFallback": {
+      "enabledForPrototype": true,
+      "baseUrl": "https://www.reddit.com",
+      "trackedGameLimit": 3,
+      "windowDays": 3,
+      "note": "This low-volume fallback is only for prototype validation. Reddit may return 403 or require OAuth/Data API approval; OAuth remains the recommended production path."
+    },
     "dailyCrawlBudget": {
       "overviewSubreddit": "roblox",
       "overview": {
-        "postsPerDay": 120,
-        "commentsPerDay": 400,
+        "postsPerDay": 30,
+        "commentsPerDay": 120,
         "commentPolicy": "Only fetch top-level comments from relevant/high-engagement posts; do not expand every MoreComments branch.",
         "sorts": [
-          "new",
-          "hot"
+          "new"
         ]
       },
       "perTrackedGame": {
-        "postsPerGamePerDay": 30,
-        "commentsPerGamePerDay": 120,
-        "maxCommentsPerPost": 8,
+        "postsPerGamePerDay": 8,
+        "commentsPerGamePerDay": 30,
+        "maxCommentsPerPost": 5,
         "minCommentScore": 1,
         "sorts": [
-          "new",
-          "hot",
-          "top_week"
+          "new"
         ]
       },
       "weeklyRetention": {
-        "overviewCommentsPerWeekTarget": 2800,
-        "commentsPerGamePerWeekTarget": 840,
+        "overviewCommentsPerWeekTarget": 840,
+        "commentsPerGamePerWeekTarget": 210,
         "dedupeBy": [
           "redditCommentId",
           "normalizedBodyHash"
@@ -79,14 +83,14 @@
       "maxRawCommentCharsForAi": 700
     },
     "dailyAiBudget": {
-      "maxSelectedCommentsPerGamePerDay": 40,
-      "maxOverviewCommentsForAiPerDay": 80,
-      "maxCommentsPerSentimentBucket": 10
+      "maxSelectedCommentsPerGamePerDay": 12,
+      "maxOverviewCommentsForAiPerDay": 30,
+      "maxCommentsPerSentimentBucket": 4
     },
     "weeklyAiBudget": {
-      "maxSelectedCommentsPerGameForWeeklyReport": 80,
+      "maxSelectedCommentsPerGameForWeeklyReport": 30,
       "useDailySummariesInsteadOfAllRawComments": true,
-      "maxEvidenceQuotesPerGame": 8
+      "maxEvidenceQuotesPerGame": 5
     },
     "analysisStages": [
       {

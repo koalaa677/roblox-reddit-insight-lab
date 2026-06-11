@@ -1,17 +1,25 @@
 {
   "meta": {
     "projectName": "Roblox Reddit Insight Lab",
-    "version": "Insight Snapshot 1.0",
-    "datasetType": "sample",
+    "version": "Insight Snapshot 1.1",
+    "datasetType": "sample_top3",
     "updatedAt": "2026/6/1 15:13:56",
-    "period": "近 7 天样本窗口",
-    "trendLabels": ["D-6", "D-5", "D-4", "D-3", "D-2", "昨日", "今日"],
-    "displayWindowDays": 7,
-    "sourceNote": "当前为结构化样本数据快照；接入 Reddit API 后可替换为同结构的真实帖子与评论。",
-    "refreshPolicy": "默认展示近 7 天热点游戏。刷新时只抓取最新评论，已抓取评论保留在本地。",
+    "period": "? 3 ???????",
+    "trendLabels": [
+      "D-6",
+      "D-5",
+      "D-4",
+      "D-3",
+      "D-2",
+      "昨日",
+      "今日"
+    ],
+    "displayWindowDays": 3,
+    "sourceNote": "??? Top 3 ??????????Reddit OAuth ???????? public JSON fallback ?????????????? OAuth Data API?",
+    "refreshPolicy": "????? 3 ????????????????????????????",
     "cleanupPolicy": "手动清理时只清理 7 天之前的评论，7 天内评论不清理。",
     "crawlScope": {
-      "overview": "洞察看板抓取 Roblox Reddit 整体论坛内容，用于计算 Top 5 热门游戏。",
+      "overview": "?????? Roblox Reddit ??????????? Top 3 ?????",
       "targeted": "定向分析抓取具体游戏对应的 Reddit 子社区或关键词范围。",
       "watchlist": "当前关注游戏直接抓取对应子社区或固定关键词范围。"
     }
@@ -367,177 +375,6 @@
           "与蛋仔派对轻量体验差异较大。"
         ],
         "decision": "适合拆解成长系统，不适合直接复刻为核心玩法。"
-      }
-    },
-    {
-      "id": "brookhaven",
-      "rank": 4,
-      "name": "Brookhaven RP",
-      "cnName": "Brookhaven 角色扮演",
-      "aliases": [
-        "Brookhaven",
-        "Brookhaven RP",
-        "roleplay roblox"
-      ],
-      "genre": "角色扮演 / 社交 / 沙盒",
-      "heatScore": 71,
-      "sampleCount": 28,
-      "mentions": 184,
-      "posts": 11,
-      "comments": [
-        {
-          "id": "bh-c01",
-          "sentiment": "positive",
-          "tags": [
-            "roleplay",
-            "friends"
-          ],
-          "score": 16,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "Brookhaven works because you can make your own story with friends. It does not need a strict goal every time.",
-          "translatedText": "Brookhaven 好玩是因为你可以和朋友创造自己的故事。它不需要每次都有严格目标。",
-          "usedInReport": true
-        }
-      ],
-      "sentiment": {
-        "positive": 43,
-        "negative": 27,
-        "suggestion": 20,
-        "neutral": 10
-      },
-      "trend": [
-        69,
-        68,
-        70,
-        70,
-        71,
-        72,
-        71
-      ],
-      "tags": [
-        "roleplay",
-        "social",
-        "sandbox",
-        "housing"
-      ],
-      "recommendation": "可以观察",
-      "oneLine": "开放角色扮演和社交想象空间强，但玩法目标弱，适合参考社交场景而非关卡玩法。",
-      "cover": {
-        "tone": "city",
-        "label": "Roleplay Space",
-        "asset": "assets/brookhaven-cover.svg"
-      },
-      "sourceLinks": {
-        "roblox": "https://www.roblox.com/games/4924922222/Brookhaven-RP",
-        "reddit": "https://www.reddit.com/r/BrookhavenRP/"
-      },
-      "summary": {
-        "overall": "玩家主要讨论社交、角色扮演、房屋、载具和自由度。它的价值在于社交空间，而非明确胜负玩法。",
-        "pros": [
-          "自由度高。",
-          "适合朋友一起扮演。"
-        ],
-        "cons": [
-          "目标感较弱。",
-          "内容依赖玩家自发创造。"
-        ],
-        "suggestions": [
-          "提供更多主题活动和场景任务。"
-        ],
-        "eggyIdeas": [
-          "可借鉴为蛋仔派对社交大厅、主题房间和轻剧情互动。"
-        ],
-        "risks": [
-          "过度开放可能让新用户不知道做什么。"
-        ],
-        "decision": "适合社交场景参考，不适合直接复刻为主玩法。"
-      }
-    },
-    {
-      "id": "rivals",
-      "rank": 5,
-      "name": "Rivals",
-      "cnName": "Rivals 对战",
-      "aliases": [
-        "Rivals",
-        "roblox rivals",
-        "shooter roblox"
-      ],
-      "genre": "竞技 / 射击 / 对战",
-      "heatScore": 66,
-      "sampleCount": 22,
-      "mentions": 132,
-      "posts": 9,
-      "comments": [
-        {
-          "id": "rv-c01",
-          "sentiment": "suggestion",
-          "tags": [
-            "matchmaking",
-            "new players"
-          ],
-          "score": 13,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "The game needs better matchmaking. New players get destroyed before they learn the basics.",
-          "translatedText": "这个游戏需要更好的匹配。新玩家还没学会基础就被打爆了。",
-          "usedInReport": true
-        }
-      ],
-      "sentiment": {
-        "positive": 39,
-        "negative": 35,
-        "suggestion": 19,
-        "neutral": 7
-      },
-      "trend": [
-        52,
-        55,
-        58,
-        60,
-        63,
-        65,
-        66
-      ],
-      "tags": [
-        "pvp",
-        "skill",
-        "matchmaking",
-        "balance"
-      ],
-      "recommendation": "暂不建议复刻",
-      "oneLine": "竞技反馈直接，但射击对战与蛋仔派对现有调性差距较大。",
-      "cover": {
-        "tone": "arena",
-        "label": "Competitive Loop",
-        "asset": "assets/rivals-cover.svg"
-      },
-      "sourceLinks": {
-        "roblox": "https://www.roblox.com/games/17625359962/RIVALS",
-        "reddit": "https://www.reddit.com/r/RivalsRoblox/"
-      },
-      "summary": {
-        "overall": "玩家讨论集中在匹配、公平性、武器平衡和竞技成就感。它适合研究 PvP 反馈，但不是蛋仔派对最自然的复刻方向。",
-        "pros": [
-          "对抗节奏直接。",
-          "胜负反馈强。"
-        ],
-        "cons": [
-          "平衡争议明显。",
-          "新手压力大。"
-        ],
-        "suggestions": [
-          "优化匹配与分段。",
-          "加强新手训练。"
-        ],
-        "eggyIdeas": [
-          "可借鉴短局竞技反馈，不建议照搬射击玩法。"
-        ],
-        "risks": [
-          "品类差异大，复刻风险高。"
-        ],
-        "decision": "暂不作为重点复刻对象。"
       }
     }
   ]
