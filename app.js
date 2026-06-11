@@ -132,7 +132,8 @@ function renderMeta() {
 function renderDashboardSummary() {
   const topGame = state.data.games[0];
   const totalMentions = state.data.games.reduce((sum, game) => sum + game.mentions, 0);
-  $("#dashboardSummary").textContent = `当前 Top 5 共覆盖 ${totalMentions} 次讨论提及，最高热度是 ${topGame.cnName}。看板把提及量、增长率、情绪和建议密度合成可解释分数，先看全局结论，再进入具体游戏查看证据与报告。`;
+  const gameCount = state.data.games.length;
+  $("#dashboardSummary").textContent = `当前 Top ${gameCount} 共覆盖 ${totalMentions} 次讨论提及，最高热度是 ${topGame.cnName}。看板把提及量、增长率、情绪和建议密度合成可解释分数，先看全局结论，再进入具体游戏查看证据与报告。`;
 }
 
 function renderDashboardVisuals() {
@@ -459,7 +460,7 @@ function renderWatchSearchState() {
   const query = state.watchSearchQuery.trim();
   if (!query) {
     $("#watchSearchState").innerHTML = `
-      <p>可以直接点下方 Top 5 加入关注，也可以输入一个新的 Roblox 游戏名加入后台分析队列。</p>
+      <p>可以直接点下方热门游戏加入关注，也可以输入一个新的 Roblox 游戏名加入后台分析队列。</p>
     `;
     return;
   }
@@ -472,7 +473,7 @@ function renderWatchSearchState() {
         <div>
           <span class="watch-status">已找到</span>
           <h4>${escapeHtml(result.game.cnName)} / ${escapeHtml(result.game.name)}</h4>
-          <p>匹配到当前 Top 5 游戏，可直接加入正在关注。</p>
+          <p>匹配到当前热门游戏，可直接加入正在关注。</p>
         </div>
         <button type="button" data-add-game="${result.game.id}" ${alreadyAdded ? "disabled" : ""}>
           ${alreadyAdded ? "已关注" : "加入关注"}
@@ -498,7 +499,7 @@ function renderWatchSearchState() {
         <div>
           <span class="watch-status">新目标</span>
           <h4>${escapeHtml(query)}</h4>
-          <p>当前数据快照未匹配到 Top 5。点击确定后，会先加入分析队列；后续采集任务会检索 Roblox / Reddit 并生成分析结果。</p>
+          <p>当前数据快照未匹配到热门游戏。点击确定后，会先加入分析队列；后续采集任务会检索 Roblox / Reddit 并生成分析结果。</p>
         </div>
         <button type="button" data-add-custom="true">确定加入</button>
       </div>
@@ -1162,7 +1163,7 @@ function renderDecisionReportNav() {
 
   $("#decisionReportNav").innerHTML = `
     <div class="switcher-group">
-      <span class="switcher-label">热门 Top 5</span>
+      <span class="switcher-label">热门 Top ${state.data.games.length}</span>
       ${hotButtons.join("")}
     </div>
     <div class="switcher-group">

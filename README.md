@@ -28,7 +28,7 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ### 核心功能
 
-- **Roblox 讨论热度全局**：展示 Reddit 讨论热度最高的 Top 5 游戏，包含类型、趋势、评分和一句话研判。
+- **Roblox 讨论热度全局**：展示 Reddit 讨论热度最高的 Top 3 游戏，包含类型、趋势、评分和一句话研判。
 - **可解释热点评分**：综合提及量、7 日趋势、正向情绪、建议密度和样本可信度。
 - **定向游戏分析**：查看单个游戏的官方链接、Reddit 链接、趋势图、情绪占比、评论证据和摘要结论。
 - **评论证据库**：保留英文原文、中文翻译、情绪标签、主题标签、来源链接和报告引用状态。
@@ -39,7 +39,7 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ```text
 Roblox 讨论热度全局
-  -> Top 5 热门游戏
+  -> Top 3 热门游戏
   -> 热点评分拆解
   -> 类型分布、情绪结构、证据流、建议分布
 
@@ -89,6 +89,12 @@ Reddit API
 ```
 
 这个设计让报告结论可以回溯到玩家原始评论，而不是只依赖不可验证的摘要。
+
+当前仓库也提供一个低频 `public_json` fallback 脚本，用于在 Reddit OAuth 审批前验证采集链路。该入口可能返回 `403 Forbidden`，因此只适合作为原型验证；正式接入仍建议使用 Reddit OAuth Data API。
+
+```powershell
+node scripts/fetch-reddit-public-json.mjs --dry-run
+```
 
 ### AI 分析策略
 
@@ -210,7 +216,7 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ### Features
 
-- **Roblox discussion overview**: shows the current Top 5 games by Reddit discussion heat, with genre, trend, score, and a short research judgment.
+- **Roblox discussion overview**: shows the current Top 3 games by Reddit discussion heat, with genre, trend, score, and a short research judgment.
 - **Explainable hot score**: combines mentions, 7-day trend, positive sentiment, suggestion density, and sample confidence.
 - **Targeted game analysis**: drills into one selected game with official links, Reddit links, trend charts, sentiment split, comments, and summary.
 - **Comment evidence library**: keeps original English comments, Chinese translations, sentiment labels, tags, source links, and report citation state.
@@ -221,7 +227,7 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ```text
 Roblox discussion overview
-  -> Top 5 trending games
+  -> Top 3 trending games
   -> hot score breakdown
   -> genre mix, sentiment, evidence flow, recommendation mix
 
@@ -271,6 +277,12 @@ Reddit API
 ```
 
 This keeps report conclusions traceable back to player comments instead of relying on unsupported summaries.
+
+The repository also includes a low-volume `public_json` fallback script for validating the collection workflow before Reddit OAuth approval. This endpoint may return `403 Forbidden`, so it should be treated as a prototype fallback only; the recommended production path remains Reddit OAuth Data API.
+
+```powershell
+node scripts/fetch-reddit-public-json.mjs --dry-run
+```
 
 ### AI Analysis Strategy
 
