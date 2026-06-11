@@ -1,10 +1,10 @@
 {
   "meta": {
     "projectName": "Roblox Reddit Insight Lab",
-    "version": "Insight Snapshot 1.1",
-    "datasetType": "sample_top3",
-    "updatedAt": "2026/6/1 15:13:56",
-    "period": "? 3 ???????",
+    "version": "Insight Snapshot 1.2",
+    "datasetType": "historical_public_json_snapshot",
+    "updatedAt": "2026/6/11 16:42:45",
+    "period": "历史样本池 + 近 3 天轻量展示窗口",
     "trendLabels": [
       "D-6",
       "D-5",
@@ -15,13 +15,21 @@
       "今日"
     ],
     "displayWindowDays": 3,
-    "sourceNote": "??? Top 3 ??????????Reddit OAuth ???????? public JSON fallback ?????????????? OAuth Data API?",
-    "refreshPolicy": "????? 3 ????????????????????????????",
+    "sourceNote": "当前 Top 3 保持轻量展示；Forest99 已接入旧监控任务抓取的 Reddit 历史公开 JSON 快照。公开 JSON 现已可能返回 403，正式增量采集仍建议等待 Reddit OAuth/Data API。",
+    "refreshPolicy": "当前页面读取结构化快照；后续接入 API 后按 3 天轻量窗口增量刷新。",
     "cleanupPolicy": "手动清理时只清理 7 天之前的评论，7 天内评论不清理。",
     "crawlScope": {
-      "overview": "?????? Roblox Reddit ??????????? Top 3 ?????",
+      "overview": "洞察看板聚合 Roblox Reddit 讨论信号并压缩成 Top 3 决策入口。",
       "targeted": "定向分析抓取具体游戏对应的 Reddit 子社区或关键词范围。",
       "watchlist": "当前关注游戏直接抓取对应子社区或固定关键词范围。"
+    },
+    "historicalImport": {
+      "sourceProject": "forest99-monitor",
+      "subreddit": "r/99nightsintheforest",
+      "rawDays": 10,
+      "rawPosts": 147,
+      "rawComments": 1579,
+      "importedEvidence": 14
     }
   },
   "watchlist": [
@@ -49,86 +57,226 @@
       ],
       "genre": "生存 / 合作 / 恐怖氛围",
       "heatScore": 92,
-      "sampleCount": 48,
-      "mentions": 318,
-      "posts": 24,
+      "sampleCount": 266,
+      "mentions": 430,
+      "posts": 21,
       "comments": [
         {
-          "id": "f99-c01",
+          "id": "f99-hist-post_1tnq7nb",
+          "redditId": "POST_1tnq7nb",
           "sentiment": "positive",
           "tags": [
-            "co-op",
-            "teamwork"
+            "retention",
+            "progression"
           ],
-          "score": 36,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "The best part is when everyone finally understands their role. One person gathers wood, one watches the camp, and someone else takes risks outside.",
-          "translatedText": "最好玩的部分是大家终于明白自己该做什么的时候。一个人收集木头，一个人守营地，另一个人冒险去外面探索。",
+          "score": 41,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnq7nb/i_am_addicted/",
+          "originalText": "[Post] I am addicted. guys i discovered this game about two weeks ago and its been like the only thing on my mind 😅 it’s so fun and satisfying and like constantly chasing the next big thing keeps me hooked HELP MEEE IM AN ADULT WITH EMPLOYMENT AND BILLS TO STRESS ABOUT",
+          "translatedText": "玩家表示两周前发现游戏后一直惦记着它，认为循环很有趣、很满足，并且持续追逐下一个大目标让自己上头。",
           "usedInReport": true
         },
         {
-          "id": "f99-c02",
+          "id": "f99-hist-post_1tg7qha",
+          "redditId": "POST_1tg7qha",
+          "sentiment": "positive",
+          "tags": [
+            "event",
+            "reward"
+          ],
+          "score": 38,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tg7qha/volcano_biome_is_the_best/",
+          "originalText": "[Post] VOLCANO BIOME IS THE BEST. [The deer can't get you!](https://reddit.com/link/1tg7qha/video/87d6v2vdqs1h1/player) Not only does it give you so many Forest Gems and Cultist Gems, it gives you some of the best weapons, so much fuel, so many BIG scraps, and the deer can't get you if you are half-way up the ladder in the towers, unlike the cat. You also don't have to make anything to survive unlike the Snow Biome.",
+          "translatedText": "玩家称火山生态区是最好的内容之一，因为奖励丰富，能提供宝石、武器、燃料和大量大块废料。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-hist-post_1tcw3s8",
+          "redditId": "POST_1tcw3s8",
+          "sentiment": "positive",
+          "tags": [
+            "completion",
+            "achievement"
+          ],
+          "score": 45,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tcw3s8/i_beat_99_nights_in_the_forest/",
+          "originalText": "[Post] I beat 99 nights in the forest!!!. Took me 80 minutes, but all the effort was paid off.",
+          "translatedText": "玩家分享自己通关 99 Nights in the Forest，虽然耗时很长，但认为所有努力最终得到了回报。",
+          "usedInReport": false
+        },
+        {
+          "id": "f99-hist-post_1toy6l2",
+          "redditId": "POST_1toy6l2",
+          "sentiment": "positive",
+          "tags": [
+            "first-time",
+            "tension"
+          ],
+          "score": 19,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1toy6l2/new_player/",
+          "originalText": "[Post] New player.. Hey everyone, at some point, you probably were just like me, thinking that this is some blocky pixel game for kids... until you\\`ve tried it and screamed like a little girl when the Deer chased you. Well, that\\`s what happened with me at least, also the realization that there is no save when I\\`ve closed the game... My point is, this is a very hard game if you play solo, and addictive as well :D",
+          "translatedText": "新玩家原本以为只是儿童向方块游戏，实际体验后被追逐压力吓到，说明轻恐怖和生存压力有很强记忆点。",
+          "usedInReport": false
+        },
+        {
+          "id": "f99-hist-post_1tp8rhw",
+          "redditId": "POST_1tp8rhw",
           "sentiment": "negative",
           "tags": [
-            "repetition",
-            "late game"
+            "teamwork",
+            "public-lobby"
           ],
-          "score": 22,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "After a few runs the middle part starts to feel the same. I wish there were more random events between the big nights.",
-          "translatedText": "玩了几轮之后，中间阶段开始感觉差不多。我希望重要夜晚之间能有更多随机事件。",
+          "score": 32,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp8rhw/and_at_this_point_im_too_afraid_to_ask/",
+          "originalText": "[Post] And at this point I'm too afraid to ask. Using shelves for walls is one thing, not running away from attacking wolves is another, but what the hell is going on with people getting only scrap and avoiding chopping wood like the plague? It's everywhere I go, like they'll just watch the fire go down and do nothing, and/or stay at the base the whole time. Bonus round - it's like no one stays past 5 minutes in world, wtf is this?",
+          "translatedText": "玩家抱怨路人队友只捡废料、不砍木头、不维护篝火，甚至开局五分钟就离开，导致团队责任断裂。",
           "usedInReport": true
         },
         {
-          "id": "f99-c03",
+          "id": "f99-hist-oo7a5xh",
+          "redditId": "oo7a5xh",
+          "sentiment": "negative",
+          "tags": [
+            "stability",
+            "public-lobby"
+          ],
+          "score": 5,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp8rhw/and_at_this_point_im_too_afraid_to_ask/oo7a5xh/",
+          "originalText": "I think they glitch out, ipads overheat, lose connection, friends want to play a different game. They take no responsibility to the team, and we cant really blame them. Its just not worth playing over 3 unless you know you have responsible players.",
+          "translatedText": "玩家指出 iPad 过热、断连、闪退等问题会造成中途退出，认为超过 3 人的路人局需要更可靠的队友才值得玩。",
+          "usedInReport": false
+        },
+        {
+          "id": "f99-hist-oml64cp",
+          "redditId": "oml64cp",
+          "sentiment": "negative",
+          "tags": [
+            "event",
+            "frustration"
+          ],
+          "score": 31,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1th7esu/frog_event/oml64cp/",
+          "originalText": "literally the worst esp when you’re low health and they hit you while you’re running back to base",
+          "translatedText": "玩家认为青蛙事件非常糟糕，尤其在低血量返回基地时被攻击，会明显放大挫败感。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-hist-onljyjr",
+          "redditId": "onljyjr",
+          "sentiment": "negative",
+          "tags": [
+            "resource",
+            "teamwork"
+          ],
+          "score": 19,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tmbrdh/playing_with_kids_is_not_for_the_weak/onljyjr/",
+          "originalText": "Omg all your scrap is wasted on shelves!",
+          "translatedText": "玩家吐槽队友把所有废料都浪费在货架上，反映公共房间里的资源管理和协作成本偏高。",
+          "usedInReport": false
+        },
+        {
+          "id": "f99-hist-post_1tnagqe",
+          "redditId": "POST_1tnagqe",
+          "sentiment": "suggestion",
+          "tags": [
+            "anti-troll",
+            "progression"
+          ],
+          "score": 50,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnagqe/dear_devs/",
+          "originalText": "[Post] Dear Devs.... When a troll hops on to get Dino kid, and the map, and they leave the game, both of those very important things no longer exist. Please let the blueprint drop at the crafting bench, and if a kid drops outside of the base can they re-spawn in their cave? also huge L to ADULTS STILL USING A SHELF BASE bro you need that scrap for the ammo crate 💀",
+          "translatedText": "玩家建议当恶意玩家拿走恐龙小孩和地图后离开时，蓝图应掉落在工作台，关键物品不要因为退游而永久消失。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-hist-post_1tp4ubc",
+          "redditId": "POST_1tp4ubc",
+          "sentiment": "suggestion",
+          "tags": [
+            "equipment",
+            "content"
+          ],
+          "score": 5,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp4ubc/random_more_sackaxeflash_upgrades_i_thought_of/",
+          "originalText": "[Post] Random more sack/axe/flash upgrades i thought of. \\- Combat Axe: \\+ Double the attack rate of a normal axe \\+ Takes 3 hit to take down a tree \\+ Same tier as Strong Axe \\- Vacume Sack \\+ 20 Sack Slots \\+ Holding F allows you to suck any items and stuff (including stuff like stews and bands stored in your inv automatically) in a cone shaped Area (similar to Old Flash) \\+ Same tier as Big sack or smt i forgo- \\- Lantern: \\+ 75% Capacity \\+ Lights in a circle area around you (about 2/3 as long as the Old Flash cone) \\+ Same tier as Strong Flashlight.",
+          "translatedText": "玩家提出战斗斧、吸尘背包、环形灯笼等装备升级，希望通过更多道具层级丰富中后期目标。",
+          "usedInReport": false
+        },
+        {
+          "id": "f99-hist-oo8pl1k",
+          "redditId": "oo8pl1k",
+          "sentiment": "suggestion",
+          "tags": [
+            "base-building",
+            "usability"
+          ],
+          "score": 1,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp8rhw/and_at_this_point_im_too_afraid_to_ask/oo8pl1k/",
+          "originalText": "Mostly kids who want to explore without the friction. I don’t get mad about it anymore really. Would be nice if the devs added in some fences or something that do similar to shelf base without being ugly and clunky as hell My daughter stopped playing with me cause I stressed about the wood and the fire and stuff. These days if I ever join a public lobby I’m usually something like gifting elf or lumberjack",
+          "translatedText": "玩家建议加入正式的围栏或栅栏，不要让玩家继续用丑且笨重的货架当墙。",
+          "usedInReport": true
+        },
+        {
+          "id": "f99-hist-ommd1h5",
+          "redditId": "ommd1h5",
           "sentiment": "suggestion",
           "tags": [
             "onboarding",
-            "difficulty"
+            "team-rules"
           ],
-          "score": 18,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "New players need a clearer first objective. My friends spent the first night running around without knowing what mattered.",
-          "translatedText": "新玩家需要更清晰的第一个目标。我朋友们第一晚一直到处乱跑，不知道什么才重要。",
-          "usedInReport": true
+          "score": 23,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1thdiny/is_there_a_list_of_dont/ommd1h5/",
+          "originalText": "Don't build shelves Don't build anything before a bed Don't waste resources Don't try to explore at night when you keep dying If there's a cyborg on the team don't fuckin charge inside the stronghold and lure the enemy away when we could've fuckin shoot them from behind the wall (unless your a melee class like vampire or smth) Don't eat all the food Don't try to fight the cultist raid if your not good at fighting just run around the outside of the camp while the fighter takes care of them Don't steal other people's pelt DON'T BUILD SHELVES WALLS That's it ig",
+          "translatedText": "玩家总结路人局禁忌：不要乱建货架、不要先建非床设施、不要浪费资源、不要夜间无脑探索，说明游戏需要更强的协作规则提示。",
+          "usedInReport": false
         },
         {
-          "id": "f99-c04",
-          "sentiment": "positive",
+          "id": "f99-hist-onupw3s",
+          "redditId": "onupw3s",
+          "sentiment": "neutral",
           "tags": [
-            "tension",
-            "session design"
+            "guide",
+            "hard-mode"
           ],
-          "score": 30,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "The day and night rhythm is simple but it works. Daytime feels safe enough to plan, then night makes everyone panic in a fun way.",
-          "translatedText": "昼夜节奏很简单但有效。白天足够安全，可以计划；到了晚上，大家会以一种好玩的方式紧张起来。",
-          "usedInReport": true
+          "score": 22,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnl8kn/does_anybody_know_how_to_get_this_badge/onupw3s/",
+          "originalText": "Hard mode You will need to destroyed corrupt Vines that are around the map, you will receive a tracking device telling you where they are, failing to destroy the vines will cause a variety of debuffs including destroying food and no passive healing, I've done it solo, but I would honestly recommend bringing a friend with you so that way you're not spending the whole game fighting off corrupt Vines.",
+          "translatedText": "玩家解释困难模式徽章需要摧毁地图上的腐化藤蔓，属于有信息量的攻略型讨论，可作为背景噪声保留。",
+          "usedInReport": false
         },
         {
-          "id": "f99-c05",
-          "sentiment": "negative",
+          "id": "f99-hist-ollo5mr",
+          "redditId": "ollo5mr",
+          "sentiment": "neutral",
           "tags": [
-            "balance",
-            "solo"
+            "lore",
+            "map-detail"
           ],
-          "score": 11,
-          "source": "Reddit sample snapshot",
-          "url": "https://www.reddit.com/",
-          "originalText": "It is rough when teammates leave early. The game seems balanced around a group that actually communicates.",
-          "translatedText": "队友早早退出时体验很糟。这个游戏似乎是围绕真正会沟通的小队来平衡的。",
+          "score": 32,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tc5sfg/have_you_noticed_these/ollo5mr/",
+          "originalText": "It’s the kiwis homes, like how bunnies have the little burrows",
+          "translatedText": "玩家解释地图边缘的树桩结构可能是 kiwi 的家，属于世界观和地图细节讨论，不直接进入决策报告。",
           "usedInReport": false
         }
       ],
       "sentiment": {
-        "positive": 46,
-        "negative": 31,
-        "suggestion": 18,
-        "neutral": 5
+        "positive": 28,
+        "negative": 29,
+        "suggestion": 29,
+        "neutral": 14
       },
       "trend": [
         42,
@@ -147,7 +295,7 @@
         "difficulty"
       ],
       "recommendation": "强烈建议研究",
-      "oneLine": "合作生存和资源压力形成强记忆点，适合拆解为蛋仔派对的限时组队玩法。",
+      "oneLine": "真实历史评论显示，合作生存、昼夜压力和资源分工很有吸引力，但公共房协作、事件挫败和反恶意机制必须重点处理。",
       "cover": {
         "tone": "forest",
         "label": "Survival Loop",
@@ -158,33 +306,34 @@
         "reddit": "https://www.reddit.com/r/99nightsintheforest/"
       },
       "summary": {
-        "overall": "玩家对 99 Nights in the Forest 的讨论集中在合作生存、夜晚压力、资源收集和难度节奏。正面声音认为它有明确目标和持续紧张感；负面声音主要集中在后期重复、平衡和新手引导不足。",
+        "overall": "历史 Reddit 快照显示，99 Nights in the Forest 的讨论重点集中在合作分工、资源维护、夜晚压力、公共房队友质量和中后期内容变化。正向反馈证明它的短局生存循环有很强黏性；负面与建议集中在路人局协作、事件挫败、关键物品被恶意带走和新手规则不清晰。",
         "pros": [
-          "合作分工清晰，玩家容易形成“有人探索、有人守家、有人收资源”的小队策略。",
-          "夜晚机制带来稳定的情绪峰值，让短局体验有明显起伏。",
-          "资源循环简单直接，适合玩家快速理解并反复游玩。"
+          "核心循环简单清楚：白天收集与建设，夜晚防守与应对突发风险，玩家很快能理解局内目标。",
+          "合作分工天然产生社交故事：有人守营地、有人找资源、有人探索，适合形成可传播的玩家经历。",
+          "完成长局或解锁关键目标能带来强成就感，评论中出现明显的上头、通关和挑战记录表达。"
         ],
         "cons": [
-          "部分玩家认为后期内容重复，缺少足够的新事件或目标变化。",
-          "新手在前几局容易不知道优先做什么，死亡后挫败感较强。",
-          "难度曲线和奖励反馈存在争议，部分玩家觉得失败成本偏高。"
+          "公共房队友不维护篝火、浪费资源、提前退游的问题非常集中，会直接破坏团队体验。",
+          "部分事件和敌人设计带来强挫败感，尤其在低血量、回营地、设备不稳定时更明显。",
+          "中后期目标依赖道具、事件和地图变化，如果更新不足，容易被玩家认为重复。"
         ],
         "suggestions": [
-          "增加更多夜晚事件、随机任务和可解锁营地能力。",
-          "强化新手提示，让玩家理解资源优先级和团队分工。",
-          "提供更清晰的局后成长反馈，降低连续失败带来的流失风险。"
+          "加入更明确的团队分工提示和关键规则提示，减少新手或路人局的资源浪费。",
+          "为关键物品增加防恶意丢失机制，例如蓝图回收、离线掉落或工作台备份。",
+          "把高挫败事件拆成可预判、可反制的小挑战，降低纯惩罚感。",
+          "用更多中后期装备、营地设施和随机事件延长目标链。"
         ],
         "eggyIdeas": [
-          "可参考“白天收集、夜晚防守”的昼夜节奏，改造成蛋仔派对限时合作闯关活动。",
-          "把恐怖压力弱化为轻紧张氛围，保留团队分工、随机事件和营地建设。",
-          "用蛋仔派对擅长的道具和机关替代纯战斗压力，形成更合家欢的生存派对玩法。"
+          "可迁移“白天收集、夜晚防守”的节奏，但改成蛋仔派对更轻量的机关防守、道具协作和短局挑战。",
+          "保留多人分工价值，把守家、探索、搬运、修复、触发机关设计成不同蛋仔都能参与的任务。",
+          "把恐怖表达改写成轻紧张、可爱但有压力的派对危机，避免直接照搬森林恐怖题材。"
         ],
         "risks": [
-          "恐怖氛围如果照搬，可能与蛋仔派对品牌调性冲突。",
-          "资源生存玩法需要持续内容变化，否则容易被认为重复。",
-          "多人合作对匹配体验要求较高，独狼玩家体验需要额外设计。"
+          "如果只复刻资源消耗和夜晚进攻，可能变成重复劳动，缺少蛋仔派对用户期待的变化和爽点。",
+          "公共匹配下的协作失败会被玩家归因于系统设计，需要用任务分配、提示和补偿机制兜底。",
+          "关键物品、基地设施和成长线必须防止被单个玩家恶意破坏，否则负面情绪会集中爆发。"
         ],
-        "decision": "建议作为重点竞品拆解，但复刻时应保留合作生存节奏，弱化恐怖表达，并增加更轻量的派对化任务。"
+        "decision": "建议进入低成本原型拆解：保留合作生存节奏和分工压力，弱化恐怖题材与长线惩罚，优先验证 5-8 分钟短局内的资源协作、防守事件和反恶意机制。"
       }
     },
     {
