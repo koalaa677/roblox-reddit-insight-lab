@@ -90,6 +90,8 @@ Reddit API
 
 当前仓库也提供一个低频 `public_json` fallback 脚本，用于在 Reddit OAuth 审批前验证采集链路。该入口可能返回 `403 Forbidden`，因此只适合作为原型验证；正式接入仍建议使用 Reddit OAuth Data API。
 
+Forest99 数据已接入历史 Reddit 公开 JSON 快照：旧监控任务累计保留 10 天、147 个帖子、1579 条评论，本仓库从中抽取 14 条代表性证据进入当前报告。公开站点不会展示真实采集日期，只保留可追溯来源链接、情绪分类、标签和报告引用关系。
+
 ```powershell
 node scripts/fetch-reddit-public-json.mjs --dry-run
 ```
