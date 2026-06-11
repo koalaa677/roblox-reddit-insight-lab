@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 const configPath = join(__dirname, "..", "data", "pipeline-config.json");
 
 const trackedGameCount = Number.parseInt(
-  process.argv[2] || process.env.TRACKED_GAME_COUNT || "5",
+  process.argv[2] || process.env.TRACKED_GAME_COUNT || "3",
   10,
 );
 

@@ -16,7 +16,7 @@ async function main() {
   });
 
   await writeFile(dataPath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
-  console.log("Demo data timestamp updated.");
+  console.log("Insight snapshot timestamp updated.");
   console.log("Next step: replace this file with Reddit fetch + AI analysis logic.");
 }
 
