@@ -9,6 +9,7 @@
 - 一周评论量不会因为“时间跨度是一周”天然导致封禁。风险主要来自无 OAuth、无规范 User-Agent、短时间高频请求、忽略 429 和 `X-Ratelimit-*` 响应头、重复抓同一批数据。
 - 本项目建议把官方免费 OAuth 上限视为硬边界，把项目自身软上限设为 10 QPM，并用 6.5 秒请求间隔运行，给调试、网络波动和重试留下余量。
 - 在 Reddit OAuth 审批前，可以用 `scripts/fetch-reddit-public-json.mjs` 低频验证 public JSON 链路；如果返回 403，应停止重试并等待 OAuth，不建议改用绕过式抓取。
+- 本机旧项目 `forest99-monitor` 曾通过 public JSON 抓取过 r/99nightsintheforest。2026-06-11 复测同类入口返回 403，因此当前采用“历史快照先跑通产品闭环”的策略：从旧项目 10 天、147 个帖子、1579 条评论里抽取 Forest99 代表性证据，写入 `data/insights.json`。
 
 ## Reddit 抓取原则
 
@@ -127,6 +128,16 @@ Reddit OAuth API
   -> 写入 data/insights.json
   -> 静态网站展示
 ```
+
+## 当前可运行数据策略
+
+在 Reddit OAuth 尚未审批通过时，系统先采用三层数据策略：
+
+1. `data/insights.json` 继续作为前端唯一读取入口，保证 GitHub Pages 静态部署可运行。
+2. `scripts/fetch-reddit-public-json.mjs` 只用于低频探测 public JSON 是否可用；一旦返回 403，不进行高频重试。
+3. `scripts/import-forest99-history.mjs` 从本地历史项目导入 Forest99 真实评论快照，并把公开界面里的时间展示改为相对窗口，避免让过期日期干扰决策演示。
+
+这个策略的目标不是宣称数据实时，而是在 API 审批不可控时先完成“采集 -> 清洗 -> 四分类 -> 证据引用 -> 决策报告 -> 静态展示”的完整产品链路。
 
 ## 设计口径
 
