@@ -184,11 +184,8 @@ docs/deployment-guide.md
 
 ### 暂不做
 
-- 用户登录和权限管理。
-- 数据库驱动的多人协作流程。
 - Discord 数据采集。
 - 在浏览器中暴露 Reddit 或 AI token。
-- 大规模企业级监控功能。
 
 ---
 
@@ -374,8 +371,5 @@ docs/deployment-guide.md
 
 ### Out Of Scope
 
-- User login and permission management.
-- Database-backed collaboration workflows.
 - Discord collection.
 - Exposing Reddit or AI tokens in the browser.
-- Large-scale enterprise monitoring features.
