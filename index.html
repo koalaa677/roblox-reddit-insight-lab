@@ -9,9 +9,9 @@
     />
     <title>Roblox Reddit Insight Lab</title>
     <link rel="preconnect" href="https://unpkg.com" />
-    <link rel="stylesheet" href="styles.css?v=20260608-1" />
+    <link rel="stylesheet" href="styles.css?v=20260708-1" />
     <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
-    <script src="app.js?v=20260608-1" defer></script>
+    <script src="app.js?v=20260708-1" defer></script>
   </head>
   <body>
     <div class="app-shell">
@@ -25,21 +25,21 @@
         </div>
 
         <nav class="nav-stack" aria-label="主导航">
-          <a class="nav-item" href="#portfolio-brief">
+          <a class="nav-item" href="#portfolio-brief" data-jump-section="portfolio-brief" data-page-title="产品概览">
             <i data-lucide="radar"></i>
             <span>产品概览</span>
           </a>
-          <a class="nav-item is-active" href="#dashboard">
+          <a class="nav-item is-active" href="#dashboard" data-jump-section="dashboard" data-page-title="洞察看板">
             <i data-lucide="layout-dashboard"></i>
             <span>洞察看板</span>
           </a>
-          <a class="nav-item nav-parent" id="analysisNav" href="#game-detail" aria-expanded="false">
+          <a class="nav-item nav-parent" id="analysisNav" href="#game-detail" aria-expanded="false" data-jump-section="game-detail" data-page-title="定向分析">
             <i data-lucide="scan-search"></i>
             <span>定向分析</span>
             <i class="nav-chevron" data-lucide="chevron-down"></i>
           </a>
           <div class="subnav" id="analysisSubnav" aria-label="定向分析子标签"></div>
-          <a class="nav-item" href="#decision-report" data-jump-section="decision-report">
+          <a class="nav-item" href="#decision-report" data-jump-section="decision-report" data-page-title="分析报告">
             <i data-lucide="file-chart-column"></i>
             <span>分析报告</span>
           </a>
@@ -57,7 +57,7 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">AI 玩家评论洞察平台</p>
-            <h2>Roblox 热门游戏讨论监测</h2>
+            <h2 id="pageTitle">洞察看板</h2>
           </div>
           <div class="topbar-actions">
             <span class="data-pill">

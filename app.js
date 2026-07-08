@@ -48,7 +48,7 @@ function bindEvents() {
     event.preventDefault();
     const isExpanded = expandAnalysisNav();
     if (isExpanded) {
-      $("#game-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      jumpToSection("game-detail");
     }
   });
 
@@ -1404,6 +1404,19 @@ function activateTab(tabName) {
 }
 
 function jumpToSection(sectionId) {
+  // 更新顶部页面标题
+  const navLink = document.querySelector(`[data-jump-section="${sectionId}"]`);
+  const pageTitle = navLink?.dataset.pageTitle;
+  if (pageTitle) {
+    const titleEl = document.getElementById("pageTitle");
+    if (titleEl) titleEl.textContent = pageTitle;
+  }
+
+  // 更新导航高亮状态
+  document.querySelectorAll(".nav-stack .nav-item").forEach((item) => {
+    item.classList.toggle("is-active", item.dataset.jumpSection === sectionId);
+  });
+
   document.getElementById(sectionId)?.scrollIntoView({
     behavior: "smooth",
     block: "start",
