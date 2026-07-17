@@ -198,7 +198,7 @@ function renderDashboardVisuals() {
       <div class="pipeline-dashboard">
         ${renderPipelineStep("有效样本", totalComments, "已过滤低价值短评")}
         ${renderPipelineStep("报告引用", quotedComments, "进入报告证据链")}
-        ${renderPipelineStep("采集接口", "Reddit API", "展示抓取量与过滤量")}
+        ${renderPipelineStep("数据来源", "历史快照", "保留可追溯评论证据")}
       </div>
     </article>
 
@@ -276,11 +276,14 @@ function renderAnalysisSubnav() {
 
 function renderCompactDataRules() {
   const { meta } = state.data;
+  const selectedGame = getSelectedGame();
+  const aiMode = meta.aiPipeline?.lastRunDryRun ? "Dry-run" : meta.aiPipeline ? "AI 已接入" : "待接入";
   const rules = [
     ["窗口", `近 ${meta.displayWindowDays ?? 7} 天`],
-    ["刷新", "只抓最新评论"],
+    ["更新", "脚本写回快照"],
     ["保留", "7 天内不清理"],
-    ["范围", "Roblox Reddit"],
+    ["AI", aiMode],
+    ["证据", `${selectedGame?.sampleCount ?? 0} 条样本`],
   ];
 
   return `
@@ -1025,6 +1028,7 @@ function renderComment(comment, game) {
       </header>
       <p class="original">${escapeHtml(comment.originalText)}</p>
       <p class="translated">${escapeHtml(comment.translatedText)}</p>
+      ${renderCommentAiMeta(comment)}
       <div class="comment-meta">
         <span>${escapeHtml(comment.source)}</span>
         <span>${comment.usedInReport ? "已被分析报告引用" : "补充样本"}</span>
@@ -1032,6 +1036,41 @@ function renderComment(comment, game) {
         <a href="${comment.url}" target="_blank" rel="noreferrer">查看来源</a>
       </div>
     </article>
+  `;
+}
+
+function renderCommentAiMeta(comment) {
+  const items = [];
+  if (typeof comment.evidenceScore === "number") {
+    items.push(["证据分", `${comment.evidenceScore}`]);
+  }
+  if (typeof comment.ruleConfidence === "number") {
+    items.push(["规则置信", `${Math.round(comment.ruleConfidence * 100)}%`]);
+  }
+  if (comment.aiCalibrated) {
+    items.push(["AI 校准", "已完成"]);
+  }
+  if (comment.painPoint) {
+    items.push(["痛点", comment.painPoint]);
+  }
+  if (comment.opportunity) {
+    items.push(["机会", comment.opportunity]);
+  }
+  if (!items.length) return "";
+
+  return `
+    <div class="comment-ai-meta" aria-label="AI 证据处理信息">
+      ${items
+        .map(
+          ([label, value]) => `
+            <span>
+              <strong>${escapeHtml(label)}</strong>
+              ${escapeHtml(value)}
+            </span>
+          `,
+        )
+        .join("")}
+    </div>
   `;
 }
 
@@ -1195,7 +1234,6 @@ function renderDecisionReport(game) {
   const evidenceComments = game.comments.filter((comment) => comment.usedInReport).slice(0, 3);
   const evidence = evidenceComments.length ? evidenceComments : game.comments.slice(0, 3);
   const firstIdea = game.summary.eggyIdeas[0] ?? "先拆核心循环，再按蛋仔派对用户心智重写题材和表达。";
-  const firstRisk = game.summary.risks[0] ?? "直接照搬题材、数值或社区语境会放大迁移风险。";
   const evidenceCount = game.comments.filter((comment) => comment.usedInReport).length;
   const evidenceBasis = formatEvidenceBasis(evidenceCount || evidence.length);
 
@@ -1252,11 +1290,16 @@ function renderDecisionReport(game) {
 }
 
 function renderDecisionMethodPanel(game, decision) {
+  const aiMeta = game.aiMeta;
+  const pipeline = state.data.meta.aiPipeline;
+  const calibratedCount = aiMeta?.calibratedCount ?? game.comments.filter((comment) => comment.aiCalibrated).length;
+  const dryRun = aiMeta?.dryRun ?? pipeline?.lastRunDryRun;
+  const dryRunCopy = dryRun ? "dry-run 模拟输出" : "真实 AI 输出";
   const steps = [
-    ["Collect", "Reddit 增量抓取", "按游戏关键词和 r/roblox 总论坛每日收集评论。"],
+    ["Collect", "Reddit 数据导入", "当前读取历史快照；OAuth 接入后按游戏关键词增量收集。"],
     ["Clean", "清洗与四分类", "剔除无效评论，归入正面、负面、建议、其他。"],
-    ["Score", "热度与证据评分", `综合热度 ${game.heatScore}、样本 ${game.sampleCount}、趋势和情绪。`],
-    ["Report", "生成分析报告", `输出 ${decision.label}，并绑定原评论证据。`],
+    ["Score", "热度与证据评分", `综合热度 ${game.heatScore}、样本 ${game.sampleCount}、趋势和情绪，保留证据分。`],
+    ["Report", "生成分析报告", `输出 ${decision.label}，并绑定 ${calibratedCount || "精选"} 条 AI 校准证据。`],
   ];
 
   return `
@@ -1269,6 +1312,11 @@ function renderDecisionMethodPanel(game, decision) {
         <p class="eyebrow">Method</p>
         <h3>结构化指标 + 精选证据</h3>
         <p>报告先读取指标、摘要和代表性评论，再生成建议，保证 token 可控、结论可追溯。</p>
+        <div class="method-status">
+          <span><strong>管线状态</strong>${escapeHtml(dryRunCopy)}</span>
+          <span><strong>AI 校准</strong>${escapeHtml(calibratedCount || 0)} 条证据</span>
+          <span><strong>版本</strong>${escapeHtml(aiMeta?.pipelineVersion ?? pipeline?.version ?? "未记录")}</span>
+        </div>
       </div>
       <div class="method-steps">
         ${steps

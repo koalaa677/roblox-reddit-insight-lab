@@ -1,15 +1,15 @@
 # 线上部署手把手指南
 
-当前项目是纯静态网站：`index.html`、`styles.css`、`app.js`、`data/insights.json`。最适合先部署成作品集链接，再逐步接 Reddit API 和 AI API。
+当前项目是纯静态网站：`index.html`、`styles.css`、`app.js`、`data/insights.json`。适合先部署成公开可访问的产品预览，再逐步接 Reddit API 和 AI API。
 
 ## 推荐路线
 
 优先推荐 GitHub Pages：
 
 - 免费。
-- 适合静态作品集。
-- 可以把源码、README 和线上 Demo 放在同一个仓库里。
-- 面试官能同时看到网页和项目说明。
+- 适合静态产品页面。
+- 可以把源码、README 和线上预览放在同一个仓库里。
+- 访问者能同时看到网页、数据结构和项目说明。
 
 备选 Vercel：
 
@@ -22,7 +22,7 @@
 本地先确认：
 
 ```powershell
-cd C:\Users\gaoyucheng01\Desktop\新建文件夹\roblox-reddit-insight-lab
+cd 01-current-project\roblox-reddit-insight-lab
 python -m http.server 4173 --bind 127.0.0.1
 ```
 
@@ -114,7 +114,7 @@ vercel.json
 
 ## API 接入放到第二阶段
 
-上线静态 Demo 后，再做真实数据接入：
+上线静态预览后，再做真实数据接入：
 
 ```text
 Reddit API
@@ -126,4 +126,3 @@ Reddit API
 ```
 
 不要在前端直接调用 Reddit API 或 AI API，因为 token 会暴露。
-

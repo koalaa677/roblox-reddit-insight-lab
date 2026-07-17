@@ -103,9 +103,9 @@ body {
     "Microsoft YaHei",
     "PingFang SC",
     sans-serif;
-  font-size: 14.5px;
+  font-size: 16px;
   line-height: 1.55;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -1543,7 +1543,7 @@ a:focus-visible {
 }
 
 .game-row::after {
-  content: "双击分析";
+  content: "点击分析";
   grid-column: 2 / 3;
   color: var(--quiet);
   font-size: 12px;
@@ -2530,6 +2530,32 @@ a:focus-visible {
   line-height: 1.72;
 }
 
+.method-status {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.method-status span {
+  display: flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: var(--surface);
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 520;
+}
+
+.method-status strong {
+  color: var(--ink-soft);
+  font-weight: 650;
+}
+
 .method-steps {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -3120,6 +3146,7 @@ a:focus-visible {
 @media (max-width: 600px) {
   .main-content {
     padding: 14px;
+    overflow-x: clip;
   }
 
   .ranking-panel,
@@ -3131,6 +3158,42 @@ a:focus-visible {
 
   .decision-metrics {
     grid-template-columns: 1fr;
+  }
+
+  .decision-report-panel,
+  .decision-layout,
+  .decision-narrative,
+  .decision-block,
+  .decision-disclosure,
+  .decision-method-panel,
+  .decision-method-compact,
+  .evidence-card,
+  .evidence-list,
+  .method-steps,
+  .method-status {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .decision-narrative,
+  .decision-block,
+  .decision-disclosure,
+  .decision-method-compact,
+  .evidence-card {
+    overflow-wrap: anywhere;
+  }
+
+  .decision-method-compact[open] {
+    grid-template-columns: 1fr;
+    padding: 0 12px 14px;
+  }
+
+  .decision-method-compact[open] > summary {
+    margin: 0 -12px 2px;
+  }
+
+  .decision-disclosure ul {
+    padding: 0 18px 16px 30px;
   }
 
   .visual-card-primary {
@@ -3414,21 +3477,21 @@ a:focus-visible {
 .portfolio-brief-copy h2 {
   font-size: 34px;
   font-weight: 650;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   line-height: 1.12;
 }
 
 .section-copy h2 {
   font-size: 26px;
   font-weight: 650;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1.2;
 }
 
 .section-heading h2 {
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .visual-heading h3,
@@ -3436,13 +3499,13 @@ a:focus-visible {
 .data-rule-panel h3 {
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
 }
 
 .detail-copy h2 {
   font-size: 38px;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 /* ── Button system ── */
@@ -3558,13 +3621,13 @@ a:focus-visible {
 .score-model-total strong {
   font-size: 42px;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .detail-stats strong {
   font-size: 24px;
   font-weight: 650;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .heat-pill {
@@ -3585,7 +3648,7 @@ a:focus-visible {
 .topbar h2 {
   font-size: 20px;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 /* ── Game rows ── */
@@ -3694,6 +3757,33 @@ a:focus-visible {
 .comment-card .translated {
   border-left-width: 2px;
   padding-left: 14px;
+}
+
+.comment-ai-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+}
+
+.comment-ai-meta span {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: var(--surface-2);
+  color: var(--ink-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.comment-ai-meta strong {
+  color: var(--ink-soft);
+  font-weight: 650;
 }
 
 /* ── Eyebrow labels ── */

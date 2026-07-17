@@ -8,9 +8,9 @@
       content="Roblox Reddit Insight Lab - 面向游戏出海的 AI 玩家评论洞察平台"
     />
     <title>Roblox Reddit Insight Lab</title>
-    <link rel="preconnect" href="https://unpkg.com" />
     <link rel="stylesheet" href="styles.css?v=20260708-1" />
-    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+    <script src="scripts/vendor/lucide.min.js?v=20260717-1" defer></script>
+    <script src="scripts/lucide-fallback.js?v=20260717-1" defer></script>
     <script src="app.js?v=20260708-1" defer></script>
   </head>
   <body>
@@ -69,7 +69,7 @@
             </button>
             <button class="action-button" id="printButton" type="button">
               <i data-lucide="printer"></i>
-              <span>导出 PDF</span>
+              <span>打印 / 导出</span>
             </button>
           </div>
         </header>
@@ -164,7 +164,7 @@
             </div>
             <div class="section-note">
               <i data-lucide="info"></i>
-              <span>双击榜单游戏可进入对应的定向分析。</span>
+              <span>点击榜单游戏可切换下方定向分析。</span>
             </div>
           </div>
 
@@ -202,7 +202,7 @@
                 <p class="eyebrow">Trending Games</p>
                 <h2 id="rankingTitle">Roblox 讨论 Top 3</h2>
               </div>
-              <p class="ranking-helper">这里只做总体热度排序；双击某个游戏后，下方会展示具体分析。</p>
+              <p class="ranking-helper">这里只做总体热度排序；点击某个游戏后，下方会展示具体分析。</p>
             </div>
             <div class="game-list" id="gameList" aria-live="polite"></div>
           </section>

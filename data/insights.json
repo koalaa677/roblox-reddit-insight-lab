@@ -29,7 +29,9 @@
       "rawDays": 10,
       "rawPosts": 147,
       "rawComments": 1579,
-      "importedEvidence": 14
+      "initialCuratedEvidence": 14,
+      "currentDisplayEvidence": 38,
+      "reportCitedEvidence": 6
     },
     "aiPipeline": {
       "version": "1.0",

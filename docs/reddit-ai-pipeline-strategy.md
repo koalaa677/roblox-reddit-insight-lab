@@ -9,7 +9,7 @@
 - 一周评论量不会因为“时间跨度是一周”天然导致封禁。风险主要来自无 OAuth、无规范 User-Agent、短时间高频请求、忽略 429 和 `X-Ratelimit-*` 响应头、重复抓同一批数据。
 - 本项目建议把官方免费 OAuth 上限视为硬边界，把项目自身软上限设为 10 QPM，并用 6.5 秒请求间隔运行，给调试、网络波动和重试留下余量。
 - 在 Reddit OAuth 审批前，可以用 `scripts/fetch-reddit-public-json.mjs` 低频验证 public JSON 链路；如果返回 403，应停止重试并等待 OAuth，不建议改用绕过式抓取。
-- 本机旧项目 `forest99-monitor` 曾通过 public JSON 抓取过 r/99nightsintheforest。2026-06-11 复测同类入口返回 403，因此当前采用“历史快照先跑通产品闭环”的策略：从旧项目 10 天、147 个帖子、1579 条评论里抽取 Forest99 代表性证据，写入 `data/insights.json`。
+- 本机旧项目 `forest99-monitor` 曾通过 public JSON 抓取过 r/99nightsintheforest。2026-06-11 复测同类入口返回 403，因此当前采用“历史快照先跑通产品闭环”的策略：从旧项目 10 天、147 个帖子、1579 条评论里先抽取 Forest99 代表性证据，写入 `data/insights.json`；当前公开快照展示 38 条 Forest99 证据，其中 6 条进入报告引用。
 
 ## Reddit 抓取原则
 

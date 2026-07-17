@@ -92,7 +92,7 @@ Reddit API
 
 当前仓库也提供一个低频 `public_json` fallback 脚本，用于在 Reddit OAuth 审批前验证采集链路。该入口可能返回 `403 Forbidden`，因此只适合作为原型验证；正式接入仍建议使用 Reddit OAuth Data API。
 
-Forest99 数据已接入历史 Reddit 公开 JSON 快照：旧监控任务累计保留 10 天、147 个帖子、1579 条评论，本仓库从中抽取 14 条代表性证据进入当前报告。公开站点不会展示真实采集日期，只保留可追溯来源链接、情绪分类、标签和报告引用关系。
+Forest99 数据已接入历史 Reddit 公开 JSON 快照：旧监控任务累计保留 10 天、147 个帖子、1579 条评论。项目先从中抽取 14 条代表性证据跑通报告闭环，当前展示样本已扩展到 38 条，并保留 6 条报告引用证据。公开站点不会展示真实采集日期，只保留可追溯来源链接、情绪分类、标签、证据分和报告引用关系。
 
 ```powershell
 node scripts/fetch-reddit-public-json.mjs --dry-run
@@ -180,7 +180,7 @@ docs/
 建议用本地静态服务器打开，确保浏览器可以读取 `data/insights.json`。
 
 ```powershell
-cd C:\Users\gaoyucheng01\Desktop\新建文件夹\roblox-reddit-insight-lab
+cd 01-current-project\roblox-reddit-insight-lab
 python -m http.server 4173 --bind 127.0.0.1
 ```
 
@@ -319,7 +319,7 @@ This keeps report conclusions traceable back to player comments instead of relyi
 
 The repository also includes a low-volume `public_json` fallback script for validating the collection workflow before Reddit OAuth approval. This endpoint may return `403 Forbidden`, so it should be treated as a prototype fallback only; the recommended production path remains Reddit OAuth Data API.
 
-Forest99 now uses a historical Reddit public JSON snapshot: an earlier monitor retained 10 days of data, including 147 posts and 1,579 comments. This repository imports 14 representative evidence items into the current report while hiding exact collection dates in the public interface and preserving traceable source links, sentiment classes, tags, and report-citation status.
+Forest99 now uses a historical Reddit public JSON snapshot: an earlier monitor retained 10 days of data, including 147 posts and 1,579 comments. The project first imported 14 representative evidence items to complete the report loop; the current public snapshot now displays 38 evidence items and keeps 6 cited report comments while hiding exact collection dates and preserving traceable source links, sentiment classes, tags, evidence scores, and report-citation status.
 
 ```powershell
 node scripts/fetch-reddit-public-json.mjs --dry-run
@@ -407,7 +407,7 @@ The current implementation is a static frontend that reads a structured JSON sna
 Use a local static server so the browser can load `data/insights.json`.
 
 ```powershell
-cd C:\Users\gaoyucheng01\Desktop\新建文件夹\roblox-reddit-insight-lab
+cd 01-current-project\roblox-reddit-insight-lab
 python -m http.server 4173 --bind 127.0.0.1
 ```
 

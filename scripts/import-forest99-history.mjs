@@ -273,7 +273,9 @@ async function main() {
       rawDays: totals.days,
       rawPosts: totals.posts,
       rawComments: totals.comments,
-      importedEvidence: comments.length,
+      initialCuratedEvidence: comments.length,
+      currentDisplayEvidence: comments.length,
+      reportCitedEvidence: comments.filter((comment) => comment.usedInReport).length,
     },
   };
 
