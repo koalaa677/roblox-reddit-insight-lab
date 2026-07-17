@@ -1,18 +1,39 @@
 # Roblox Reddit Insight Lab
 
-[中文](#中文说明) | [English](#english)
+[中文说明](#中文说明) | [English](#english)
 
-## 中文说明
+Roblox Reddit Insight Lab is a static market intelligence product for Roblox gameplay research. It turns Reddit player discussions into a public, traceable insight dashboard: trending games, sentiment structure, comment evidence, and AI-assisted decision reports.
 
-Roblox Reddit Insight Lab 是一个轻量级市场洞察看板，用于追踪 Roblox 热门游戏讨论、整理 Reddit 玩家反馈，并将社区信号转化为可追溯的玩法研究报告。
+As an applied AI project, the focus is practical use rather than model research. The repository shows how AI can support marketing and game-market analysis: unstructured player comments are cleaned, classified, scored, summarized, and turned into decision-ready insight reports.
 
-在线访问：
+Live site:
 
 ```text
 https://koalaa677.github.io/roblox-reddit-insight-lab/
 ```
 
-### 项目截图
+## 中文说明
+
+Roblox Reddit Insight Lab 是一个面向 Roblox 玩法研究和游戏出海研判的轻量级洞察工具。项目把 Reddit 玩家讨论整理成可公开访问的静态产品：先看热门游戏，再看评论证据，最后形成可追溯的玩法分析报告。
+
+从 AI 应用的角度看，这个项目重点展示的不是底层模型研究，而是如何把 AI 放进真实的营销传播和玩家洞察工作流里：把非结构化玩家评论清洗、分类、评分、总结，再转化成可以支持游戏出海和玩法研判的决策报告。
+
+当前版本重点不是搭建公司级后台系统，而是完成一个清晰、可信、可运行的产品闭环：
+
+- 用结构化数据快照驱动页面，保证公开站点稳定可访问。
+- 保留 Reddit 原评论、中文翻译、情绪分类、标签和来源链接。
+- 用可解释热点评分帮助快速筛选值得研究的 Roblox 游戏。
+- 用 AI 分析管线把精选证据转化为玩法机会、风险边界和验证动作。
+
+### AI 应用亮点
+
+- **AI 赋能市场洞察**：用 AI 辅助整理 Reddit 玩家反馈，把分散评论转化为玩法机会、风险和验证建议。
+- **人机协作分析流程**：规则分类先完成基础判断，AI 负责校准、摘要和报告表达，避免把全部判断交给模型黑箱。
+- **低 token 设计**：先在本地完成去重、过滤和分类，只把精选证据和结构化指标交给 AI。
+- **可追溯输出**：AI 报告不只给结论，还保留被引用的原评论、来源链接和证据标签。
+- **可展示的应用闭环**：用 `data/insights.json` 作为稳定数据契约，把分析结果直接转化为可公开访问的产品页面。
+
+### 产品界面
 
 #### Roblox 讨论热度全局
 
@@ -26,14 +47,30 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ![分析报告](assets/screenshots/ai-report.png)
 
-### 核心功能
+### 当前能力
 
-- **Roblox 讨论热度全局**：展示 Reddit 讨论热度最高的 Top 3 游戏，包含类型、趋势、评分和一句话研判。
-- **可解释热点评分**：综合提及量、7 日趋势、正向情绪、建议密度和样本可信度。
-- **定向游戏分析**：查看单个游戏的官方链接、Reddit 链接、趋势图、情绪占比、评论证据和摘要结论。
-- **评论证据库**：保留英文原文、中文翻译、情绪标签、主题标签、来源链接和报告引用状态。
-- **分析报告**：总结玩法是否值得继续研究、哪些要素可以迁移、哪些内容不应照搬，以及下一步验证动作。
-- **关注游戏工作流**：支持新增关注游戏、移除二次确认，并直接跳转到对应分析。
+- **全局热度看板**：展示 Roblox 相关讨论 Top 3，包含热度分、趋势、类型分布、情绪结构和证据流。
+- **定向游戏分析**：聚焦单个游戏，展示 Roblox / Reddit 外部入口、趋势图、情绪占比和评论证据。
+- **评论证据库**：按正面、负面、建议、其他四类组织评论，保留原文、翻译、标签、证据分和报告引用状态。
+- **AI 决策报告**：输出是否值得研究、哪些玩法要素可迁移、哪些内容不能照搬，以及下一步验证动作。
+- **关注游戏工作流**：支持新增和移除关注游戏，为后续定向采集与分析保留交互入口。
+- **本地图标与静态部署**：页面不依赖外部图标 CDN，适合 GitHub Pages 直接托管。
+
+### 数据状态
+
+公开版本使用结构化样本数据快照，数据结构与后续真实采集流程保持一致。
+
+Forest99 已接入历史 Reddit public JSON 快照。旧监控任务累计保留：
+
+- 10 天数据
+- 147 个帖子
+- 1579 条评论
+- 当前公开快照展示 38 条 Forest99 评论证据
+- 其中 6 条进入分析报告引用
+
+公开站点不会展示真实采集日期，只保留可追溯来源链接、情绪分类、主题标签、证据分和报告引用关系。
+
+仓库也保留了低频 `public_json` 探测脚本，用于在 Reddit OAuth 审批前验证采集链路。如果该入口返回 `403 Forbidden`，脚本应停止重试；正式采集仍建议走 Reddit OAuth Data API。
 
 ### 产品流程
 
@@ -61,7 +98,7 @@ Roblox 讨论热度全局
 
 ### 热点评分模型
 
-看板使用可解释评分，而不是只展示一个不透明的热度数字：
+看板使用可解释评分，而不是只展示一个不透明热度数字：
 
 ```text
 Hot Score =
@@ -72,42 +109,30 @@ Hot Score =
 + 样本可信度 * 10%
 ```
 
-接入实时数据后，样本可信度还可以继续补充 Roblox 侧信号，例如在线人数、访问增长、收藏增长和游戏更新频率。
-
-### 评论证据处理流程
-
-公开版本使用结构化样本数据快照，数据结构与后续实时采集流程保持一致。生产化数据流程可以按下面方式运行：
-
-```text
-Reddit API
-  -> 增量抓取评论
-  -> 去重与低价值内容过滤
-  -> 情绪分类：正面 / 负面 / 建议 / 其他
-  -> 按时间排序
-  -> 按游戏类型 -> 游戏 -> 情绪类型归档
-  -> 选择代表性证据进入分析报告
-```
-
-这个设计让报告结论可以回溯到玩家原始评论，而不是只依赖不可验证的摘要。
-
-当前仓库也提供一个低频 `public_json` fallback 脚本，用于在 Reddit OAuth 审批前验证采集链路。该入口可能返回 `403 Forbidden`，因此只适合作为原型验证；正式接入仍建议使用 Reddit OAuth Data API。
-
-Forest99 数据已接入历史 Reddit 公开 JSON 快照：旧监控任务累计保留 10 天、147 个帖子、1579 条评论。项目先从中抽取 14 条代表性证据跑通报告闭环，当前展示样本已扩展到 38 条，并保留 6 条报告引用证据。公开站点不会展示真实采集日期，只保留可追溯来源链接、情绪分类、标签、证据分和报告引用关系。
-
-```powershell
-node scripts/fetch-reddit-public-json.mjs --dry-run
-```
+后续接入实时数据后，样本可信度可以继续补充 Roblox 侧信号，例如在线人数、访问增长、收藏增长和游戏更新频率。
 
 ### AI 分析策略
 
-报告设计目标是在控制 token 成本的同时保留决策质量：
+AI 管线的目标是控制 token 成本，同时保留决策质量和证据可追溯性。
 
-- 先在本地完成评论清洗、去重和分类，再把必要内容送入 AI 模型。
-- 优先发送结构化指标、日摘要和高质量代表性评论，而不是发送全量原始评论。
-- 要求模型输出面向决策的结构化内容：建议、迁移路径、不可照搬风险、价值和验证动作。
-- 在界面中保留被引用的原评论，让结论可以被审查和追溯。
+```text
+原始评论
+  -> 本地清洗与去重
+  -> 规则四分类：正面 / 负面 / 建议 / 其他
+  -> 证据分计算
+  -> 只选择高价值样本进入 AI
+  -> AI 校准、摘要和报告生成
+  -> 写回 data/insights.json
+```
 
-相关配置与策略文档：
+关键原则：
+
+- 抓取 Reddit 评论本身不消耗 AI token。
+- 只有精选证据、结构化指标或摘要被发送给模型时，才产生 AI token 成本。
+- AI 不直接处理全量评论，而是处理本地清洗后的高价值样本。
+- 报告中的结论必须能回到原始评论证据。
+
+相关文档：
 
 ```text
 docs/reddit-ai-pipeline-strategy.md
@@ -116,29 +141,36 @@ data/pipeline-config.json
 
 ### AI 分析脚本
 
-仓库内置了完整的本地 AI 分析管线脚本，位于 `scripts/` 目录：
+仓库内置本地 AI 分析管线：
 
 ```text
-scripts/ai-analyze.mjs          -> 主入口：清洗 → 规则分类 → AI 校准 → 日摘要 → 决策报告
-scripts/lib/cleaner.mjs         -> 评论清洗、去重、证据分计算
-scripts/lib/rule-classifier.mjs -> 基于关键词的四分类初筛（正面/负面/建议/其他）
-scripts/lib/ai-client.mjs       -> OpenAI 兼容 API 封装，支持 dry-run 模拟
+scripts/ai-analyze.mjs
+  -> 主入口：清洗 -> 规则分类 -> AI 校准 -> 日摘要 -> 决策报告
+
+scripts/lib/cleaner.mjs
+  -> 评论清洗、去重、证据分计算
+
+scripts/lib/rule-classifier.mjs
+  -> 基于关键词的四分类初筛
+
+scripts/lib/ai-client.mjs
+  -> OpenAI 兼容 API 封装，支持 dry-run
 ```
 
-**使用方式：**
+使用方式：
 
 ```bash
-# 预览模式（不写入，仅看控制台输出）
+# 预览模式，不写入文件
 node scripts/ai-analyze.mjs --game forest99
 
-# 写入 insights.json
+# 写回 data/insights.json
 node scripts/ai-analyze.mjs --game forest99 --write
 
-# 强制 dry-run（无 API key 时自动启用）
+# 强制 dry-run，无 API key 时也可跑通流程
 node scripts/ai-analyze.mjs --game forest99 --dry-run
 ```
 
-**环境变量（复制 `.env.example` 为 `.env` 后填写）：**
+环境变量：
 
 ```text
 AI_API_BASE_URL=   # OpenAI 兼容接口地址
@@ -146,7 +178,7 @@ AI_API_TOKEN=      # API Key
 AI_MODEL=          # 模型名称，默认 gpt-4o-mini
 ```
 
-未配置 API Key 时自动进入 dry-run 模式，使用内置模拟数据跑通完整管线，方便验证流程和前端展示。
+未配置 API Key 时，脚本会进入 dry-run 模式，用内置模拟输出验证完整流程和前端展示。
 
 ### 项目结构
 
@@ -155,29 +187,29 @@ index.html
   -> 页面结构
 
 styles.css
-  -> 视觉系统、响应式布局、看板和报告样式
+  -> 视觉系统、布局、看板和报告样式
 
 app.js
   -> 页面渲染、导航、搜索、关注游戏、评论筛选、报告切换
 
 data/insights.json
-  -> 游戏、评论、报告和外部链接的样本数据快照
+  -> 游戏、评论、报告和外部链接的数据快照
 
 data/pipeline-config.json
-  -> Reddit 抓取和 AI 分析预算配置
+  -> Reddit 采集和 AI 分析预算配置
 
 scripts/
-  -> AI 分析管线、历史数据导入、预算估算等工具脚本
+  -> AI 分析、历史数据导入、public JSON 探测、预算估算
 
 docs/
-  -> 部署、API、数据管线和参考说明
+  -> 部署、API、AI 管线和开源参考说明
 ```
 
-当前实现是一个读取结构化 JSON 快照的静态前端。这种方式让展示层保持简单，也方便后续接入定时 Reddit 采集和 AI 分析任务，而不需要改变前端数据契约。
+当前实现是一个读取结构化 JSON 快照的静态前端。这让展示层保持简单，也方便后续接入定时采集、AI 分析任务或轻量后端，而不需要改变页面数据契约。
 
 ### 本地运行
 
-建议用本地静态服务器打开，确保浏览器可以读取 `data/insights.json`。
+建议使用本地静态服务器打开，确保浏览器可以读取 `data/insights.json`。
 
 ```powershell
 cd 01-current-project\roblox-reddit-insight-lab
@@ -204,42 +236,44 @@ http://127.0.0.1:4173
 docs/deployment-guide.md
 ```
 
-### 数据与 API 说明
+### Roadmap
 
-- 抓取 Reddit 评论不消耗 AI token，只消耗 Reddit API 请求额度。
-- 只有当文本或结构化证据被发送给模型分析时，才会产生 AI token 成本。
-- API 凭证不应暴露在前端代码中。
-- 实际接入时，建议由本地脚本、定时任务或后端任务生成与前端一致的 JSON 数据结构。
-
-### 路线图
-
-- 接入 Reddit API，支持指定 subreddit 和游戏关键词采集。
-- 增加自动评论清洗、去重和四分类。
+- 接入 Reddit OAuth Data API，支持指定 subreddit 和游戏关键词采集。
+- 增强自动评论清洗、去重、语言识别和四分类。
 - 基于精选证据生成日摘要和周分析报告。
 - 增加数据新鲜度指标，例如抓取量、过滤量和引用证据数。
 - 扩展 Roblox 侧信号，例如在线人数、访问量、收藏量和更新频率。
 
-### 暂不做
+### Out Of Scope
 
 - 用户登录和权限管理。
-- 数据库驱动的多人协作流程。
+- 数据库驱动的多人协作后台。
 - Discord 数据采集。
 - 在浏览器中暴露 Reddit 或 AI token。
-- 大规模企业级监控功能。
+- 大规模企业级监控系统。
 
 ---
 
 ## English
 
-Roblox Reddit Insight Lab is a lightweight market intelligence dashboard for tracking Roblox game discussions, organizing Reddit player feedback, and turning community signals into gameplay research reports.
+Roblox Reddit Insight Lab is a lightweight market intelligence tool for Roblox gameplay research. It converts Reddit player discussions into a structured, public-facing dashboard with explainable scores, traceable comments, and AI-assisted decision reports.
 
-Online site:
+The current version is intentionally static. It focuses on a complete and understandable product loop before adding live infrastructure:
 
-```text
-https://koalaa677.github.io/roblox-reddit-insight-lab/
-```
+- A stable public site driven by structured JSON snapshots.
+- Original Reddit comments, Chinese translations, sentiment labels, tags, and source links.
+- Explainable scoring for quickly comparing Roblox gameplay opportunities.
+- AI-assisted reports grounded in selected evidence instead of unsupported summaries.
 
-### Screenshots
+### Applied AI Focus
+
+- **AI-enabled market insight**: uses AI to turn scattered Reddit player feedback into gameplay opportunities, risks, and validation suggestions.
+- **Human-AI analysis workflow**: rule-based classification handles the first pass, while AI supports calibration, summarization, and report writing.
+- **Token-aware design**: cleaning, deduplication, and classification happen locally before selected evidence is sent to AI.
+- **Traceable output**: decision reports remain connected to original comments, source links, and evidence tags.
+- **Public product loop**: `data/insights.json` acts as the bridge between analysis output and a public-facing product page.
+
+### Interface
 
 #### Roblox Discussion Overview
 
@@ -253,14 +287,30 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ![Analysis Report](assets/screenshots/ai-report.png)
 
-### Features
+### Capabilities
 
-- **Roblox discussion overview**: shows the current Top 3 games by Reddit discussion heat, with genre, trend, score, and a short research judgment.
-- **Explainable hot score**: combines mentions, 7-day trend, positive sentiment, suggestion density, and sample confidence.
-- **Targeted game analysis**: drills into one selected game with official links, Reddit links, trend charts, sentiment split, comments, and summary.
-- **Comment evidence library**: keeps original English comments, Chinese translations, sentiment labels, tags, source links, and report citation state.
-- **Analysis report**: summarizes whether a gameplay loop is worth further research, what can be adapted, what should not be copied, and what validation actions should follow.
-- **Watchlist workflow**: supports adding tracked games, removing them with confirmation, and jumping directly into the related analysis.
+- **Overview dashboard**: ranks the Top 3 Roblox-related discussions with heat score, trend, genre mix, sentiment, and evidence flow.
+- **Targeted analysis**: focuses on one selected game with Roblox and Reddit links, trend charts, sentiment breakdown, and comment evidence.
+- **Evidence library**: organizes comments into positive, negative, suggestion, and neutral buckets with source links and citation state.
+- **AI decision report**: explains whether a gameplay loop is worth researching, what can be adapted, what should not be copied, and what to validate next.
+- **Watchlist workflow**: keeps an interaction path for future targeted collection and analysis.
+- **Static deployment**: runs on GitHub Pages without requiring a backend or external icon CDN.
+
+### Data Status
+
+The public version uses a structured sample snapshot with the same shape expected from the future live pipeline.
+
+Forest99 is backed by a historical Reddit public JSON snapshot. The previous monitor retained:
+
+- 10 days of data
+- 147 posts
+- 1,579 comments
+- 38 Forest99 evidence comments in the current public snapshot
+- 6 cited comments in the decision report
+
+The public site hides exact collection dates while preserving source links, sentiment classes, tags, evidence scores, and report citation state.
+
+The repository also includes a low-volume `public_json` probe script for validating the collection path before Reddit OAuth approval. If the endpoint returns `403 Forbidden`, the script should stop retrying. The recommended production path remains Reddit OAuth Data API.
 
 ### Product Flow
 
@@ -276,9 +326,9 @@ Targeted analysis
   -> 7-day heat trend
   -> sentiment split
   -> categorized comment evidence
-  -> concise AI summary
+  -> concise summary
 
-Analysis report
+Decision report
   -> overall recommendation
   -> transferable gameplay elements
   -> risks and non-transferable parts
@@ -299,42 +349,30 @@ Hot Score =
 + sample confidence * 10%
 ```
 
-When connected to live data, the sample confidence layer can be expanded with Roblox-side signals such as concurrent users, visit growth, favorite growth, and game update frequency.
-
-### Comment Evidence Pipeline
-
-The public version uses a curated sample dataset with the same structure expected from the live pipeline. A production data pipeline can follow this flow:
-
-```text
-Reddit API
-  -> incremental comment collection
-  -> deduplication and low-value content filtering
-  -> sentiment classification: positive / negative / suggestion / other
-  -> time-based sorting
-  -> archive by game genre -> game -> sentiment type
-  -> select representative evidence for the analysis report
-```
-
-This keeps report conclusions traceable back to player comments instead of relying on unsupported summaries.
-
-The repository also includes a low-volume `public_json` fallback script for validating the collection workflow before Reddit OAuth approval. This endpoint may return `403 Forbidden`, so it should be treated as a prototype fallback only; the recommended production path remains Reddit OAuth Data API.
-
-Forest99 now uses a historical Reddit public JSON snapshot: an earlier monitor retained 10 days of data, including 147 posts and 1,579 comments. The project first imported 14 representative evidence items to complete the report loop; the current public snapshot now displays 38 evidence items and keeps 6 cited report comments while hiding exact collection dates and preserving traceable source links, sentiment classes, tags, evidence scores, and report-citation status.
-
-```powershell
-node scripts/fetch-reddit-public-json.mjs --dry-run
-```
+When live data is connected, sample confidence can be expanded with Roblox-side signals such as concurrent users, visit growth, favorite growth, and update cadence.
 
 ### AI Analysis Strategy
 
-The report is designed to minimize token usage while preserving decision quality:
+The AI pipeline is designed to reduce token cost while preserving decision quality and evidence traceability.
 
-- Clean, deduplicate, and classify comments locally before sending anything to an AI model.
-- Send structured metrics, daily summaries, and selected high-quality evidence instead of the full raw comment set.
-- Ask the model for decision-ready outputs: recommendation, adaptation path, non-transferable risks, value, and validation actions.
-- Keep the original cited comments visible in the UI so conclusions remain auditable.
+```text
+raw comments
+  -> local cleaning and deduplication
+  -> rule-based classification
+  -> evidence scoring
+  -> selected high-value evidence only
+  -> AI calibration, summaries, and reports
+  -> write back to data/insights.json
+```
 
-Related configuration and strategy notes:
+Principles:
+
+- Reddit collection does not consume AI tokens.
+- AI token usage starts only when selected evidence or structured summaries are sent to a model.
+- The model does not process the full raw comment set.
+- Report conclusions must remain traceable to original comments.
+
+Related files:
 
 ```text
 docs/reddit-ai-pipeline-strategy.md
@@ -343,64 +381,71 @@ data/pipeline-config.json
 
 ### AI Analysis Scripts
 
-The repository ships with a complete local AI analysis pipeline under `scripts/`:
+The repository includes a local AI analysis pipeline:
 
 ```text
-scripts/ai-analyze.mjs          -> Main entry: clean -> rule classify -> AI calibrate -> daily summary -> decision report
-scripts/lib/cleaner.mjs         -> Comment cleaning, dedup, evidence scoring
-scripts/lib/rule-classifier.mjs -> Keyword-based 4-bucket classification (positive / negative / suggestion / other)
-scripts/lib/ai-client.mjs       -> OpenAI-compatible API client with dry-run fallback
+scripts/ai-analyze.mjs
+  -> main entry: clean -> rule classify -> AI calibrate -> daily summary -> decision report
+
+scripts/lib/cleaner.mjs
+  -> comment cleaning, deduplication, evidence scoring
+
+scripts/lib/rule-classifier.mjs
+  -> keyword-based four-bucket classification
+
+scripts/lib/ai-client.mjs
+  -> OpenAI-compatible API client with dry-run support
 ```
 
-**Usage:**
+Usage:
 
 ```bash
-# Preview mode (no write, console output only)
+# Preview mode, no file write
 node scripts/ai-analyze.mjs --game forest99
 
-# Write results back to insights.json
+# Write results back to data/insights.json
 node scripts/ai-analyze.mjs --game forest99 --write
 
-# Force dry-run mode (auto-enabled when no API key is configured)
+# Force dry-run mode
 node scripts/ai-analyze.mjs --game forest99 --dry-run
 ```
 
-**Environment variables (copy `.env.example` to `.env`):**
+Environment variables:
 
 ```text
 AI_API_BASE_URL=   # OpenAI-compatible endpoint
 AI_API_TOKEN=      # API key
-AI_MODEL=          # Model name, defaults to gpt-4o-mini
+AI_MODEL=          # model name, defaults to gpt-4o-mini
 ```
 
-Without an API key, the pipeline runs in dry-run mode with built-in mock outputs so you can validate the full flow and frontend rendering end-to-end.
+Without an API key, the script uses dry-run outputs so the full pipeline and frontend rendering can still be tested.
 
-### Architecture
+### Project Structure
 
 ```text
 index.html
   -> page structure
 
 styles.css
-  -> visual system, responsive layout, dashboard and report styles
+  -> visual system, layout, dashboard and report styles
 
 app.js
   -> rendering, navigation, search, watchlist, comment filters, report switching
 
 data/insights.json
-  -> sample insight dataset with games, comments, reports, and source links
+  -> data snapshot for games, comments, reports, and source links
 
 data/pipeline-config.json
   -> Reddit collection and AI analysis budget configuration
 
 scripts/
-  -> AI analysis pipeline, history import, budget estimation utilities
+  -> AI analysis, history import, public JSON probe, budget estimation
 
 docs/
-  -> deployment, API, pipeline, and reference notes
+  -> deployment, API, AI pipeline, and reference notes
 ```
 
-The current implementation is a static frontend that reads a structured JSON snapshot. This keeps the display layer simple and makes it easy to connect a scheduled Reddit and AI analysis job later without changing the page contract.
+The current implementation is a static frontend that reads a structured JSON snapshot. This keeps the display layer simple and leaves room for scheduled collection, AI analysis jobs, or a lightweight backend without changing the frontend data contract.
 
 ### Local Development
 
@@ -431,19 +476,12 @@ Deployment guide:
 docs/deployment-guide.md
 ```
 
-### Data And API Notes
-
-- Reddit collection does not consume AI tokens; it consumes Reddit API request quota.
-- AI token usage starts only when text or structured evidence is sent to a model.
-- API credentials should never be exposed in frontend code.
-- A practical live pipeline should run from a local script, scheduled job, or backend task that writes the same JSON schema consumed by the frontend.
-
 ### Roadmap
 
-- Connect Reddit API collection for selected subreddits and game keywords.
-- Add automated comment cleaning, deduplication, and four-way classification.
-- Generate daily summaries and weekly analysis reports from selected evidence.
-- Add data freshness indicators for collection volume, filtered volume, and cited evidence count.
+- Connect Reddit OAuth Data API for selected subreddits and game keywords.
+- Improve comment cleaning, deduplication, language detection, and four-way classification.
+- Generate daily summaries and weekly reports from selected evidence.
+- Add data freshness indicators for collected volume, filtered volume, and cited evidence count.
 - Expand Roblox-side signals for online users, visits, favorites, and update cadence.
 
 ### Out Of Scope
@@ -452,4 +490,4 @@ docs/deployment-guide.md
 - Database-backed collaboration workflows.
 - Discord collection.
 - Exposing Reddit or AI tokens in the browser.
-- Large-scale enterprise monitoring features.
+- Large-scale enterprise monitoring.
