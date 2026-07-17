@@ -1,0 +1,7 @@
+.env
+.env.local
+node_modules/
+dist/
+data/reddit-public-snapshot.json
+.DS_Store
+Thumbs.db

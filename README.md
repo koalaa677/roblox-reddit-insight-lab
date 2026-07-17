@@ -114,6 +114,40 @@ docs/reddit-ai-pipeline-strategy.md
 data/pipeline-config.json
 ```
 
+### AI 分析脚本
+
+仓库内置了完整的本地 AI 分析管线脚本，位于 `scripts/` 目录：
+
+```text
+scripts/ai-analyze.mjs          -> 主入口：清洗 → 规则分类 → AI 校准 → 日摘要 → 决策报告
+scripts/lib/cleaner.mjs         -> 评论清洗、去重、证据分计算
+scripts/lib/rule-classifier.mjs -> 基于关键词的四分类初筛（正面/负面/建议/其他）
+scripts/lib/ai-client.mjs       -> OpenAI 兼容 API 封装，支持 dry-run 模拟
+```
+
+**使用方式：**
+
+```bash
+# 预览模式（不写入，仅看控制台输出）
+node scripts/ai-analyze.mjs --game forest99
+
+# 写入 insights.json
+node scripts/ai-analyze.mjs --game forest99 --write
+
+# 强制 dry-run（无 API key 时自动启用）
+node scripts/ai-analyze.mjs --game forest99 --dry-run
+```
+
+**环境变量（复制 `.env.example` 为 `.env` 后填写）：**
+
+```text
+AI_API_BASE_URL=   # OpenAI 兼容接口地址
+AI_API_TOKEN=      # API Key
+AI_MODEL=          # 模型名称，默认 gpt-4o-mini
+```
+
+未配置 API Key 时自动进入 dry-run 模式，使用内置模拟数据跑通完整管线，方便验证流程和前端展示。
+
 ### 项目结构
 
 ```text
@@ -131,6 +165,9 @@ data/insights.json
 
 data/pipeline-config.json
   -> Reddit 抓取和 AI 分析预算配置
+
+scripts/
+  -> AI 分析管线、历史数据导入、预算估算等工具脚本
 
 docs/
   -> 部署、API、数据管线和参考说明
@@ -184,8 +221,11 @@ docs/deployment-guide.md
 
 ### 暂不做
 
+- 用户登录和权限管理。
+- 数据库驱动的多人协作流程。
 - Discord 数据采集。
 - 在浏览器中暴露 Reddit 或 AI token。
+- 大规模企业级监控功能。
 
 ---
 
@@ -301,6 +341,40 @@ docs/reddit-ai-pipeline-strategy.md
 data/pipeline-config.json
 ```
 
+### AI Analysis Scripts
+
+The repository ships with a complete local AI analysis pipeline under `scripts/`:
+
+```text
+scripts/ai-analyze.mjs          -> Main entry: clean -> rule classify -> AI calibrate -> daily summary -> decision report
+scripts/lib/cleaner.mjs         -> Comment cleaning, dedup, evidence scoring
+scripts/lib/rule-classifier.mjs -> Keyword-based 4-bucket classification (positive / negative / suggestion / other)
+scripts/lib/ai-client.mjs       -> OpenAI-compatible API client with dry-run fallback
+```
+
+**Usage:**
+
+```bash
+# Preview mode (no write, console output only)
+node scripts/ai-analyze.mjs --game forest99
+
+# Write results back to insights.json
+node scripts/ai-analyze.mjs --game forest99 --write
+
+# Force dry-run mode (auto-enabled when no API key is configured)
+node scripts/ai-analyze.mjs --game forest99 --dry-run
+```
+
+**Environment variables (copy `.env.example` to `.env`):**
+
+```text
+AI_API_BASE_URL=   # OpenAI-compatible endpoint
+AI_API_TOKEN=      # API key
+AI_MODEL=          # Model name, defaults to gpt-4o-mini
+```
+
+Without an API key, the pipeline runs in dry-run mode with built-in mock outputs so you can validate the full flow and frontend rendering end-to-end.
+
 ### Architecture
 
 ```text
@@ -318,6 +392,9 @@ data/insights.json
 
 data/pipeline-config.json
   -> Reddit collection and AI analysis budget configuration
+
+scripts/
+  -> AI analysis pipeline, history import, budget estimation utilities
 
 docs/
   -> deployment, API, pipeline, and reference notes
@@ -371,5 +448,8 @@ docs/deployment-guide.md
 
 ### Out Of Scope
 
+- User login and permission management.
+- Database-backed collaboration workflows.
 - Discord collection.
 - Exposing Reddit or AI tokens in the browser.
+- Large-scale enterprise monitoring features.

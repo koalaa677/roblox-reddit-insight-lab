@@ -136,6 +136,10 @@ Reddit OAuth API
 1. `data/insights.json` 继续作为前端唯一读取入口，保证 GitHub Pages 静态部署可运行。
 2. `scripts/fetch-reddit-public-json.mjs` 只用于低频探测 public JSON 是否可用；一旦返回 403，不进行高频重试。
 3. `scripts/import-forest99-history.mjs` 从本地历史项目导入 Forest99 真实评论快照，并把公开界面里的时间展示改为相对窗口，避免让过期日期干扰决策演示。
+4. `scripts/ai-analyze.mjs` 本地 AI 分析管线：清洗去重 → 规则四分类 → 代表性评论筛选 → AI 分类校准 → AI 日摘要 → AI 周决策报告 → 写回 insights.json。支持 dry-run 模式，无 API Key 时用模拟数据跑通全流程。配套模块位于 `scripts/lib/`：
+   - `cleaner.mjs`：标准化、去重、低价值过滤、证据分计算
+   - `rule-classifier.mjs`：基于英文关键词的四分类初筛与主题标签提取
+   - `ai-client.mjs`：OpenAI 兼容 API 封装，三阶段结构化输出
 
 这个策略的目标不是宣称数据实时，而是在 API 审批不可控时先完成“采集 -> 清洗 -> 四分类 -> 证据引用 -> 决策报告 -> 静态展示”的完整产品链路。
 

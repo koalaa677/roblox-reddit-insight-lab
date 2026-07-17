@@ -3,7 +3,7 @@
     "projectName": "Roblox Reddit Insight Lab",
     "version": "Insight Snapshot 1.2",
     "datasetType": "historical_public_json_snapshot",
-    "updatedAt": "2026/6/11 16:42:45",
+    "updatedAt": "2026/7/8 19:56:34",
     "period": "历史样本池 + 近 3 天轻量展示窗口",
     "trendLabels": [
       "D-6",
@@ -30,7 +30,14 @@
       "rawPosts": 147,
       "rawComments": 1579,
       "importedEvidence": 14
-    }
+    },
+    "aiPipeline": {
+      "version": "1.0",
+      "lastRunGame": "forest99",
+      "lastRunDryRun": true,
+      "lastRunAt": "2026-07-08T11:56:34.582Z"
+    },
+    "datasetExpansion": "multi-game-curated-sample-v2"
   },
   "watchlist": [
     {
@@ -57,7 +64,7 @@
       ],
       "genre": "生存 / 合作 / 恐怖氛围",
       "heatScore": 92,
-      "sampleCount": 266,
+      "sampleCount": 38,
       "mentions": 430,
       "posts": 21,
       "comments": [
@@ -74,7 +81,17 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnq7nb/i_am_addicted/",
           "originalText": "[Post] I am addicted. guys i discovered this game about two weeks ago and its been like the only thing on my mind 😅 it’s so fun and satisfying and like constantly chasing the next big thing keeps me hooked HELP MEEE IM AN ADULT WITH EMPLOYMENT AND BILLS TO STRESS ABOUT",
           "translatedText": "玩家表示两周前发现游戏后一直惦记着它，认为循环很有趣、很满足，并且持续追逐下一个大目标让自己上头。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.85,
+          "ruleScores": {
+            "positive": 5,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-post_1tg7qha",
@@ -89,12 +106,22 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tg7qha/volcano_biome_is_the_best/",
           "originalText": "[Post] VOLCANO BIOME IS THE BEST. [The deer can't get you!](https://reddit.com/link/1tg7qha/video/87d6v2vdqs1h1/player) Not only does it give you so many Forest Gems and Cultist Gems, it gives you some of the best weapons, so much fuel, so many BIG scraps, and the deer can't get you if you are half-way up the ladder in the towers, unlike the cat. You also don't have to make anything to survive unlike the Snow Biome.",
           "translatedText": "玩家称火山生态区是最好的内容之一，因为奖励丰富，能提供宝石、武器、燃料和大量大块废料。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-post_1tcw3s8",
           "redditId": "POST_1tcw3s8",
-          "sentiment": "positive",
+          "sentiment": "neutral",
           "tags": [
             "completion",
             "achievement"
@@ -104,7 +131,17 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tcw3s8/i_beat_99_nights_in_the_forest/",
           "originalText": "[Post] I beat 99 nights in the forest!!!. Took me 80 minutes, but all the effort was paid off.",
           "translatedText": "玩家分享自己通关 99 Nights in the Forest，虽然耗时很长，但认为所有努力最终得到了回报。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 59,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-post_1toy6l2",
@@ -119,7 +156,17 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1toy6l2/new_player/",
           "originalText": "[Post] New player.. Hey everyone, at some point, you probably were just like me, thinking that this is some blocky pixel game for kids... until you\\`ve tried it and screamed like a little girl when the Deer chased you. Well, that\\`s what happened with me at least, also the realization that there is no save when I\\`ve closed the game... My point is, this is a very hard game if you play solo, and addictive as well :D",
           "translatedText": "新玩家原本以为只是儿童向方块游戏，实际体验后被追逐压力吓到，说明轻恐怖和生存压力有很强记忆点。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 98,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-post_1tp8rhw",
@@ -134,7 +181,17 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp8rhw/and_at_this_point_im_too_afraid_to_ask/",
           "originalText": "[Post] And at this point I'm too afraid to ask. Using shelves for walls is one thing, not running away from attacking wolves is another, but what the hell is going on with people getting only scrap and avoiding chopping wood like the plague? It's everywhere I go, like they'll just watch the fire go down and do nothing, and/or stay at the base the whole time. Bonus round - it's like no one stays past 5 minutes in world, wtf is this?",
           "translatedText": "玩家抱怨路人队友只捡废料、不砍木头、不维护篝火，甚至开局五分钟就离开，导致团队责任断裂。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          },
+          "evidenceScore": 100,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-oo7a5xh",
@@ -149,7 +206,17 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp8rhw/and_at_this_point_im_too_afraid_to_ask/oo7a5xh/",
           "originalText": "I think they glitch out, ipads overheat, lose connection, friends want to play a different game. They take no responsibility to the team, and we cant really blame them. Its just not worth playing over 3 unless you know you have responsible players.",
           "translatedText": "玩家指出 iPad 过热、断连、闪退等问题会造成中途退出，认为超过 3 人的路人局需要更可靠的队友才值得玩。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.6499999999999999,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 2,
+            "suggestion": 0
+          },
+          "evidenceScore": 74,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-oml64cp",
@@ -164,12 +231,22 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1th7esu/frog_event/oml64cp/",
           "originalText": "literally the worst esp when you’re low health and they hit you while you’re running back to base",
           "translatedText": "玩家认为青蛙事件非常糟糕，尤其在低血量返回基地时被攻击，会明显放大挫败感。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          },
+          "evidenceScore": 74,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-onljyjr",
           "redditId": "onljyjr",
-          "sentiment": "negative",
+          "sentiment": "neutral",
           "tags": [
             "resource",
             "teamwork"
@@ -179,12 +256,19 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tmbrdh/playing_with_kids_is_not_for_the_weak/onljyjr/",
           "originalText": "Omg all your scrap is wasted on shelves!",
           "translatedText": "玩家吐槽队友把所有废料都浪费在货架上，反映公共房间里的资源管理和协作成本偏高。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 43
         },
         {
           "id": "f99-hist-post_1tnagqe",
           "redditId": "POST_1tnagqe",
-          "sentiment": "suggestion",
+          "sentiment": "neutral",
           "tags": [
             "anti-troll",
             "progression"
@@ -194,12 +278,22 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnagqe/dear_devs/",
           "originalText": "[Post] Dear Devs.... When a troll hops on to get Dino kid, and the map, and they leave the game, both of those very important things no longer exist. Please let the blueprint drop at the crafting bench, and if a kid drops outside of the base can they re-spawn in their cave? also huge L to ADULTS STILL USING A SHELF BASE bro you need that scrap for the ammo crate 💀",
           "translatedText": "玩家建议当恶意玩家拿走恐龙小孩和地图后离开时，蓝图应掉落在工作台，关键物品不要因为退游而永久消失。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-post_1tp4ubc",
           "redditId": "POST_1tp4ubc",
-          "sentiment": "suggestion",
+          "sentiment": "negative",
           "tags": [
             "equipment",
             "content"
@@ -209,12 +303,22 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp4ubc/random_more_sackaxeflash_upgrades_i_thought_of/",
           "originalText": "[Post] Random more sack/axe/flash upgrades i thought of. \\- Combat Axe: \\+ Double the attack rate of a normal axe \\+ Takes 3 hit to take down a tree \\+ Same tier as Strong Axe \\- Vacume Sack \\+ 20 Sack Slots \\+ Holding F allows you to suck any items and stuff (including stuff like stews and bands stored in your inv automatically) in a cone shaped Area (similar to Old Flash) \\+ Same tier as Big sack or smt i forgo- \\- Lantern: \\+ 75% Capacity \\+ Lights in a circle area around you (about 2/3 as long as the Old Flash cone) \\+ Same tier as Strong Flashlight.",
           "translatedText": "玩家提出战斗斧、吸尘背包、环形灯笼等装备升级，希望通过更多道具层级丰富中后期目标。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          },
+          "evidenceScore": 74,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-oo8pl1k",
           "redditId": "oo8pl1k",
-          "sentiment": "suggestion",
+          "sentiment": "positive",
           "tags": [
             "base-building",
             "usability"
@@ -224,12 +328,22 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tp8rhw/and_at_this_point_im_too_afraid_to_ask/oo8pl1k/",
           "originalText": "Mostly kids who want to explore without the friction. I don’t get mad about it anymore really. Would be nice if the devs added in some fences or something that do similar to shelf base without being ugly and clunky as hell My daughter stopped playing with me cause I stressed about the wood and the fire and stuff. These days if I ever join a public lobby I’m usually something like gifting elf or lumberjack",
           "translatedText": "玩家建议加入正式的围栏或栅栏，不要让玩家继续用丑且笨重的货架当墙。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 67,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-ommd1h5",
           "redditId": "ommd1h5",
-          "sentiment": "suggestion",
+          "sentiment": "neutral",
           "tags": [
             "onboarding",
             "team-rules"
@@ -239,12 +353,22 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1thdiny/is_there_a_list_of_dont/ommd1h5/",
           "originalText": "Don't build shelves Don't build anything before a bed Don't waste resources Don't try to explore at night when you keep dying If there's a cyborg on the team don't fuckin charge inside the stronghold and lure the enemy away when we could've fuckin shoot them from behind the wall (unless your a melee class like vampire or smth) Don't eat all the food Don't try to fight the cultist raid if your not good at fighting just run around the outside of the camp while the fighter takes care of them Don't steal other people's pelt DON'T BUILD SHELVES WALLS That's it ig",
           "translatedText": "玩家总结路人局禁忌：不要乱建货架、不要先建非床设施、不要浪费资源、不要夜间无脑探索，说明游戏需要更强的协作规则提示。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-onupw3s",
           "redditId": "onupw3s",
-          "sentiment": "neutral",
+          "sentiment": "suggestion",
           "tags": [
             "guide",
             "hard-mode"
@@ -254,7 +378,17 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnl8kn/does_anybody_know_how_to_get_this_badge/onupw3s/",
           "originalText": "Hard mode You will need to destroyed corrupt Vines that are around the map, you will receive a tracking device telling you where they are, failing to destroy the vines will cause a variety of debuffs including destroying food and no passive healing, I've done it solo, but I would honestly recommend bringing a friend with you so that way you're not spending the whole game fighting off corrupt Vines.",
           "translatedText": "玩家解释困难模式徽章需要摧毁地图上的腐化藤蔓，属于有信息量的攻略型讨论，可作为背景噪声保留。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.7,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 2
+          },
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true
         },
         {
           "id": "f99-hist-ollo5mr",
@@ -269,14 +403,608 @@
           "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tc5sfg/have_you_noticed_these/ollo5mr/",
           "originalText": "It’s the kiwis homes, like how bunnies have the little burrows",
           "translatedText": "玩家解释地图边缘的树桩结构可能是 kiwi 的家，属于世界观和地图细节讨论，不直接进入决策报告。",
-          "usedInReport": false
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 51
+        },
+        {
+          "id": "f99-hist-post_1tmbrdh",
+          "redditId": "POST_1tmbrdh",
+          "sentiment": "neutral",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 61,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tmbrdh/playing_with_kids_is_not_for_the_weak/",
+          "originalText": "[Post] playing with kids is not for the weak 🫠. like taking my medkits from me and not even reviving wasn’t enough, bro threw me into the volcano 💀 kudos to flicks tho for bringing me back and placing me onto a bed w the rest of the dead 🤣",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tnskpt",
+          "redditId": "POST_1tnskpt",
+          "sentiment": "positive",
+          "tags": [
+            "teamwork",
+            "base-building",
+            "event"
+          ],
+          "score": 61,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnskpt/nobody_joined_my_lobby_except_one_random_legend/",
+          "originalText": "[Post] Nobody joined my lobby… except one random legend. https://preview.redd.it/z6kcgyvfzd3h1.png?width=1920&format=png&auto=webp&s=f8dd7dcca51dfac0d6d614173aaada60e8710dfa Started a game looking for 3 players and nobody joined 😭 But when I loaded in there was one random person with me so I thought screw it, lets ride it out. We ended up surviving over 800 nights together before they finally left. They built this base and honestly if you’re on this subreddit, it was a good run 🫡 Now it’s nearly 3am and I need sleep >.< PS - We somehow made the perfect team 😭 I handled stuff like stronghold, cultist king, caves and frog king while they kept the base running, built everything and made sure",
+          "translatedText": "玩家建议优化界面提示或信息展示，让新手更容易理解规则。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1th7esu",
+          "redditId": "POST_1th7esu",
+          "sentiment": "negative",
+          "tags": [
+            "event",
+            "resource"
+          ],
+          "score": 45,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1th7esu/frog_event/",
+          "originalText": "[Post] FROG EVENT 😡. am i the only who hates the frogs? like what do they even do, bad loot, annoying, easy to kill, you dont wven get any good items. it jus feel really annoying, like its the worst part of the game when it says “something is emerging from the pond”. idk she really wanted to get ts off my chest. please tell me someone relates to this. 🫠",
+          "translatedText": "玩家认为某些事件或敌人设计带来过强挫败感，尤其在状态不好时体验很差。",
+          "usedInReport": false,
+          "ruleConfidence": 0.85,
+          "evidenceScore": 100,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 4,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tog33r",
+          "redditId": "POST_1tog33r",
+          "sentiment": "neutral",
+          "tags": [
+            "event"
+          ],
+          "score": 44,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tog33r/why_do_people_survive_thousands_of_nights/",
+          "originalText": "[Post] Why do people survive thousands of nights?. It usually takes over 8 hours to get 1k days, at least 16 hours to get 2k days, around 2 real life days to get 5000 days ingame and the world record (55k) took 19-20 days IRL to complete. I get that it's almost always done with autoclickers, but how does having a bigger number above your head in the lobby motivate people to stay on the game for multiple days, unable to use that device (unless there's something I don't know that allows the autoclicker to keep running on Roblox while you use another tab) and having to check they're alive every so often. Also, people with thousands of days sometimes do it multiple times to beat their record and",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tomb35",
+          "redditId": "POST_1tomb35",
+          "sentiment": "neutral",
+          "tags": [
+            "base-building",
+            "progression"
+          ],
+          "score": 41,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tomb35/did_i_discover_a_new_meta/",
+          "originalText": "[Post] Did i discover a new meta?. So dad and I got to a late round and were still climbing because of something we discovered about how we made our base. After our dozen traps got destroyed we decided to elongate the entrance and add shelves to try to make a shooting range as they approached. But since the day we built that the cultists havent come anywhere near our base they just spawn in a circle around the camp and stand there. So once daytime hits we just go for a walk and bonk them all. Has this happened to someone before?",
+          "translatedText": "玩家建议增加新内容、新功能或更多可玩要素，丰富中后期目标。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tlutee",
+          "redditId": "POST_1tlutee",
+          "sentiment": "neutral",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 39,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tlutee/in_that_order/",
+          "originalText": "[Post] IN THAT ORDER. Idk bout yall but I have to have it in this specific order and it really pisses me off when people do it outta order to the point I’ll leave 💀 My logic: map goes first to fill that empty space then compass and sundial LAST because you can see the time better.. when you put sundial first or second your health bar blocks it same if you put compass first, your health bar will block the top of the compass so you won’t be able to see some of it Btw idk if it’s because I play on mobile but this is my pet peeve aside from the shelfers lol",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tod64t",
+          "redditId": "POST_1tod64t",
+          "sentiment": "suggestion",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 32,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tod64t/what_do_you_think/",
+          "originalText": "[Post] What do you think?. My son bought himself the plushie earlier this year, and I was looking to learn how to make models for 3d printing, so I decided to try to make this for him. I need to match the colours a little better with the paint, but what do you think of the outcome?",
+          "translatedText": "玩家提出了具体的玩法改进建议，希望后续版本能有所优化。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "f99-hist-post_1tcn88o",
+          "redditId": "POST_1tcn88o",
+          "sentiment": "positive",
+          "tags": [
+            "teamwork",
+            "event",
+            "progression"
+          ],
+          "score": 31,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tcn88o/what_is_this/",
+          "originalText": "[Post] what is this 😭. my friend and I were playing tonight and the alien event happened on day 3. On day 103 the carnival came and we were blocked from reaching the end of the maze by THIS ominous green glowing structure… anyone know what it is? \\+extra: our very cool xxxl clownfish couch :)",
+          "translatedText": "玩家分享通关或达成长期目标的成就感，认为付出的时间最终都得到了回报。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tmt29t",
+          "redditId": "POST_1tmt29t",
+          "sentiment": "neutral",
+          "tags": [
+            "teamwork",
+            "event"
+          ],
+          "score": 30,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tmt29t/looking_for_other_adults_to_play_with/",
+          "originalText": "[Post] Looking for other adults to play with. 25F Australian & after some adult friends to play 99 nights with! I usually just do speed runs these days after work, but don’t mind the occasional long run. Don’t care about days, just that you’ll stick around for longer than 10 minutes 😆",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tg8k9w",
+          "redditId": "POST_1tg8k9w",
+          "sentiment": "neutral",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 29,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tg8k9w/save_no_kids_no_meat_diet/",
+          "originalText": "[Post] Save no kids | no meat diet. Finally did the save no kids and no meat quest. Took forever !",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 60,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tc5sfg",
+          "redditId": "POST_1tc5sfg",
+          "sentiment": "neutral",
+          "tags": [
+            "equipment"
+          ],
+          "score": 28,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tc5sfg/have_you_noticed_these/",
+          "originalText": "[Post] Have you noticed these?. They’re in the very edge portion of the map, like near where you find the kiwis. A random tree stump with a black square on it. You can’t interact with it with an axe. Am I missing something?",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tjkue4",
+          "redditId": "POST_1tjkue4",
+          "sentiment": "suggestion",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 28,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tjkue4/what_happened_to_the_updates/",
+          "originalText": "[Post] What happened to the updates?. The developers of the game went on a break almost a month ago and that is why there has been no new updates. Just wanted to let y'all know.",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 94,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "f99-hist-post_1tjf6ec",
+          "redditId": "POST_1tjf6ec",
+          "sentiment": "neutral",
+          "tags": [
+            "progression"
+          ],
+          "score": 28,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tjf6ec/i_finally_got_my_alien_class_so_freaking_happy/",
+          "originalText": "[Post] I finally got my Alien Class! So freaking happy! 💕. Hey guys! So freaking happy I got my alien class when it was in stock a few days ago. I waited for so long for it to come in stock! I was at 96 diamonds when it showed up in stock and just needed 4 more to get him! I am So pumped. You have no idea because I waited so long for him to be available!!! 😬 I also unlocked all levels for both my Alien Class and Scavenger Class too. We are about to cook guys! Next thing I am saving up for is Cyborg and Assassin. That will probably take me a long time to grind that many diamonds but I am for sure going for it! Cyborg is 600 diamonds and assassin is 500 diamonds. It will take a while but wil",
+          "translatedText": "玩家建议增加新内容、新功能或更多可玩要素，丰富中后期目标。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-ommcf76",
+          "redditId": "ommcf76",
+          "sentiment": "neutral",
+          "tags": [
+            "base-building"
+          ],
+          "score": 26,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1thdiny/is_there_a_list_of_dont/ommcf76/",
+          "originalText": "The donts that bother me. 1. Bear traps at base 2. Shelves as a base 3. Stealing pelt trader items 4. Hogging crockpot and stealing all food. That’s about it",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 74,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tgxcts",
+          "redditId": "POST_1tgxcts",
+          "sentiment": "neutral",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 25,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tgxcts/phatmojo_mystery_minifigures_dlc_code/",
+          "originalText": "[Post] PhatMojo Mystery Minifigures DLC Code?. Does anyone know what these DLC Codes are supposed to do? We have submitted it, but we can't see any obvious changes to our daughter's account. If we at least knew what we are looking for, it would be easier to know if the code worked or not.",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1tmktf9",
+          "redditId": "POST_1tmktf9",
+          "sentiment": "positive",
+          "tags": [
+            "base-building"
+          ],
+          "score": 25,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tmktf9/items_from_spaceship_i_got_back_to_playing_btw/",
+          "originalText": "[Post] Items from spaceship (I got back to playing btw). Someone has shared on this sub a couple of months back that you could pick holograms and shelves from the Alien ships with the hammer and bring it back to your base. I tried it on my comeback game I played after two months, and it feels so cool to have these items in the base! 😄 Thank you to whoever it was that shared it. (I'm sorry I don't remember your user id!😭)",
+          "translatedText": "玩家提出了具体的玩法改进建议，希望后续版本能有所优化。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-on2ujga",
+          "redditId": "on2ujga",
+          "sentiment": "negative",
+          "tags": [
+            "event",
+            "stability"
+          ],
+          "score": 22,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tjkue4/what_happened_to_the_updates/on2ujga/",
+          "originalText": "Burn out A lot of pressure to offer weekly updates with an expectation that most will offer big changes to them game. It’s crazy cause most Roblox games that offer weekly updates get away with just decorating lobby and offering limited skins. 99 doesn’t do that but is called lazy if their update isn’t huge every time. I remember literally two days after Xmas update and after months and months of constant updates, they took one week off and YouTube was full of “is 99 nights dying?!?!?!” They had to push updates out way early before being tested, so updates were buggy and public lobbies a nightmare cause everyone ran off separate to try all the new content The game is now bloated and super lag",
+          "translatedText": "玩家吐槽路人队友不配合、提前退局或浪费资源，影响了团队生存体验。",
+          "usedInReport": false,
+          "ruleConfidence": 0.6499999999999999,
+          "evidenceScore": 100,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 2,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "f99-hist-oo12zh7",
+          "redditId": "oo12zh7",
+          "sentiment": "suggestion",
+          "tags": [
+            "event",
+            "resource"
+          ],
+          "score": 22,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tog33r/why_do_people_survive_thousands_of_nights/oo12zh7/",
+          "originalText": "I was really sick and was super locked in, had nothing better to do - I wanted to beat my own record of 1k nights. I didn't use an auto clicker and never have, I play on console. At one point, I'd continuously get into the upper 800 night range and my internet would drop me...this actually motivated me more to get to 1k - that's why I did it. I feel there's always something to do - even if it has been hours. (I also was able to take breaks still and do other things on PC/separate TVs.) I also think it's engagement if you're streaming (which I try to do/am working towards improving the set-up.)",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 100,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "f99-hist-ollvqea",
+          "redditId": "ollvqea",
+          "sentiment": "neutral",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 21,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tc5sfg/have_you_noticed_these/ollvqea/",
+          "originalText": "they are most useful for leveling up the taming flute. They are easy to tame & give a lot of experience points.",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 63,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1thahdi",
+          "redditId": "POST_1thahdi",
+          "sentiment": "neutral",
+          "tags": [
+            "teamwork",
+            "event",
+            "resource"
+          ],
+          "score": 21,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1thahdi/why_are_teammates_so_rude/",
+          "originalText": "[Post] Why are teammates so rude. I’m new to playing this game and have no irl friends that are into it so I usually run a group of 5 with randoms Today I ran a long game with a group, most of them ended up quitting eventually, but I actually got pretty far into the game this time! but I could’ve gotten further if it wasn’t for my RUDE teammate So it was just me and this other girl who knew EXACTLY what she was doing. She knew all the tricks so I was like heck yea. I was trying my best to help collect but I had the worst luck with chests and couldn’t get a good axe, good weapon, etc…. And none of the animals were dropping anything useful to trade. So I made it my job to collect scraps and fr",
+          "translatedText": "玩家建议增加新内容、新功能或更多可玩要素，丰富中后期目标。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 85,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 1,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-post_1toeyqp",
+          "redditId": "POST_1toeyqp",
+          "sentiment": "negative",
+          "tags": [
+            "teamwork"
+          ],
+          "score": 21,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1toeyqp/aita_for_using_someones_bandage_to_revive_tm8/",
+          "originalText": "[Post] AITA for using someone’s bandage to revive tm8. I was playing in a group of 3. One tm8 was very helpful in collecting materials and food, and we were working hand in hand together most of the time. My other teammate on the other hand, this girl, was exploring a lot and kept dying. I don’t rlly mind reviving people but it was like every 5-10 minutes lol. I used up all my bandages on her and didnt rlly say anything Anyway she died again and ofc my other tm8 died at the same time trying to save her. She dropped a bandage so I picked it up and healed the guy first. I told her I’d find another one and She got very upset, saying stuff like “I hate people like you blah blah” and “that was MY",
+          "translatedText": "玩家吐槽路人队友不配合、提前退局或浪费资源，影响了团队生存体验。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 100,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-onvscnh",
+          "redditId": "onvscnh",
+          "sentiment": "neutral",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 20,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tnq7nb/i_am_addicted/onvscnh/",
+          "originalText": "Wait till you see something out of the corner of your eye and think it’s a bandage or fuel canister 😆",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 61,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "f99-hist-on20uws",
+          "redditId": "on20uws",
+          "sentiment": "suggestion",
+          "tags": [
+            "general-discussion"
+          ],
+          "score": 19,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tjkue4/what_happened_to_the_updates/on20uws/",
+          "originalText": "People complained that there was too many updates and not enough fixes. So the devs listened.",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.7,
+          "evidenceScore": 72,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 2
+          }
+        },
+        {
+          "id": "f99-hist-post_1tftxzj",
+          "redditId": "POST_1tftxzj",
+          "sentiment": "neutral",
+          "tags": [
+            "teamwork"
+          ],
+          "score": 18,
+          "source": "r/99nightsintheforest historical snapshot",
+          "url": "https://www.reddit.com/r/99nightsintheforest/comments/1tftxzj/rest_in_peace/",
+          "originalText": "[Post] Rest in peace. May my friend rest in peace🙏 Cause of death: buried alive.",
+          "translatedText": "玩家分享了游戏中的经验、攻略或日常讨论，属于有参考价值的社区内容。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 52,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
         }
       ],
       "sentiment": {
-        "positive": 28,
-        "negative": 29,
-        "suggestion": 29,
-        "neutral": 14
+        "positive": 33,
+        "negative": 33,
+        "suggestion": 34,
+        "neutral": 0
       },
       "trend": [
         42,
@@ -306,34 +1034,68 @@
         "reddit": "https://www.reddit.com/r/99nightsintheforest/"
       },
       "summary": {
-        "overall": "历史 Reddit 快照显示，99 Nights in the Forest 的讨论重点集中在合作分工、资源维护、夜晚压力、公共房队友质量和中后期内容变化。正向反馈证明它的短局生存循环有很强黏性；负面与建议集中在路人局协作、事件挫败、关键物品被恶意带走和新手规则不清晰。",
+        "overall": "历史 Reddit 快照显示，该游戏合作生存、昼夜压力和资源分工很有吸引力，但公共房协作、事件挫败和反恶意机制必须重点处理。",
         "pros": [
-          "核心循环简单清楚：白天收集与建设，夜晚防守与应对突发风险，玩家很快能理解局内目标。",
-          "合作分工天然产生社交故事：有人守营地、有人找资源、有人探索，适合形成可传播的玩家经历。",
-          "完成长局或解锁关键目标能带来强成就感，评论中出现明显的上头、通关和挑战记录表达。"
+          "核心循环简单清楚：白天收集建设，夜晚防守应对风险，玩家很快能理解局内目标。",
+          "合作分工天然产生社交故事：守家、探索、搬运各有角色，适合形成可传播的玩家经历。",
+          "完成长局或解锁关键目标带来强成就感，评论中有明显的上头和通关记录表达。"
         ],
         "cons": [
-          "公共房队友不维护篝火、浪费资源、提前退游的问题非常集中，会直接破坏团队体验。",
-          "部分事件和敌人设计带来强挫败感，尤其在低血量、回营地、设备不稳定时更明显。",
-          "中后期目标依赖道具、事件和地图变化，如果更新不足，容易被玩家认为重复。"
+          "公共房队友不维护关键设施、浪费资源、提前退游的问题集中，直接破坏团队体验。",
+          "部分事件和敌人设计带来强挫败感，低血量回营地时更明显。",
+          "中后期目标依赖道具和事件，如果更新不足容易被玩家认为重复。"
         ],
         "suggestions": [
           "加入更明确的团队分工提示和关键规则提示，减少新手或路人局的资源浪费。",
           "为关键物品增加防恶意丢失机制，例如蓝图回收、离线掉落或工作台备份。",
-          "把高挫败事件拆成可预判、可反制的小挑战，降低纯惩罚感。",
-          "用更多中后期装备、营地设施和随机事件延长目标链。"
+          "把高挫败事件拆成可预判、可反制的小挑战，降低纯惩罚感。"
         ],
         "eggyIdeas": [
-          "可迁移“白天收集、夜晚防守”的节奏，但改成蛋仔派对更轻量的机关防守、道具协作和短局挑战。",
-          "保留多人分工价值，把守家、探索、搬运、修复、触发机关设计成不同蛋仔都能参与的任务。",
-          "把恐怖表达改写成轻紧张、可爱但有压力的派对危机，避免直接照搬森林恐怖题材。"
+          "可迁移「白天收集、夜晚防守」的节奏，但改成更轻量的机关防守、道具协作和短局挑战。",
+          "保留多人分工价值，把守家、探索、搬运、修复、触发机关设计成不同角色都能参与的任务。",
+          "把恐怖表达改写成轻紧张、可爱但有压力的派对危机，避免直接照搬恐怖题材。"
         ],
         "risks": [
-          "如果只复刻资源消耗和夜晚进攻，可能变成重复劳动，缺少蛋仔派对用户期待的变化和爽点。",
+          "如果只复刻资源消耗和夜晚进攻，可能变成重复劳动，缺少派对用户期待的变化和爽点。",
           "公共匹配下的协作失败会被玩家归因于系统设计，需要用任务分配、提示和补偿机制兜底。",
-          "关键物品、基地设施和成长线必须防止被单个玩家恶意破坏，否则负面情绪会集中爆发。"
+          "关键物品和成长线必须防止被单个玩家恶意破坏，否则负面情绪会集中爆发。"
         ],
         "decision": "建议进入低成本原型拆解：保留合作生存节奏和分工压力，弱化恐怖题材与长线惩罚，优先验证 5-8 分钟短局内的资源协作、防守事件和反恶意机制。"
+      },
+      "aiDailySummary": {
+        "positiveDrivers": [
+          "合作生存循环有黏性",
+          "资源分工产生社交故事",
+          "通关和挑战带来成就感"
+        ],
+        "negativeRisks": [
+          "公共房队友协作失败",
+          "部分事件挫败感强",
+          "中后期内容重复风险"
+        ],
+        "playerSuggestions": [
+          "加强反恶意机制",
+          "优化新手协作引导",
+          "扩展中后期装备线"
+        ],
+        "gameplaySignals": [
+          "白天收集夜晚防守节奏清晰",
+          "多人分工天然产生玩法差异",
+          "轻恐怖压力有记忆点"
+        ]
+      },
+      "aiMeta": {
+        "pipelineVersion": "1.0",
+        "dryRun": true,
+        "calibratedCount": 12,
+        "topEvidenceIds": [
+          "f99-hist-post_1tnq7nb",
+          "f99-hist-post_1tg7qha",
+          "f99-hist-post_1tnskpt",
+          "f99-hist-post_1tcn88o",
+          "f99-hist-post_1tp8rhw"
+        ],
+        "generatedAt": "2026-07-08T11:56:34.567Z"
       }
     },
     {
@@ -349,13 +1111,13 @@
       ],
       "genre": "时装 / 社交 / 评分",
       "heatScore": 84,
-      "sampleCount": 36,
-      "mentions": 246,
+      "sampleCount": 25,
+      "mentions": 446,
       "posts": 18,
       "comments": [
         {
           "id": "dti-c01",
-          "sentiment": "positive",
+          "sentiment": "neutral",
           "tags": [
             "avatar",
             "sharing"
@@ -365,11 +1127,18 @@
           "url": "https://www.reddit.com/",
           "originalText": "I like that every round gives a clear theme. Even if I lose, I still want to screenshot the outfit.",
           "translatedText": "我喜欢每一轮都有明确主题。即使输了，我也还是想给自己的造型截图。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 60
         },
         {
           "id": "dti-c02",
-          "sentiment": "negative",
+          "sentiment": "positive",
           "tags": [
             "voting",
             "fairness"
@@ -379,14 +1148,576 @@
           "url": "https://www.reddit.com/",
           "originalText": "The voting can feel random. Sometimes the best outfit does not win because friends vote for each other.",
           "translatedText": "投票有时感觉很随机。有时候最好的造型赢不了，因为朋友之间会互相投票。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 74,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true
+        },
+        {
+          "id": "dti-sim-c01",
+          "sentiment": "neutral",
+          "tags": [
+            "creativity",
+            "theme"
+          ],
+          "score": 32,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "The theme system is genius. Every round feels different because you have to think about the concept, not just put on the rarest items.",
+          "translatedText": "主题系统设计得很聪明。每一轮感觉都不一样，因为你需要思考概念而不只是堆砌稀有物品。",
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 69,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c02",
+          "sentiment": "neutral",
+          "tags": [
+            "social",
+            "sharing"
+          ],
+          "score": 26,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "My friend group plays this every weekend. We screenshot each other's outfits and vote honestly. It's become our go-to hangout game.",
+          "translatedText": "我和朋友们每个周末都玩。我们互相截图看对方的造型，认真投票。已经变成我们固定的聚会游戏了。",
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 68,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c03",
+          "sentiment": "positive",
+          "tags": [
+            "collection",
+            "progression"
+          ],
+          "score": 24,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Unlocking new clothing pieces is so satisfying. I log in every day just to check the shop rotation and see what's new.",
+          "translatedText": "解锁新衣服的成就感很强。我每天都上线看看商店刷新，期待有新东西。",
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 80,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c04",
+          "sentiment": "positive",
+          "tags": [
+            "avatar",
+            "self-expression"
+          ],
+          "score": 22,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "I love that you can make completely different aesthetics. One round goth, next round cottagecore. The wardrobe variety is impressive.",
+          "translatedText": "我喜欢可以打造完全不同的风格。上一局哥特风，下一局田园风。衣橱的丰富度让人惊喜。",
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 83,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c05",
+          "sentiment": "neutral",
+          "tags": [
+            "event",
+            "reward"
+          ],
+          "score": 19,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "The seasonal event items are actually worth grinding for. The limited sets feel special and don't come back too often.",
+          "translatedText": "季节活动的限定服装真的值得刷。限定时装很有收藏感，返场频率也不高。",
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 63,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c06",
+          "sentiment": "negative",
+          "tags": [
+            "ui",
+            "experience"
+          ],
+          "score": 17,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "The dressing room interface is really smooth. Swapping items and trying on full outfits is fast, no annoying loading screens.",
+          "translatedText": "换装间的界面很流畅。换单品和试穿整套都很快，没有烦人的加载等待。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 76,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c07",
+          "sentiment": "positive",
+          "tags": [
+            "community",
+            "inspiration"
+          ],
+          "score": 15,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Seeing what other people come up with is half the fun. I've discovered so many cool outfit ideas just from voting.",
+          "translatedText": "看别人的创意也是乐趣的一半。光是投票环节就让我学到了很多穿搭思路。",
+          "usedInReport": false,
+          "ruleConfidence": 0.6499999999999999,
+          "evidenceScore": 70,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 2,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c08",
+          "sentiment": "positive",
+          "tags": [
+            "casual",
+            "short-session"
+          ],
+          "score": 14,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Perfect game when you only have 10 minutes. Jump in, do a round, leave. No pressure and still feels rewarding.",
+          "translatedText": "只有十分钟的时候玩这个最合适。进去打一局就走，没压力但又有收获感。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 67,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c09",
+          "sentiment": "negative",
+          "tags": [
+            "voting",
+            "fairness"
+          ],
+          "score": 31,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Voting is so broken sometimes. The most creative outfit loses because people just vote for their friends or the most popular avatar.",
+          "translatedText": "投票有时候真的不公平。最有创意的造型反而输了，因为大家只投朋友或者人气高的玩家。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 83,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c10",
+          "sentiment": "neutral",
+          "tags": [
+            "monetization",
+            "paywall"
+          ],
+          "score": 28,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "So many good items are robux only. Free players barely have anything to work with after the first week.",
+          "translatedText": "好看的衣服基本都要氪。免费玩家玩一周之后就几乎没新东西可拿了。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 61,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c11",
+          "sentiment": "neutral",
+          "tags": [
+            "repetition",
+            "content"
+          ],
+          "score": 22,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "The themes start repeating way too fast. After a month of playing I feel like I've seen every theme multiple times.",
+          "translatedText": "主题重复得太快了。玩了一个月感觉每个主题都见过好多次。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 64,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c12",
+          "sentiment": "neutral",
+          "tags": [
+            "matching",
+            "wait-time"
+          ],
+          "score": 19,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Wait times during peak hours are ridiculous. Sometimes I sit in queue longer than the actual round takes.",
+          "translatedText": "高峰期排队时间太离谱了。有时候排队比玩一局的时间还长。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 60,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c13",
+          "sentiment": "negative",
+          "tags": [
+            "troll",
+            "low-effort"
+          ],
+          "score": 17,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Annoying when people don't even try and just wear default. It makes the whole round feel like a waste of time.",
+          "translatedText": "很烦那些完全不用心、穿初始服装就进来的人。整局都感觉浪费时间。",
+          "usedInReport": false,
+          "ruleConfidence": 0.6499999999999999,
+          "evidenceScore": 72,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 2,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c14",
+          "sentiment": "neutral",
+          "tags": [
+            "balance",
+            "rarity"
+          ],
+          "score": 15,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Rarer items almost always win regardless of how well they fit the theme. It discourages creativity when people just meta-stack.",
+          "translatedText": "稀有物品不管搭不搭主题基本都能赢。大家都堆稀有度，反而没人认真搞创意了。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 58,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c15",
+          "sentiment": "suggestion",
+          "tags": [
+            "social",
+            "friends"
+          ],
+          "score": 25,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "They should add a friend list inside the game so you can invite people directly instead of joining through Roblox.",
+          "translatedText": "应该在游戏里加好友系统，可以直接邀请，不用每次都从 Roblox 外面拉人。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 79,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "dti-sim-c16",
+          "sentiment": "suggestion",
+          "tags": [
+            "wardrobe",
+            "organization"
+          ],
+          "score": 23,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Please add outfit presets or a favorites system. Scrolling through everything every round takes forever.",
+          "translatedText": "求出套装预设或收藏功能。每局都要翻一遍所有衣服太费时间了。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 76,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "dti-sim-c17",
+          "sentiment": "neutral",
+          "tags": [
+            "voting",
+            "transparency"
+          ],
+          "score": 21,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Voting should show the theme again on the voting screen. A lot of people forget what the theme was by the end.",
+          "translatedText": "投票界面应该再显示一次主题。很多人到最后都忘了这局主题是什么。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 63,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c18",
+          "sentiment": "suggestion",
+          "tags": [
+            "content",
+            "male-outfits"
+          ],
+          "score": 18,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "There need to be more masculine and gender-neutral options. Most new releases feel like they're only for feminine avatars.",
+          "translatedText": "需要更多男装和中性风格的服装。新出的东西感觉基本都是偏向女性角色的。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 77,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "dti-sim-c19",
+          "sentiment": "neutral",
+          "tags": [
+            "progression",
+            "reward"
+          ],
+          "score": 16,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Winning should give more than just points. Maybe exclusive pieces for top voters or a ranking system with rewards.",
+          "translatedText": "赢了不应该只加分。可以给高排名专属服装，或者做带奖励的排位系统。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 56,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c20",
+          "sentiment": "neutral",
+          "tags": [
+            "guide",
+            "tips"
+          ],
+          "score": 14,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Pro tip: matching colors matters more than item rarity. A cohesive simple outfit usually beats a messy rare one.",
+          "translatedText": "小贴士：颜色搭配比物品稀有度更重要。一套协调的简约造型通常胜过堆砌的稀有乱搭。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 53,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c21",
+          "sentiment": "neutral",
+          "tags": [
+            "question",
+            "new-player"
+          ],
+          "score": 12,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "Does anyone know how often the shop rotates? I've been checking for three days and the same items are still there.",
+          "translatedText": "有人知道商店多久刷新一次吗？我看了三天还是同样的东西。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 50,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c22",
+          "sentiment": "positive",
+          "tags": [
+            "showcase",
+            "outfit-share"
+          ],
+          "score": 11,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "My space-themed outfit from yesterday's round. Not perfect but I was proud of how the helmet matched the boots.",
+          "translatedText": "分享昨天那局太空主题的造型。不算完美，但头盔和靴子的配色我自己很满意。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 62,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "dti-sim-c23",
+          "sentiment": "neutral",
+          "tags": [
+            "discussion",
+            "meta"
+          ],
+          "score": 10,
+          "source": "r/DressToImpressRoblox curated sample",
+          "url": "https://www.reddit.com/r/DressToImpressRoblox/",
+          "originalText": "What's everyone's most worn item? Mine is definitely the long coat — it works for like half the themes.",
+          "translatedText": "大家穿得最多的单品是什么？我肯定是那件长外套，一半的主题都能搭。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 43,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
         }
       ],
       "sentiment": {
-        "positive": 52,
-        "negative": 22,
-        "suggestion": 21,
-        "neutral": 5
+        "positive": 33,
+        "negative": 25,
+        "suggestion": 25,
+        "neutral": 17
       },
       "trend": [
         66,
@@ -415,29 +1746,68 @@
         "reddit": "https://www.reddit.com/r/DressToImpressRoblox/"
       },
       "summary": {
-        "overall": "玩家讨论集中在装扮表达、主题创意、评分公平性和服装更新。它适合研究社交表达和玩家创作欲，但直接复刻成本偏高。",
+        "overall": "Reddit 讨论显示，时装主题评分类游戏的核心吸引力在于创作表达与社交分享，玩家对主题挑战和造型展示有很强参与欲，但投票公平性和内容更新节奏是主要争议点。",
         "pros": [
-          "主题明确，玩家很快知道每局目标。",
-          "角色外观表达强，适合截图和社媒传播。",
-          "评分机制能制造讨论和争议。"
+          "主题挑战结构轻量清晰，每局有明确目标，短局体验完整。",
+          "角色外观表达和造型分享有强社交传播性，天然适合截图和社区二次传播。",
+          "服装收集和限定活动能驱动持续登录，形成稳定的日常留存节奏。"
         ],
         "cons": [
-          "评分公平性经常引发争议。",
-          "新服装和主题需要持续更新。",
-          "对美术内容供给依赖较强。"
+          "投票公平性争议频繁，熟人互投、人气碾压等问题会打击认真创作的玩家。",
+          "美术内容供给压力大，主题和服装更新不足时玩家很快会疲劳。",
+          "付费与免费服装差距明显，免费玩家后期可玩内容有限。"
         ],
         "suggestions": [
-          "增加更清晰的主题解释。",
-          "优化评分权重，减少纯人气投票偏差。",
-          "增加更多非付费可获得服装。"
+          "优化投票机制，增加主题权重或匿名投票，减少纯人气因素影响。",
+          "扩充免费可获取服装池，降低免费玩家的内容天花板。",
+          "增加套装预设、收藏和分类功能，提升换装效率和体验。"
         ],
         "eggyIdeas": [
-          "可借鉴主题挑战和短局投票，把装扮替换成蛋仔外观、动作和道具搭配。"
+          "可迁移主题挑战+短局投票结构，把时装替换为蛋仔外观、动作、道具搭配。",
+          "保留造型展示和社交分享环节，设计适合蛋仔风格的主题赛季。",
+          "把评分争议转化为趣味点，用更轻量、更娱乐化的投票方式降低挫败感。"
         ],
         "risks": [
-          "如果美术资源更新不足，玩家很快会疲劳。"
+          "美术资产更新需求高，如果供给跟不上会快速导致内容疲劳。",
+          "派对游戏用户对纯审美评分的接受度需要验证，可能需要加入更多玩法互动。",
+          "UGC 造型的质量参差，需要设计好审核和展示机制。"
         ],
-        "decision": "适合观察社交表达和主题挑战结构，暂不建议作为第一优先复刻对象。"
+        "decision": "建议作为社交表达类玩法参考：主题挑战和短局投票结构可迁移，但需适配蛋仔的轻量审美与互动风格，暂不建议作为核心玩法复刻。"
+      },
+      "aiDailySummary": {
+        "positiveDrivers": [
+          "主题挑战激发创作欲",
+          "造型分享带来社交传播",
+          "收集服装有持续动力"
+        ],
+        "negativeRisks": [
+          "投票公平性争议频繁",
+          "付费服装与免费差距大",
+          "主题重复导致疲劳"
+        ],
+        "playerSuggestions": [
+          "优化投票机制减少人情票",
+          "增加免费可获取服装",
+          "加入套装预设与收藏功能"
+        ],
+        "gameplaySignals": [
+          "短局主题评分结构轻量易上手",
+          "UGC 造型天然适合截图传播",
+          "评分争议反而是社区讨论燃料"
+        ]
+      },
+      "aiMeta": {
+        "pipelineVersion": "1.0",
+        "dryRun": true,
+        "calibratedCount": 12,
+        "topEvidenceIds": [
+          "dti-sim-c04",
+          "dti-sim-c09",
+          "dti-sim-c03",
+          "dti-sim-c15",
+          "dti-sim-c18"
+        ],
+        "generatedAt": "2026-07-08T11:56:27.999Z"
       }
     },
     {
@@ -452,13 +1822,13 @@
       ],
       "genre": "战斗 / 成长 / 收集",
       "heatScore": 77,
-      "sampleCount": 31,
-      "mentions": 211,
+      "sampleCount": 23,
+      "mentions": 372,
       "posts": 16,
       "comments": [
         {
           "id": "bf-c01",
-          "sentiment": "negative",
+          "sentiment": "neutral",
           "tags": [
             "grind",
             "new players"
@@ -468,14 +1838,549 @@
           "url": "https://www.reddit.com/",
           "originalText": "The grind is the main reason my newer friends quit. They like the idea but not the hours needed to catch up.",
           "translatedText": "刷取是我那些新朋友退坑的主要原因。他们喜欢这个概念，但不喜欢追赶所需的时间。",
-          "usedInReport": true
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          },
+          "evidenceScore": 62
+        },
+        {
+          "id": "bf-sim-c01",
+          "sentiment": "positive",
+          "tags": [
+            "combat",
+            "satisfaction"
+          ],
+          "score": 35,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "The combat feels really good once you get a good fruit. The combos are satisfying and PvP actually takes skill instead of just stats.",
+          "translatedText": "拿到好果实之后战斗手感真的不错。连招很爽，PVP 拼技术而不只是拼数值。",
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 83,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c02",
+          "sentiment": "positive",
+          "tags": [
+            "progression",
+            "milestone"
+          ],
+          "score": 30,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Reaching max level with my main fruit was one of the most satisfying grinds in Roblox. The power spike feels earned.",
+          "translatedText": "把主果实练满级是我在 Roblox 里最有成就感的事之一。那种强度跃升的感觉很真实。",
+          "usedInReport": true,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 79,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c03",
+          "sentiment": "suggestion",
+          "tags": [
+            "content",
+            "updates"
+          ],
+          "score": 27,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Updates are actually massive. Every few months there's a whole new island, new fruits, and new bosses. Never runs out of things to do.",
+          "translatedText": "每次更新量都很足。每隔几个月就有新岛屿、新果实、新 Boss，永远有事情做。",
+          "usedInReport": true,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 84,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "bf-sim-c04",
+          "sentiment": "neutral",
+          "tags": [
+            "collection",
+            "variety"
+          ],
+          "score": 24,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "There are so many fruits with completely different playstyles. You can main a sword one week and switch to a logia the next.",
+          "translatedText": "果实种类超多，玩法完全不同。这周玩剑，下周换自然系，新鲜感一直有。",
+          "usedInReport": true,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 66,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c05",
+          "sentiment": "positive",
+          "tags": [
+            "exploration",
+            "world"
+          ],
+          "score": 21,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "The world is huge and discovering new islands for the first time is always exciting. Love the sense of adventure.",
+          "translatedText": "地图很大，第一次发现新岛屿的感觉总是很激动。很喜欢这种冒险感。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 78,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c06",
+          "sentiment": "positive",
+          "tags": [
+            "social",
+            "crew"
+          ],
+          "score": 19,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Being in a crew makes the game 10x better. Raiding together and helping each other grind is where the real fun is.",
+          "translatedText": "加入海贼团之后游戏好玩十倍。一起打副本、互相带刷才是真正的乐趣。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 77,
+          "painPoint": "",
+          "opportunity": "规则初筛正面吸引力",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c07",
+          "sentiment": "positive",
+          "tags": [
+            "pvp",
+            "skill"
+          ],
+          "score": 17,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "PvP is deep. There's counterplay for everything and you can always get better. Watching pro fights is almost as fun as playing.",
+          "translatedText": "PVP 很有深度。什么都有反制手段，永远有提升空间。看高手对战几乎和自己玩一样有意思。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 77,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c08",
+          "sentiment": "neutral",
+          "tags": [
+            "grind",
+            "new-players"
+          ],
+          "score": 33,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "The early game grind is brutal. My friends quit within a week because it takes hours just to get your first decent fruit.",
+          "translatedText": "新手期太肝了。我朋友玩了不到一周就退了，光是拿到第一个像样的果实就要花好几个小时。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 65,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c09",
+          "sentiment": "suggestion",
+          "tags": [
+            "balance",
+            "p2w"
+          ],
+          "score": 29,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Game feels more pay to win every update. Gamepass fruits are consistently stronger than anything you can get for free.",
+          "translatedText": "每次更新都越来越像氪金游戏。付费果实永远比免费拿到的强一个档次。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 80,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "bf-sim-c10",
+          "sentiment": "neutral",
+          "tags": [
+            "toxicity",
+            "pvp"
+          ],
+          "score": 26,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Low level areas are full of max level players hunting noobs. Can't even quest in peace without getting one-shot.",
+          "translatedText": "低等级区全是满级大佬虐新手。做个任务都不安生，动不动就被秒。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 63,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c11",
+          "sentiment": "negative",
+          "tags": [
+            "server",
+            "performance"
+          ],
+          "score": 23,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Server lag is unbearable during events. Skills don't register, you teleport around, completely unplayable sometimes.",
+          "translatedText": "活动期间服务器卡得没法玩。技能放不出来，人物瞬移，有时候根本打不了。",
+          "usedInReport": false,
+          "ruleConfidence": 0.6499999999999999,
+          "evidenceScore": 79,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 2,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c12",
+          "sentiment": "negative",
+          "tags": [
+            "repetition",
+            "endgame"
+          ],
+          "score": 20,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Endgame gets boring fast. Once you're max level and have all the fruits it's just PvP and nothing else to work towards.",
+          "translatedText": "后期很快就无聊了。满级加全果实之后只剩 PVP，没有别的目标可追。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 80,
+          "painPoint": "规则初筛负面信号",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 1,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c13",
+          "sentiment": "neutral",
+          "tags": [
+            "trading",
+            "scam"
+          ],
+          "score": 18,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Trading system is a scam magnet. So many people get tricked because there's no proper secure trade interface.",
+          "translatedText": "交易系统就是骗子温床。因为没有安全交易界面，很多人都被骗过。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 59,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c14",
+          "sentiment": "suggestion",
+          "tags": [
+            "new-player",
+            "catch-up"
+          ],
+          "score": 28,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "They should add a catch-up mechanic or faster leveling for new players. The gap between new and veteran is way too big.",
+          "translatedText": "应该给新手加追赶机制或者加快升级速度。新人和老玩家的差距太大了。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 80,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "bf-sim-c15",
+          "sentiment": "suggestion",
+          "tags": [
+            "balance",
+            "pvp"
+          ],
+          "score": 25,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Fruits need better balance. Some are completely overpowered and everyone just uses the same 3 builds in PvP.",
+          "translatedText": "果实平衡性需要优化。有些强得离谱，PVP 里翻来覆去就是那三种套路。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 77,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "bf-sim-c16",
+          "sentiment": "suggestion",
+          "tags": [
+            "social",
+            "guild-content"
+          ],
+          "score": 22,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Need more crew exclusive content. Right now being in a crew doesn't give you much besides a tag and private server.",
+          "translatedText": "需要更多海贼团专属内容。现在加团除了个标签和私服基本没别的好处。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 79,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": true,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "bf-sim-c17",
+          "sentiment": "suggestion",
+          "tags": [
+            "ui",
+            "inventory"
+          ],
+          "score": 19,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Inventory management is terrible. Please add sorting, filters, or a way to favorite items so we can find things faster.",
+          "translatedText": "背包管理太烂了。求出排序、筛选或者收藏功能，找东西能快一点。",
+          "usedInReport": false,
+          "ruleConfidence": 0.55,
+          "evidenceScore": 78,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 1,
+            "suggestion": 1
+          }
+        },
+        {
+          "id": "bf-sim-c18",
+          "sentiment": "positive",
+          "tags": [
+            "pve",
+            "raid"
+          ],
+          "score": 17,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "More PvE raids and boss fights would be great. The game focuses so much on PvP that co-op content feels like an afterthought.",
+          "translatedText": "多出点 PVE 副本和 Boss 战就好了。游戏太侧重 PVP，合作内容感觉像是随便做的。",
+          "usedInReport": false,
+          "ruleConfidence": 0.5,
+          "evidenceScore": 76,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 1,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c19",
+          "sentiment": "neutral",
+          "tags": [
+            "guide",
+            "beginner-tips"
+          ],
+          "score": 16,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "For new players: focus on getting a logia fruit first. It makes leveling so much faster because you're immune to basic NPC attacks.",
+          "translatedText": "新手建议先搞个自然系果实。免疫普通 NPC 攻击，升级速度快很多。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 61,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c20",
+          "sentiment": "neutral",
+          "tags": [
+            "question",
+            "trade-value"
+          ],
+          "score": 14,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "What's a fair trade for a Dragon fruit? Been trying to get one but everyone asks for way more than I expected.",
+          "translatedText": "龙果大概什么价位能换到？想收一个，但每个人开价都比我想象的高。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 52,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c21",
+          "sentiment": "neutral",
+          "tags": [
+            "discussion",
+            "meta"
+          ],
+          "score": 12,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "What's the current meta for bounty hunting? Coming back after 6 months and everything feels different.",
+          "translatedText": "现在刷赏金的主流配置是什么？退坑半年回来感觉全变了。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 47,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
+        },
+        {
+          "id": "bf-sim-c22",
+          "sentiment": "neutral",
+          "tags": [
+            "showcase",
+            "progress"
+          ],
+          "score": 11,
+          "source": "r/bloxfruits curated sample",
+          "url": "https://www.reddit.com/r/bloxfruits/",
+          "originalText": "Finally hit 10M bounty after 3 months. Not the highest but proud of how far I've come since starting.",
+          "translatedText": "玩了三个月终于打到一千万赏金了。不算最高，但从开局走到现在自己挺满意的。",
+          "usedInReport": false,
+          "ruleConfidence": 0.2,
+          "evidenceScore": 45,
+          "painPoint": "",
+          "opportunity": "",
+          "aiCalibrated": false,
+          "ruleScores": {
+            "positive": 0,
+            "negative": 0,
+            "suggestion": 0
+          }
         }
       ],
       "sentiment": {
-        "positive": 40,
-        "negative": 38,
-        "suggestion": 17,
-        "neutral": 5
+        "positive": 33,
+        "negative": 17,
+        "suggestion": 33,
+        "neutral": 17
       },
       "trend": [
         81,
@@ -504,26 +2409,68 @@
         "reddit": "https://www.reddit.com/r/bloxfruits/"
       },
       "summary": {
-        "overall": "玩家讨论集中在成长路线、战斗体验、更新节奏和刷取压力。优点是目标长期明确，缺点是新手和轻度用户门槛较高。",
+        "overall": "玩家讨论集中在战斗手感、成长路线、刷取压力和平衡性。游戏的长线目标和收集体系很成熟，但新手门槛高、付费优势明显是核心争议。",
         "pros": [
-          "长线成长目标明确。",
-          "收集和战斗组合带来持续动力。"
+          "长线成长目标清晰，等级、果实、装备多层目标链驱动长期留存。",
+          "战斗连招和 PVP 对抗有深度，熟练后有明显的技巧成就感。",
+          "版本更新内容量大，新岛屿、新果实、新 Boss 持续供给新目标。"
         ],
         "cons": [
-          "刷取压力大。",
-          "新手追赶成本高。"
+          "新手期刷取压力极大，新玩家追赶成本高，容易在前几小时流失。",
+          "高等级玩家在低等级区虐新手，破坏新手区体验和公平感。",
+          "付费果实强度优势明显，存在 pay-to-win 争议。"
         ],
         "suggestions": [
-          "降低早期重复刷取。",
-          "强化阶段性目标奖励。"
+          "增加新手追赶机制或加速升级路径，降低前期重复刷取感。",
+          "优化果实平衡性，减少少数强势套路垄断 PVP 的情况。",
+          "增加海贼团专属合作内容，强化社交黏着和团队目标。"
         ],
         "eggyIdeas": [
-          "可借鉴长期成长和能力收集，但不建议照搬重度刷取。"
+          "可借鉴能力收集和成长解锁的结构，但大幅压缩时长，做成短局内的技能拾取与进化。",
+          "把 PVP 对抗改造成更娱乐化的派对乱斗，降低挫败感、增加随机性。",
+          "保留版本更新驱动新目标的节奏，但用赛季制而非永久长线的方式适配派对用户。"
         ],
         "risks": [
-          "与蛋仔派对轻量体验差异较大。"
+          "重度成长和刷取与蛋仔派对的轻量定位差异较大，直接照搬会劝退核心用户。",
+          "PVP 平衡维护成本高，派对游戏用户对平衡性容忍度可能更低。",
+          "长线目标需要持续内容供给，对更新节奏要求很高。"
         ],
-        "decision": "适合拆解成长系统，不适合直接复刻为核心玩法。"
+        "decision": "适合拆解成长收集和战斗反馈结构作为参考，不建议直接复刻核心玩法。可提取短局能力进化的思路用于派对模式。"
+      },
+      "aiDailySummary": {
+        "positiveDrivers": [
+          "战斗连招手感爽快",
+          "长线成长目标清晰",
+          "果实收集带来多样性"
+        ],
+        "negativeRisks": [
+          "新手期刷取压力过大",
+          "PVP 环境与高等级碾压",
+          "付费强度优势明显"
+        ],
+        "playerSuggestions": [
+          "降低新手追赶成本",
+          "优化果实平衡性",
+          "增加安全区与新手保护"
+        ],
+        "gameplaySignals": [
+          "收集+战斗双驱动留存结构成熟",
+          "海贼团社交强化长期黏着",
+          "版本更新持续供给新目标"
+        ]
+      },
+      "aiMeta": {
+        "pipelineVersion": "1.0",
+        "dryRun": true,
+        "calibratedCount": 12,
+        "topEvidenceIds": [
+          "bf-sim-c03",
+          "bf-sim-c01",
+          "bf-sim-c12",
+          "bf-sim-c09",
+          "bf-sim-c14"
+        ],
+        "generatedAt": "2026-07-08T11:56:31.260Z"
       }
     }
   ]

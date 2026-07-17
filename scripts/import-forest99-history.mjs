@@ -9,7 +9,10 @@ const rootDir = join(__dirname, "..");
 const insightsPath = join(rootDir, "data", "insights.json");
 
 const defaultHistoryDir = "C:/Users/gaoyucheng01/forest99-monitor";
-const historyDir = resolve(process.env.FOREST99_HISTORY_DIR ?? defaultHistoryDir);
+const handoffHistoryDir = resolve(rootDir, "..", "..", "02-forest99-history-data", "forest99-monitor");
+const historyDir = resolve(
+  process.env.FOREST99_HISTORY_DIR ?? (existsSync(handoffHistoryDir) ? handoffHistoryDir : defaultHistoryDir),
+);
 const dataDir = join(historyDir, "data");
 
 const curatedEvidence = [
