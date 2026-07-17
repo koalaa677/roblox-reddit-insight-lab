@@ -18,7 +18,13 @@ Roblox Reddit Insight Lab 是一个面向 Roblox 玩法研究和游戏出海研�
 
 从 AI 应用的角度看，这个项目重点展示的不是底层模型研究，而是如何把 AI 放进真实的营销传播和玩家洞察工作流里：把非结构化玩家评论清洗、分类、评分、总结，再转化成可以支持游戏出海和玩法研判的决策报告。
 
-当前版本重点不是搭建公司级后台系统，而是完成一个清晰、可信、可运行的产品闭环：
+### 场景背景
+
+Roblox 是一个游戏平台，平台内包含大量独立游戏，但并不提供足够集中的玩家评论入口。为了研究这些游戏的真实玩家反馈，本项目把 Reddit 上围绕 Roblox 游戏的帖子和评论作为外部社区信号来源。
+
+这个流程适合用于竞品分析：当一个团队正在研究与 Roblox 热门玩法相近的产品时，可以通过 Reddit 评论了解玩家喜欢什么、抱怨什么、希望增加什么，再把这些信息转化为产品优化和玩法验证方向。
+
+当前版本重点不是搭建大型后台系统，而是完成一个清晰、可信、可运行的产品闭环：
 
 - 用结构化数据快照驱动页面，保证公开站点稳定可访问。
 - 保留 Reddit 原评论、中文翻译、情绪分类、标签和来源链接。
@@ -264,6 +270,12 @@ The current version is intentionally static. It focuses on a complete and unders
 - Original Reddit comments, Chinese translations, sentiment labels, tags, and source links.
 - Explainable scoring for quickly comparing Roblox gameplay opportunities.
 - AI-assisted reports grounded in selected evidence instead of unsupported summaries.
+
+### Domain Context
+
+Roblox is a platform that hosts many individual games, but it does not provide a centralized comment layer for competitor research. This project uses Reddit posts and comments about Roblox games as an external player-feedback source.
+
+The workflow is designed for applied market analysis. When a team studies games with similar mechanics or audiences, Reddit comments can reveal what players enjoy, complain about, or ask for. AI then helps turn those scattered signals into product insights and validation directions.
 
 ### Applied AI Focus
 
