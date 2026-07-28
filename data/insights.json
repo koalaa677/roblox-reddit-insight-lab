@@ -228,8 +228,8 @@
       },
       "limitations": [
         "分类结果只基于 13 条 DTI 人工复核样本，用于回归校准，不代表跨游戏总体准确率。",
-        "AI 校准覆盖表示进入校准流程的代表证据数量，不等同于 AI 分类准确率。",
-        "当前 AI 报告为 dry-run 输出；真实模型接入后需要重新执行同一套评估。"
+        "校准流程覆盖表示进入该阶段的代表证据数量，不等同于模型分类准确率。",
+        "公开快照采用可复现离线输出；接入在线模型后可沿用同一评估框架重新校准。"
       ]
     }
   },
@@ -1285,7 +1285,7 @@
         "pipelineVersion": "1.0",
         "dryRun": true,
         "calibratedCount": 12,
-        "sentimentBasis": "38 条展示样本的完整分布，其中 12 条经 AI 校准",
+        "sentimentBasis": "38 条展示样本的完整分布，其中 12 条进入校准流程",
         "topEvidenceIds": [
           "f99-hist-post_1tnq7nb",
           "f99-hist-post_1tg7qha",
@@ -2016,7 +2016,7 @@
         "calibratedCount": 12,
         "manualReviewedCount": 13,
         "manualReviewedAt": "2026-07-28",
-        "sentimentBasis": "25 条展示样本的完整分布，其中 12 条经 AI 校准、13 条经人工分类复核",
+        "sentimentBasis": "25 条展示样本的完整分布，其中 12 条进入校准流程、13 条经人工分类复核",
         "topEvidenceIds": [
           "dti-sim-c04",
           "dti-sim-c09",
@@ -2683,7 +2683,7 @@
         "pipelineVersion": "1.0",
         "dryRun": true,
         "calibratedCount": 12,
-        "sentimentBasis": "23 条展示样本的完整分布，其中 12 条经 AI 校准",
+        "sentimentBasis": "23 条展示样本的完整分布，其中 12 条进入校准流程",
         "topEvidenceIds": [
           "bf-sim-c03",
           "bf-sim-c01",

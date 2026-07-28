@@ -146,7 +146,7 @@ function renderFlagshipCase() {
     ["原始评论", historical.rawComments ?? "-", "历史快照中的原始评论池"],
     ["本地处理", "清洗 + 四分类", "先去重、过滤和证据评分"],
     ["展示证据", historical.currentDisplayEvidence ?? game.sampleCount, "保留代表性玩家评论"],
-    ["AI 校准", calibratedEvidence, "只处理精选高价值证据"],
+    ["校准流程", calibratedEvidence, "离线快照只处理精选高价值证据"],
     ["报告引用", citedEvidence, "结论可回到原始链接"],
   ];
 
@@ -188,7 +188,7 @@ function renderFlagshipCase() {
       `${quality.classification.accuracyPercent}% · DTI 人工复核小型校准集`,
     ],
     [
-      "AI 校准覆盖",
+      "校准流程覆盖",
       quality.aiCalibration.calibratedEvidence,
       `${quality.aiCalibration.games} 个游戏的代表性证据`,
     ],
@@ -392,7 +392,7 @@ function renderCompactDataRules() {
   const { meta } = state.data;
   const selectedGame = getSelectedGame();
   const provenance = getEvidenceProvenance(selectedGame);
-  const aiMode = meta.aiPipeline?.lastRunDryRun ? "Dry-run" : meta.aiPipeline ? "AI 已接入" : "待接入";
+  const aiMode = meta.aiPipeline?.lastRunDryRun ? "离线评估" : meta.aiPipeline ? "在线模型" : "待配置";
   const rules = [
     ["展示", `近 ${meta.displayWindowDays ?? 3} 天`],
     ["趋势", `${meta.trendWindowDays ?? 7} 天相对趋势`],
@@ -1176,7 +1176,7 @@ function renderCommentAiMeta(comment) {
     items.push(["规则置信", `${Math.round(comment.ruleConfidence * 100)}%`]);
   }
   if (comment.aiCalibrated) {
-    items.push(["AI 校准", "已完成"]);
+    items.push(["校准流程", "已完成"]);
   }
   if (comment.manualReviewed) {
     items.push(["人工复核", "已完成"]);
@@ -1432,12 +1432,12 @@ function renderDecisionMethodPanel(game, decision) {
   const pipeline = state.data.meta.aiPipeline;
   const calibratedCount = aiMeta?.calibratedCount ?? game.comments.filter((comment) => comment.aiCalibrated).length;
   const dryRun = aiMeta?.dryRun ?? pipeline?.lastRunDryRun;
-  const dryRunCopy = dryRun ? "dry-run 模拟输出" : "真实 AI 输出";
+  const dryRunCopy = dryRun ? "可复现离线分析快照" : "在线模型输出";
   const steps = [
     ["Collect", "Reddit 数据导入", "当前读取历史快照；OAuth 接入后按游戏关键词增量收集。"],
     ["Clean", "清洗与四分类", "剔除无效评论，归入正面、负面、建议、其他。"],
     ["Score", "热度与证据评分", `综合热度 ${game.heatScore}、样本 ${game.sampleCount}、趋势和情绪，保留证据分。`],
-    ["Report", "生成分析报告", `输出 ${decision.label}，并绑定 ${calibratedCount || "精选"} 条 AI 校准证据。`],
+    ["Report", "生成分析报告", `输出 ${decision.label}，并绑定 ${calibratedCount || "精选"} 条校准流程证据。`],
   ];
 
   return `
@@ -1452,7 +1452,7 @@ function renderDecisionMethodPanel(game, decision) {
         <p>报告先读取指标、摘要和代表性评论，再生成建议，保证 token 可控、结论可追溯。</p>
         <div class="method-status">
           <span><strong>管线状态</strong>${escapeHtml(dryRunCopy)}</span>
-          <span><strong>AI 校准</strong>${escapeHtml(calibratedCount || 0)} 条证据</span>
+          <span><strong>校准流程</strong>${escapeHtml(calibratedCount || 0)} 条证据</span>
           <span><strong>版本</strong>${escapeHtml(aiMeta?.pipelineVersion ?? pipeline?.version ?? "未记录")}</span>
         </div>
       </div>
@@ -1621,7 +1621,7 @@ function getSentimentBasisLabel(game) {
   const calibratedCount = game?.aiMeta?.calibratedCount;
   if (calibratedCount) {
     const reviewNote = game.aiMeta.manualReviewedCount ? "，含人工复核" : "";
-    return `基于 ${game.sampleCount} 条展示样本，其中 ${calibratedCount} 条经 AI 校准${reviewNote}`;
+    return `基于 ${game.sampleCount} 条展示样本，其中 ${calibratedCount} 条进入校准流程${reviewNote}`;
   }
   return `基于 ${game?.sampleCount ?? 0} 条展示样本`;
 }

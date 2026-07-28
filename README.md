@@ -47,7 +47,7 @@ Forest99 用一条完整证据链说明系统如何把历史社区数据转化�
 10 天历史快照 / 147 个帖子 / 1579 条评论
   -> 本地清洗、去重、规则四分类和证据评分
   -> 38 条展示证据
-  -> 12 条代表证据进入 AI 校准
+  -> 12 条代表证据进入校准流程
   -> 6 条评论进入分析报告引用
   -> 形成玩法机会、主要风险和 5-8 分钟原型验证建议
 ```
@@ -87,7 +87,7 @@ Forest99 用一条完整证据链说明系统如何把历史社区数据转化�
 - Dress To Impress：25 条策展样本，仅保留社区入口，不宣称逐条原帖可追溯。
 - Blox Fruits：23 条策展样本，仅保留社区入口，不宣称逐条原帖可追溯。
 
-看板和报告中的情绪百分比基于全部展示样本，其中每个游戏有 12 条代表证据经过 AI 校准；页面会直接标出完整样本数和校准数。
+看板和报告中的情绪百分比基于全部展示样本，其中每个游戏有 12 条代表证据进入校准流程；页面会直接标出完整样本数和校准数。
 
 Forest99 已接入历史 Reddit public JSON 快照。旧监控任务累计保留：
 
@@ -106,11 +106,11 @@ Forest99 已接入历史 Reddit public JSON 快照。旧监控任务累计保留
 仓库包含一个可重复运行的小型质量评估，用于检查当前规则分类器和证据数据契约：
 
 - 规则分类核验：DTI 的 13 条人工复核样本中，当前分类器匹配 12 条，结果为 92.3%。
-- AI 校准覆盖：3 个游戏共 36 条代表证据进入校准流程，每个游戏 12 条。
+- 校准流程覆盖：3 个游戏共 36 条代表证据进入校准流程，每个游戏 12 条。
 - 证据契约：评论 ID、样本数、情绪比例、AI 代表证据 ID、报告引用和来源边界共 7 项检查全部通过。
 - 历史链接覆盖：Forest99 的 38/38 条展示证据和 6/6 条报告引用均保留逐条 Reddit 链接。
 
-13 条人工复核样本只用于小型回归校准，不代表跨游戏模型总体准确率；AI 校准覆盖也不等于 AI 分类准确率。真实模型接入后需要重新执行同一套评估。
+公开快照采用可复现离线输出。13 条人工复核样本只用于小型回归校准，不代表跨游戏模型总体准确率；校准流程覆盖也不等于模型分类准确率。接入在线模型后可沿用同一评估框架重新校准。
 
 ```bash
 # 只预览评估结果
@@ -172,8 +172,8 @@ AI 管线的目标是控制 token 成本，同时保留决策质量和证据可�
   -> 本地清洗与去重
   -> 规则四分类：正面 / 负面 / 建议 / 其他
   -> 证据分计算
-  -> 只选择高价值样本进入 AI
-  -> AI 校准、摘要和报告生成
+  -> 只选择高价值样本进入校准阶段
+  -> 校准、摘要和报告生成（离线与在线共用接口）
   -> 写回 data/insights.json
 ```
 
@@ -197,7 +197,7 @@ data/pipeline-config.json
 
 ```text
 scripts/ai-analyze.mjs
-  -> 主入口：清洗 -> 规则分类 -> AI 校准 -> 日摘要 -> 决策报告
+  -> 主入口：清洗 -> 规则分类 -> 校准阶段 -> 日摘要 -> 决策报告
 
 scripts/lib/cleaner.mjs
   -> 评论清洗、去重、证据分计算
@@ -206,7 +206,7 @@ scripts/lib/rule-classifier.mjs
   -> 基于关键词的四分类初筛
 
 scripts/lib/ai-client.mjs
-  -> OpenAI 兼容 API 封装，支持 dry-run
+  -> OpenAI 兼容 API 封装，支持可复现离线评估回退
 
 scripts/evaluate-analysis-quality.mjs
   -> 分类校准与证据数据契约评估
@@ -221,7 +221,7 @@ node scripts/ai-analyze.mjs --game forest99
 # 写回 data/insights.json
 node scripts/ai-analyze.mjs --game forest99 --write
 
-# 强制 dry-run，无 API key 时也可跑通流程
+# 强制离线评估模式（参数名保留为 --dry-run）
 node scripts/ai-analyze.mjs --game forest99 --dry-run
 ```
 
@@ -233,7 +233,7 @@ AI_API_TOKEN=      # API Key
 AI_MODEL=          # 模型名称，默认 gpt-4o-mini
 ```
 
-未配置 API Key 时，脚本会进入 dry-run 模式，用内置模拟输出验证完整流程和前端展示。
+未配置 API Key 时，脚本使用内置的可复现离线输出验证完整流程和前端展示，公开快照无需上传任何模型凭据。
 
 ### 项目结构
 
@@ -294,7 +294,7 @@ docs/deployment-guide.md
 ### Roadmap
 
 - 接入 Reddit OAuth Data API，支持指定 subreddit 和游戏关键词采集。
-- 使用真实 AI API 小样本验证分类、摘要和报告质量。
+- 补充在线模型小样本对照评估，记录分类、摘要和报告质量。
 - 扩大人工标注评估集，补充第二个真实历史或授权数据案例。
 - 增加数据新鲜度指标，例如抓取量、过滤量和引用证据数。
 - 扩展 Roblox 侧信号，例如在线人数、访问量、收藏量和更新频率。
@@ -342,7 +342,7 @@ Forest99 demonstrates the full path from historical community data to a traceabl
 10-day snapshot / 147 posts / 1,579 comments
   -> local cleaning, deduplication, rule classification, and evidence scoring
   -> 38 displayed evidence records
-  -> 12 representative records calibrated by AI
+  -> 12 representative records enter the calibration stage
   -> 6 comments cited in the decision report
   -> gameplay opportunities, risks, and a 5-8 minute prototype test
 ```
@@ -382,7 +382,7 @@ Evidence provenance is explicit in the current snapshot:
 - Dress To Impress: 25 curated samples with a community entry point, but no per-comment source links.
 - Blox Fruits: 23 curated samples with a community entry point, but no per-comment source links.
 
-Sentiment percentages in the dashboard and report use the full displayed sample. Twelve representative records per game receive AI calibration, and the interface labels both counts.
+Sentiment percentages in the dashboard and report use the full displayed sample. Twelve representative records per game enter the calibration stage, and the interface labels both counts.
 
 Forest99 is backed by a historical Reddit public JSON snapshot. The previous monitor retained:
 
@@ -401,11 +401,11 @@ The repository also includes a low-volume `public_json` probe script for validat
 The repository includes a repeatable small-sample evaluation for the current rule classifier and evidence contract:
 
 - Rule-classification check: 12 of 13 human-reviewed DTI samples match the current classifier, or 92.3%.
-- AI calibration coverage: 36 representative records across three games, 12 per game.
+- Calibration-stage coverage: 36 representative records across three games, 12 per game.
 - Evidence contract: all 7 checks pass for IDs, sample counts, sentiment totals, AI evidence IDs, report citations, direct links, and provenance boundaries.
 - Historical link coverage: 38/38 displayed Forest99 records and 6/6 report citations retain direct Reddit links.
 
-The 13 reviewed samples form a regression calibration set, not a cross-game model benchmark. AI calibration coverage is also not an AI accuracy claim. The same evaluation should be rerun after connecting a real model.
+The public snapshot uses reproducible offline outputs. The 13 reviewed samples form a regression calibration set, not a cross-game model benchmark, and calibration-stage coverage is not a model-accuracy claim. The same evaluation framework can be rerun after connecting an online model.
 
 ```bash
 # Preview the evaluation
@@ -468,7 +468,7 @@ raw comments
   -> rule-based classification
   -> evidence scoring
   -> selected high-value evidence only
-  -> AI calibration, summaries, and reports
+  -> calibration stage, summaries, and reports
   -> write back to data/insights.json
 ```
 
@@ -492,7 +492,7 @@ The repository includes a local AI analysis pipeline:
 
 ```text
 scripts/ai-analyze.mjs
-  -> main entry: clean -> rule classify -> AI calibrate -> daily summary -> decision report
+  -> main entry: clean -> rule classify -> calibration stage -> daily summary -> decision report
 
 scripts/lib/cleaner.mjs
   -> comment cleaning, deduplication, evidence scoring
@@ -501,7 +501,7 @@ scripts/lib/rule-classifier.mjs
   -> keyword-based four-bucket classification
 
 scripts/lib/ai-client.mjs
-  -> OpenAI-compatible API client with dry-run support
+  -> OpenAI-compatible API client with reproducible offline fallback
 
 scripts/evaluate-analysis-quality.mjs
   -> classification calibration and evidence-contract evaluation
@@ -516,7 +516,7 @@ node scripts/ai-analyze.mjs --game forest99
 # Write results back to data/insights.json
 node scripts/ai-analyze.mjs --game forest99 --write
 
-# Force dry-run mode
+# Force offline evaluation mode (the CLI flag remains --dry-run)
 node scripts/ai-analyze.mjs --game forest99 --dry-run
 ```
 
@@ -528,7 +528,7 @@ AI_API_TOKEN=      # API key
 AI_MODEL=          # model name, defaults to gpt-4o-mini
 ```
 
-Without an API key, the script uses dry-run outputs so the full pipeline and frontend rendering can still be tested.
+Without an API key, the script uses built-in reproducible offline outputs to validate the full pipeline and frontend without publishing model credentials.
 
 ### Project Structure
 

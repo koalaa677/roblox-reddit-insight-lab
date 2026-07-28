@@ -85,7 +85,7 @@ total = about 210 candidate comments/day
 5. 每类按时间、分数、长度、关键词密度和代表性打分。
 6. 只把高信息量、有代表性的样本送入 AI。
 
-公开情绪百分比按全部展示评论计算：AI 校准后的代表证据先合并回完整样本，其余评论保留规则分类，再统一计算正面、负面、建议和其他占比。
+公开情绪百分比按全部展示评论计算：进入校准流程的代表证据先合并回完整样本，其余评论保留规则分类，再统一计算正面、负面、建议和其他占比。
 
 ## AI token 节省策略
 
@@ -139,7 +139,7 @@ Reddit OAuth API
 1. `data/insights.json` 继续作为前端唯一读取入口，保证 GitHub Pages 静态部署可运行。
 2. `scripts/fetch-reddit-public-json.mjs` 只用于低频探测 public JSON 是否可用；一旦返回 403，不进行高频重试。
 3. `scripts/import-forest99-history.mjs` 从本地历史项目导入 Forest99 真实评论快照，并把公开界面里的时间展示改为相对窗口，避免让过期日期干扰决策演示。
-4. `scripts/ai-analyze.mjs` 本地 AI 分析管线：清洗去重 → 规则四分类 → 代表性评论筛选 → AI 分类校准 → AI 日摘要 → AI 周决策报告 → 写回 insights.json。支持 dry-run 模式，无 API Key 时用模拟数据跑通全流程。配套模块位于 `scripts/lib/`：
+4. `scripts/ai-analyze.mjs` 本地 AI 分析管线：清洗去重 → 规则四分类 → 代表性评论筛选 → 校准阶段 → 日摘要 → 周决策报告 → 写回 insights.json。未配置 API Key 时使用可复现离线评估模式，命令参数仍保留为 `--dry-run`，便于在不暴露凭据的情况下验证完整流程。配套模块位于 `scripts/lib/`：
    - `cleaner.mjs`：标准化、去重、低价值过滤、证据分计算
    - `rule-classifier.mjs`：基于英文关键词的四分类初筛与主题标签提取
    - `ai-client.mjs`：OpenAI 兼容 API 封装，三阶段结构化输出

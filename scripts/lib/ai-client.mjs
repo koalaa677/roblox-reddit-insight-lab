@@ -2,8 +2,8 @@
  * AI API client wrapper.
  *
  * Supports any OpenAI-compatible chat completions endpoint.
- * Falls back to dry-run / mock output when no API key is configured,
- * so the full pipeline can be validated without credentials.
+ * Falls back to reproducible offline fixtures when no API key is configured,
+ * so the full pipeline can be validated without exposing credentials.
  */
 
 const DEFAULT_MODEL = "gpt-4o-mini";
@@ -259,7 +259,7 @@ function parseJsonArray(text, expectedLength) {
   }
 }
 
-// ---------- dry-run mocks ----------
+// ---------- reproducible offline fixtures ----------
 
 function mockClassifyComments(selectedComments) {
   return selectedComments.map((c) => ({

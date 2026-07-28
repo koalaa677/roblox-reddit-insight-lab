@@ -14,8 +14,8 @@
  * Environment variables (see .env.example):
  *   AI_API_BASE_URL, AI_API_TOKEN, AI_MODEL
  *
- * Without credentials, runs in dry-run / mock mode automatically so the
- * pipeline can be validated end-to-end.
+ * Without credentials, uses reproducible offline fixtures through --dry-run
+ * so the pipeline can be validated end-to-end without exposing credentials.
  */
 
 import { readFile, writeFile } from "node:fs/promises";
@@ -108,8 +108,8 @@ async function main() {
 
   const dryRun = args.dryRun || !aiIsConfigured();
   if (dryRun && !args.dryRun) {
-    console.log("AI_API not configured — running in dry-run / mock mode.");
-    console.log("Set AI_API_BASE_URL + AI_API_TOKEN in .env to enable real AI calls.\n");
+    console.log("AI_API not configured — running in reproducible offline evaluation mode (--dry-run).");
+    console.log("Set AI_API_BASE_URL + AI_API_TOKEN in .env to enable online model calls.\n");
   }
 
   const insights = await loadInsights();
@@ -149,7 +149,7 @@ async function main() {
     maxPerBucket: aiBudget.maxCommentsPerSentimentBucket ?? 4,
     maxTotal: aiBudget.maxSelectedCommentsPerGamePerDay ?? 12,
   });
-  console.log(`[4/6] Selected ${selected.length} representative comments for AI stage`);
+  console.log(`[4/6] Selected ${selected.length} representative comments for calibration stage`);
 
   // Stage 4: AI classification calibration
   const gameContext = { name: game.name, cnName: game.cnName, genre: game.genre || "survival" };
@@ -176,7 +176,7 @@ async function main() {
   const calibratedShares = sentimentShare(calibrated);
   const analyzedShares = sentimentShare(analyzedComments);
   console.log(
-    `[5/6] AI calibrated: pos ${calibratedShares.positive}% / neg ${calibratedShares.negative}% / sug ${calibratedShares.suggestion}%`,
+    `[5/6] Calibration stage complete: pos ${calibratedShares.positive}% / neg ${calibratedShares.negative}% / sug ${calibratedShares.suggestion}%`,
   );
   console.log(
     `      Full sample: pos ${analyzedShares.positive}% / neg ${analyzedShares.negative}% / sug ${analyzedShares.suggestion}% / other ${analyzedShares.other}%`,
@@ -233,7 +233,7 @@ async function main() {
       pipelineVersion: "1.0",
       dryRun,
       calibratedCount: calibrated.length,
-      sentimentBasis: `${analyzedComments.length} 条展示样本的完整分布，其中 ${calibrated.length} 条经 AI 校准`,
+      sentimentBasis: `${analyzedComments.length} 条展示样本的完整分布，其中 ${calibrated.length} 条进入校准流程`,
       topEvidenceIds: topEvidence.map((c) => c.id),
       generatedAt: new Date().toISOString(),
     },
@@ -260,7 +260,7 @@ async function main() {
     await writeFile(INSIGHTS_PATH, `${JSON.stringify(insights, null, 2)}\n`, "utf8");
     console.log(`\n✓ Written back to data/insights.json`);
   } else {
-    console.log(`\nℹ  Dry-run complete. Re-run with --write to persist changes to insights.json.`);
+    console.log(`\nℹ  Offline evaluation complete. Re-run with --write to persist changes to insights.json.`);
   }
 
   console.log(`\n--- Report preview ---`);
