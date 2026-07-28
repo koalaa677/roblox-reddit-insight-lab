@@ -157,28 +157,35 @@ async function main() {
   // Merge AI results back into selected comments (keep original fields)
   const calibrated = selected.map((c, i) => {
     const ai = aiClassified[i] || {};
+    const preserveManualReview = c.manualReviewed && c.sentiment;
     return {
       ...c,
-      sentiment: ai.sentiment || c.sentiment,
+      sentiment: preserveManualReview ? c.sentiment : ai.sentiment || c.sentiment,
       tags: ai.tags?.length ? ai.tags : c.tags,
-      painPoint: ai.painPoint || "",
-      opportunity: ai.opportunity || "",
+      painPoint: preserveManualReview ? c.painPoint || "" : ai.painPoint || "",
+      opportunity: preserveManualReview ? c.opportunity || "" : ai.opportunity || "",
       evidenceScore: typeof ai.evidenceScore === "number" ? ai.evidenceScore : c.evidenceScore,
       aiCalibrated: true,
     };
   });
 
-  // Recalculate sentiment share after AI calibration (based on calibrated subset only)
+  // Keep the calibrated labels for selected comments, then merge them back into
+  // the full display sample before calculating the public sentiment split.
+  const analyzedComments = withScores.map((c) => calibrated.find((x) => x.id === c.id) || c);
   const calibratedShares = sentimentShare(calibrated);
+  const analyzedShares = sentimentShare(analyzedComments);
   console.log(
     `[5/6] AI calibrated: pos ${calibratedShares.positive}% / neg ${calibratedShares.negative}% / sug ${calibratedShares.suggestion}%`,
+  );
+  console.log(
+    `      Full sample: pos ${analyzedShares.positive}% / neg ${analyzedShares.negative}% / sug ${analyzedShares.suggestion}% / other ${analyzedShares.other}%`,
   );
 
   // Stage 5: AI daily summary (we treat the snapshot as one aggregated day)
   const metrics = {
     period: insights.meta.period || "snapshot",
     totalComments: withScores.length,
-    sentiment: calibratedShares,
+    sentiment: analyzedShares,
     topTags: topTags(calibrated),
   };
   const dailySummary = await aiGenerateDailySummary(gameContext, metrics, calibrated);
@@ -201,10 +208,7 @@ async function main() {
   // Build the updated game object (preserve existing fields, update analysis outputs)
   const updatedGame = {
     ...game,
-    comments: withScores.map((c) => {
-      // Find calibrated version if this comment was selected
-      const cal = calibrated.find((x) => x.id === c.id);
-      const merged = cal || c;
+    comments: analyzedComments.map((merged) => {
       // Map "other" -> "neutral" for frontend compatibility
       if (merged.sentiment === "other") {
         return { ...merged, sentiment: "neutral" };
@@ -212,7 +216,7 @@ async function main() {
       return merged;
     }),
     sampleCount: withScores.length,
-    sentiment: toFrontendSentiment(calibratedShares),
+    sentiment: toFrontendSentiment(analyzedShares),
     summary: {
       overall: report.overall || game.summary?.overall || "",
       pros: report.pros || game.summary?.pros || [],
@@ -224,9 +228,11 @@ async function main() {
     },
     aiDailySummary: dailySummary,
     aiMeta: {
+      ...game.aiMeta,
       pipelineVersion: "1.0",
       dryRun,
       calibratedCount: calibrated.length,
+      sentimentBasis: `${analyzedComments.length} 条展示样本的完整分布，其中 ${calibrated.length} 条经 AI 校准`,
       topEvidenceIds: topEvidence.map((c) => c.id),
       generatedAt: new Date().toISOString(),
     },

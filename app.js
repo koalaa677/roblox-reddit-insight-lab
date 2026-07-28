@@ -168,6 +168,7 @@ function renderDashboardVisuals() {
       </div>
       ${renderSentimentDonut(topGame.sentiment, topGame.heatScore)}
       <div class="donut-legend">${renderSentimentLegend(topGame.sentiment)}</div>
+      <p class="sentiment-basis">${escapeHtml(getSentimentBasisLabel(topGame))}</p>
     </article>
 
     <article class="visual-card visual-card-score">
@@ -198,7 +199,7 @@ function renderDashboardVisuals() {
       <div class="pipeline-dashboard">
         ${renderPipelineStep("有效样本", totalComments, "已过滤低价值短评")}
         ${renderPipelineStep("报告引用", quotedComments, "进入报告证据链")}
-        ${renderPipelineStep("数据来源", "历史快照", "保留可追溯评论证据")}
+        ${renderPipelineStep("数据来源", "混合快照", "历史快照与策展样本分级标注")}
       </div>
     </article>
 
@@ -277,13 +278,16 @@ function renderAnalysisSubnav() {
 function renderCompactDataRules() {
   const { meta } = state.data;
   const selectedGame = getSelectedGame();
+  const provenance = getEvidenceProvenance(selectedGame);
   const aiMode = meta.aiPipeline?.lastRunDryRun ? "Dry-run" : meta.aiPipeline ? "AI 已接入" : "待接入";
   const rules = [
-    ["窗口", `近 ${meta.displayWindowDays ?? 7} 天`],
+    ["展示", `近 ${meta.displayWindowDays ?? 3} 天`],
+    ["趋势", `${meta.trendWindowDays ?? 7} 天相对趋势`],
     ["更新", "脚本写回快照"],
     ["保留", "7 天内不清理"],
     ["AI", aiMode],
     ["证据", `${selectedGame?.sampleCount ?? 0} 条样本`],
+    ["来源", provenance.shortLabel],
   ];
 
   return `
@@ -721,6 +725,7 @@ function selectGame(gameId, scrollToAnalysis) {
   renderAnalysisSubnav();
   renderAnalysisMatches();
   renderSelectedGame();
+  renderDataRules();
   if (scrollToAnalysis) {
     $("#game-detail")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -755,7 +760,7 @@ function renderSelectedGame() {
   $("#tagRow").innerHTML = game.tags.map((tag) => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
 
   renderTrend(game.trend);
-  renderSentiment(game.sentiment);
+  renderSentiment(game.sentiment, game);
   renderComments(game);
   renderReport(game);
   renderDecisionReportNav();
@@ -769,6 +774,8 @@ function renderSourceLinks(game) {
     roblox: game.sourceLinks?.roblox ?? `https://www.roblox.com/search/experiences?keyword=${encodedName}`,
     reddit: game.sourceLinks?.reddit ?? `https://www.reddit.com/search/?q=${encodedName}%20Roblox&type=communities`,
   };
+  const provenance = getEvidenceProvenance(game);
+  const provenanceIcon = provenance.directLinks ? "badge-check" : "layers-3";
 
   $("#gameSourceLinks").innerHTML = `
     <a class="source-link" href="${escapeHtml(sourceLinks.roblox)}" target="_blank" rel="noreferrer">
@@ -787,6 +794,13 @@ function renderSourceLinks(game) {
       </span>
       <i data-lucide="external-link"></i>
     </a>
+    <div class="source-link provenance-note ${provenance.directLinks ? "is-traceable" : "is-curated"}">
+      <span class="source-link-icon"><i data-lucide="${provenanceIcon}"></i></span>
+      <span>
+        <strong>${escapeHtml(provenance.label)}</strong>
+        <small>${escapeHtml(provenance.description)}</small>
+      </span>
+    </div>
   `;
 }
 
@@ -845,8 +859,8 @@ function renderTrend(values) {
   `;
 }
 
-function renderSentiment(sentiment) {
-  $("#sentimentBars").innerHTML = Object.entries(sentiment)
+function renderSentiment(sentiment, game) {
+  const bars = Object.entries(sentiment)
     .map(([key, value]) => {
       const copy = sentimentCopy[key];
       return `
@@ -862,6 +876,7 @@ function renderSentiment(sentiment) {
       `;
     })
     .join("");
+  $("#sentimentBars").innerHTML = `${bars}<p class="sentiment-basis">${escapeHtml(getSentimentBasisLabel(game))}</p>`;
 }
 
 function renderSentimentDonut(sentiment, centerValue) {
@@ -1033,7 +1048,7 @@ function renderComment(comment, game) {
         <span>${escapeHtml(comment.source)}</span>
         <span>${comment.usedInReport ? "已被分析报告引用" : "补充样本"}</span>
         <span>${comment.tags.map((tag) => escapeHtml(tag)).join(" / ")}</span>
-        <a href="${comment.url}" target="_blank" rel="noreferrer">查看来源</a>
+        ${renderEvidenceSourceLink(comment)}
       </div>
     </article>
   `;
@@ -1049,6 +1064,9 @@ function renderCommentAiMeta(comment) {
   }
   if (comment.aiCalibrated) {
     items.push(["AI 校准", "已完成"]);
+  }
+  if (comment.manualReviewed) {
+    items.push(["人工复核", "已完成"]);
   }
   if (comment.painPoint) {
     items.push(["痛点", comment.painPoint]);
@@ -1236,6 +1254,11 @@ function renderDecisionReport(game) {
   const firstIdea = game.summary.eggyIdeas[0] ?? "先拆核心循环，再按蛋仔派对用户心智重写题材和表达。";
   const evidenceCount = game.comments.filter((comment) => comment.usedInReport).length;
   const evidenceBasis = formatEvidenceBasis(evidenceCount || evidence.length);
+  const provenance = getEvidenceProvenance(game);
+  const evidenceHeading = provenance.directLinks ? "原评论证据" : "评论样本证据";
+  const evidenceDescription = provenance.directLinks
+    ? `本报告引用 ${evidenceCount || evidence.length} 条代表性评论，可在证据库逐条打开原始 Reddit 链接。`
+    : `本报告引用 ${evidenceCount || evidence.length} 条整理样本。当前快照未保留逐条原帖链接，结论仅代表这组策展样本。`;
 
   $("#decisionGameName").textContent = `${game.name} / ${game.cnName}`;
   $("#decisionVerdict").textContent = decision.label;
@@ -1245,8 +1268,8 @@ function renderDecisionReport(game) {
   $("#decisionMetrics").innerHTML = [
     renderDecisionMetric("flame", "热度分", game.heatScore, `Top ${game.rank}，近 7 天提及 ${game.mentions} 次`),
     renderDecisionMetric("activity", "7 日趋势", formatDelta(trendDelta), "今日热度相对窗口首日变化"),
-    renderDecisionMetric("smile-plus", "正向占比", `${game.sentiment.positive}%`, "用于判断玩法吸引力是否足够清晰"),
-    renderDecisionMetric("message-circle-warning", "负面占比", `${game.sentiment.negative}%`, "用于判断复刻时必须规避的问题"),
+    renderDecisionMetric("smile-plus", "正向占比", `${game.sentiment.positive}%`, getSentimentBasisLabel(game)),
+    renderDecisionMetric("message-circle-warning", "负面占比", `${game.sentiment.negative}%`, getSentimentBasisLabel(game)),
   ].join("");
 
   $("#decisionNarrative").innerHTML = `
@@ -1277,8 +1300,8 @@ function renderDecisionReport(game) {
     <section class="decision-block evidence-section">
       <div class="evidence-heading">
         <p class="eyebrow">Evidence</p>
-        <h3>原评论证据</h3>
-        <p>本报告引用 ${evidenceCount || evidence.length} 条代表性评论。真实版会从 Reddit 抓取全量评论，清洗无效内容后再进入正面、负面、建议、其他四类证据库。</p>
+        <h3>${escapeHtml(evidenceHeading)}</h3>
+        <p>${escapeHtml(evidenceDescription)}</p>
       </div>
       <div class="evidence-list">
         ${evidence.map(renderDecisionEvidence).join("")}
@@ -1384,6 +1407,10 @@ function renderDecisionEvidence(comment) {
       </div>
       <p>${escapeHtml(comment.translatedText)}</p>
       <small>${escapeHtml(comment.originalText)}</small>
+      <div class="evidence-source-row">
+        <small>${escapeHtml(comment.source)}</small>
+        ${renderEvidenceSourceLink(comment)}
+      </div>
     </article>
   `;
 }
@@ -1473,6 +1500,58 @@ function jumpToSection(sectionId) {
 
 function getSelectedGame() {
   return state.data.games.find((game) => game.id === state.selectedGameId);
+}
+
+function getSentimentBasisLabel(game) {
+  const calibratedCount = game?.aiMeta?.calibratedCount;
+  if (calibratedCount) {
+    const reviewNote = game.aiMeta.manualReviewedCount ? "，含人工复核" : "";
+    return `基于 ${game.sampleCount} 条展示样本，其中 ${calibratedCount} 条经 AI 校准${reviewNote}`;
+  }
+  return `基于 ${game?.sampleCount ?? 0} 条展示样本`;
+}
+
+function getEvidenceProvenance(game) {
+  const comments = game?.comments ?? [];
+  const directLinkCount = comments.filter((comment) => hasDirectEvidenceUrl(comment.url)).length;
+  const directLinks = comments.length > 0 && directLinkCount === comments.length;
+  const hasMixedCoverage = directLinkCount > 0 && !directLinks;
+  const kind = game?.evidenceProvenance?.kind ?? (directLinks ? "historical_snapshot" : "curated_sample");
+
+  return {
+    kind,
+    directLinks,
+    directLinkCount,
+    shortLabel: directLinks ? "逐条可追溯" : hasMixedCoverage ? "部分可追溯" : "策展样本",
+    label: directLinks
+      ? "历史快照 · 逐条可追溯"
+      : hasMixedCoverage
+        ? "混合证据 · 部分可追溯"
+        : "策展样本 · 非逐条链接",
+    description: directLinks
+      ? `${directLinkCount} 条展示评论均保留原始 Reddit 帖子或评论链接。`
+      : hasMixedCoverage
+        ? `${comments.length} 条展示评论中有 ${directLinkCount} 条保留逐条 Reddit 链接。`
+        : `${comments.length} 条整理样本仅保留社区入口，不将板块首页误标为单条评论来源。`,
+  };
+}
+
+function hasDirectEvidenceUrl(url) {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url);
+    const isRedditHost = parsed.hostname === "reddit.com" || parsed.hostname.endsWith(".reddit.com");
+    return isRedditHost && /\/comments\/[^/]+/i.test(parsed.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function renderEvidenceSourceLink(comment) {
+  if (!hasDirectEvidenceUrl(comment.url)) {
+    return '<span class="source-unavailable">未保留逐条原帖链接</span>';
+  }
+  return `<a href="${escapeHtml(comment.url)}" target="_blank" rel="noreferrer">查看原帖</a>`;
 }
 
 function normalize(value) {

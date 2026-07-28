@@ -52,9 +52,9 @@ roblox-reddit-insight-lab
 7. 回到 `Actions`，运行或等待 `Deploy static site to GitHub Pages`。
 8. 部署成功后，在 `Settings -> Pages` 查看线上地址。
 
-### 如果你还没有 git
+### 不使用本地 git 时
 
-当前电脑 shell 里没有检测到 `git` 命令。你可以先用 GitHub 网页上传，最快：
+如果当前环境不方便使用 git，也可以通过 GitHub 网页上传：
 
 1. 进入 GitHub 仓库页面。
 2. 点击 `Add file`。

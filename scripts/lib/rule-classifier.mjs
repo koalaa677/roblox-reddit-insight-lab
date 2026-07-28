@@ -40,6 +40,11 @@ const POSITIVE_KEYWORDS = [
   "beautiful",
   "brilliant",
   "impressed",
+  "genius",
+  "go-to",
+  "worth grinding",
+  "smooth",
+  "proud",
 ];
 
 // Negative sentiment indicators
@@ -78,6 +83,16 @@ const NEGATIVE_KEYWORDS = [
   "rip off",
   "pay to win",
   "p2w",
+  "feel random",
+  "feels random",
+  "felt random",
+  "does not win",
+  "robux only",
+  "barely",
+  "way too",
+  "ridiculous",
+  "discourages",
+  "same items",
 ];
 
 // Suggestion / feature-request indicators
@@ -85,6 +100,8 @@ const SUGGESTION_KEYWORDS = [
   "should add",
   "should be",
   "should have",
+  "should show",
+  "should give",
   "could add",
   "could be",
   "need to",
@@ -140,11 +157,24 @@ const TOPIC_PATTERNS = {
   "map-detail": [/\bmap\b/i, /\bbiome\b/i, /\blocation\w*\b/i, /\barea\w*\b/i, /\bzone\w*\b/i, /\bedge\b/i],
 };
 
-function countMatches(text, keywords) {
+function isNegated(text, matchIndex) {
+  const prefix = text.slice(Math.max(0, matchIndex - 36), matchIndex);
+  if (/\bnot\s+only\s+(?:\w+\s+){0,2}$/.test(prefix)) return false;
+  return /\b(?:no|not|never|without)\s+(?:\w+\s+){0,2}$/.test(prefix);
+}
+
+function countMatches(text, keywords, options = {}) {
   const lower = text.toLowerCase();
   let count = 0;
   for (const kw of keywords) {
-    if (lower.includes(kw)) count += 1;
+    let matchIndex = lower.indexOf(kw);
+    while (matchIndex !== -1) {
+      if (!options.ignoreNegated || !isNegated(lower, matchIndex)) {
+        count += 1;
+        break;
+      }
+      matchIndex = lower.indexOf(kw, matchIndex + kw.length);
+    }
   }
   return count;
 }
@@ -169,8 +199,8 @@ function extractTopicTags(text) {
 export function ruleClassify(comment) {
   const text = comment.originalText ?? comment.body ?? comment.text ?? "";
 
-  const posCount = countMatches(text, POSITIVE_KEYWORDS);
-  const negCount = countMatches(text, NEGATIVE_KEYWORDS);
+  const posCount = countMatches(text, POSITIVE_KEYWORDS, { ignoreNegated: true });
+  const negCount = countMatches(text, NEGATIVE_KEYWORDS, { ignoreNegated: true });
   const sugCount = countMatches(text, SUGGESTION_KEYWORDS);
 
   const tags = extractTopicTags(text);
@@ -217,9 +247,10 @@ export function ruleClassify(comment) {
 export function ruleClassifyBatch(comments) {
   return comments.map((c) => {
     const result = ruleClassify(c);
+    const sentiment = c.manualReviewed && c.sentiment ? c.sentiment : result.sentiment;
     return {
       ...c,
-      sentiment: result.sentiment,
+      sentiment,
       ruleConfidence: result.ruleConfidence,
       tags: c.tags?.length ? c.tags : result.tags,
       ruleScores: result.ruleScores,

@@ -1687,6 +1687,28 @@ a:focus-visible {
   transform: translateY(-1px);
 }
 
+.source-link.provenance-note {
+  cursor: default;
+  grid-template-columns: 34px minmax(0, 1fr);
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.source-link.provenance-note:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.source-link.provenance-note.is-traceable {
+  border-color: rgba(44, 132, 93, 0.28);
+  background: rgba(235, 248, 241, 0.82);
+}
+
+.source-link.provenance-note.is-curated {
+  border-color: rgba(174, 116, 0, 0.24);
+  background: rgba(255, 248, 230, 0.82);
+}
+
 .source-link-icon {
   display: grid;
   width: 34px;
@@ -1910,6 +1932,13 @@ a:focus-visible {
 .sentiment-bars {
   display: grid;
   gap: 14px;
+}
+
+.sentiment-basis {
+  margin: 8px 0 0;
+  color: var(--quiet);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .sentiment-item {
@@ -2190,6 +2219,11 @@ a:focus-visible {
 .comment-meta a {
   color: var(--primary-strong);
   font-weight: 760;
+}
+
+.source-unavailable {
+  color: #8a6500;
+  font-weight: 700;
 }
 
 .report-grid {
@@ -2713,6 +2747,22 @@ a:focus-visible {
   font-size: 12px;
   font-weight: 520;
   line-height: 1.6;
+}
+
+.evidence-source-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.evidence-source-row a {
+  flex: 0 0 auto;
+  color: var(--primary-strong);
+  font-size: 12px;
+  font-weight: 760;
 }
 
 .modal-layer {

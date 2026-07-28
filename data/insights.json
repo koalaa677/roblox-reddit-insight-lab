@@ -1,9 +1,9 @@
 {
   "meta": {
     "projectName": "Roblox Reddit Insight Lab",
-    "version": "Insight Snapshot 1.2",
-    "datasetType": "historical_public_json_snapshot",
-    "updatedAt": "2026/7/8 19:56:34",
+    "version": "Insight Snapshot 1.3",
+    "datasetType": "mixed_historical_and_curated_snapshot",
+    "updatedAt": "2026/7/28",
     "period": "历史样本池 + 近 3 天轻量展示窗口",
     "trendLabels": [
       "D-6",
@@ -15,7 +15,8 @@
       "今日"
     ],
     "displayWindowDays": 3,
-    "sourceNote": "当前 Top 3 保持轻量展示；Forest99 已接入旧监控任务抓取的 Reddit 历史公开 JSON 快照。公开 JSON 现已可能返回 403，正式增量采集仍建议等待 Reddit OAuth/Data API。",
+    "trendWindowDays": 7,
+    "sourceNote": "当前 Top 3 保持轻量展示；Forest99 使用旧监控任务抓取的 Reddit 历史公开 JSON 快照并保留逐条链接，Dress To Impress 与 Blox Fruits 为策展样本且未保留逐条原帖链接。公开 JSON 现已可能返回 403，正式增量采集仍建议等待 Reddit OAuth/Data API。",
     "refreshPolicy": "当前页面读取结构化快照；后续接入 API 后按 3 天轻量窗口增量刷新。",
     "cleanupPolicy": "手动清理时只清理 7 天之前的评论，7 天内评论不清理。",
     "crawlScope": {
@@ -1003,10 +1004,10 @@
         }
       ],
       "sentiment": {
-        "positive": 33,
-        "negative": 33,
-        "suggestion": 34,
-        "neutral": 0
+        "positive": 18,
+        "negative": 18,
+        "suggestion": 13,
+        "neutral": 51
       },
       "trend": [
         42,
@@ -1034,6 +1035,9 @@
       "sourceLinks": {
         "roblox": "https://www.roblox.com/games/79546208627805/99-Nights-in-the-Forest",
         "reddit": "https://www.reddit.com/r/99nightsintheforest/"
+      },
+      "evidenceProvenance": {
+        "kind": "historical_snapshot"
       },
       "summary": {
         "overall": "历史 Reddit 快照显示，该游戏合作生存、昼夜压力和资源分工很有吸引力，但公共房协作、事件挫败和反恶意机制必须重点处理。",
@@ -1090,6 +1094,7 @@
         "pipelineVersion": "1.0",
         "dryRun": true,
         "calibratedCount": 12,
+        "sentimentBasis": "38 条展示样本的完整分布，其中 12 条经 AI 校准",
         "topEvidenceIds": [
           "f99-hist-post_1tnq7nb",
           "f99-hist-post_1tg7qha",
@@ -1119,7 +1124,8 @@
       "comments": [
         {
           "id": "dti-c01",
-          "sentiment": "neutral",
+          "sentiment": "positive",
+          "manualReviewed": true,
           "tags": [
             "avatar",
             "sharing"
@@ -1140,7 +1146,8 @@
         },
         {
           "id": "dti-c02",
-          "sentiment": "positive",
+          "sentiment": "negative",
+          "manualReviewed": true,
           "tags": [
             "voting",
             "fairness"
@@ -1158,13 +1165,14 @@
             "suggestion": 0
           },
           "evidenceScore": 74,
-          "painPoint": "",
-          "opportunity": "规则初筛正面吸引力",
+          "painPoint": "人工复核：投票公平性负面信号",
+          "opportunity": "",
           "aiCalibrated": true
         },
         {
           "id": "dti-sim-c01",
-          "sentiment": "neutral",
+          "sentiment": "positive",
+          "manualReviewed": true,
           "tags": [
             "creativity",
             "theme"
@@ -1188,7 +1196,8 @@
         },
         {
           "id": "dti-sim-c02",
-          "sentiment": "neutral",
+          "sentiment": "positive",
+          "manualReviewed": true,
           "tags": [
             "social",
             "sharing"
@@ -1260,7 +1269,8 @@
         },
         {
           "id": "dti-sim-c05",
-          "sentiment": "neutral",
+          "sentiment": "positive",
+          "manualReviewed": true,
           "tags": [
             "event",
             "reward"
@@ -1284,7 +1294,8 @@
         },
         {
           "id": "dti-sim-c06",
-          "sentiment": "negative",
+          "sentiment": "positive",
+          "manualReviewed": true,
           "tags": [
             "ui",
             "experience"
@@ -1297,8 +1308,8 @@
           "usedInReport": false,
           "ruleConfidence": 0.5,
           "evidenceScore": 76,
-          "painPoint": "规则初筛负面信号",
-          "opportunity": "",
+          "painPoint": "",
+          "opportunity": "人工复核：换装界面流畅性",
           "aiCalibrated": true,
           "ruleScores": {
             "positive": 0,
@@ -1380,7 +1391,8 @@
         },
         {
           "id": "dti-sim-c10",
-          "sentiment": "neutral",
+          "sentiment": "negative",
+          "manualReviewed": true,
           "tags": [
             "monetization",
             "paywall"
@@ -1404,7 +1416,8 @@
         },
         {
           "id": "dti-sim-c11",
-          "sentiment": "neutral",
+          "sentiment": "negative",
+          "manualReviewed": true,
           "tags": [
             "repetition",
             "content"
@@ -1428,7 +1441,8 @@
         },
         {
           "id": "dti-sim-c12",
-          "sentiment": "neutral",
+          "sentiment": "negative",
+          "manualReviewed": true,
           "tags": [
             "matching",
             "wait-time"
@@ -1476,7 +1490,8 @@
         },
         {
           "id": "dti-sim-c14",
-          "sentiment": "neutral",
+          "sentiment": "negative",
+          "manualReviewed": true,
           "tags": [
             "balance",
             "rarity"
@@ -1548,7 +1563,8 @@
         },
         {
           "id": "dti-sim-c17",
-          "sentiment": "neutral",
+          "sentiment": "suggestion",
+          "manualReviewed": true,
           "tags": [
             "voting",
             "transparency"
@@ -1596,7 +1612,8 @@
         },
         {
           "id": "dti-sim-c19",
-          "sentiment": "neutral",
+          "sentiment": "suggestion",
+          "manualReviewed": true,
           "tags": [
             "progression",
             "reward"
@@ -1644,7 +1661,8 @@
         },
         {
           "id": "dti-sim-c21",
-          "sentiment": "neutral",
+          "sentiment": "negative",
+          "manualReviewed": true,
           "tags": [
             "question",
             "new-player"
@@ -1716,10 +1734,10 @@
         }
       ],
       "sentiment": {
-        "positive": 33,
-        "negative": 25,
-        "suggestion": 25,
-        "neutral": 17
+        "positive": 40,
+        "negative": 32,
+        "suggestion": 20,
+        "neutral": 8
       },
       "trend": [
         66,
@@ -1746,6 +1764,9 @@
       "sourceLinks": {
         "roblox": "https://www.roblox.com/games/15101393044/Dress-To-Impress",
         "reddit": "https://www.reddit.com/r/DressToImpressRoblox/"
+      },
+      "evidenceProvenance": {
+        "kind": "curated_sample"
       },
       "summary": {
         "overall": "Reddit 讨论显示，时装主题评分类游戏的核心吸引力在于创作表达与社交分享，玩家对主题挑战和造型展示有很强参与欲，但投票公平性和内容更新节奏是主要争议点。",
@@ -1802,6 +1823,9 @@
         "pipelineVersion": "1.0",
         "dryRun": true,
         "calibratedCount": 12,
+        "manualReviewedCount": 13,
+        "manualReviewedAt": "2026-07-28",
+        "sentimentBasis": "25 条展示样本的完整分布，其中 12 条经 AI 校准、13 条经人工分类复核",
         "topEvidenceIds": [
           "dti-sim-c04",
           "dti-sim-c09",
@@ -2379,10 +2403,10 @@
         }
       ],
       "sentiment": {
-        "positive": 33,
-        "negative": 17,
-        "suggestion": 33,
-        "neutral": 17
+        "positive": 26,
+        "negative": 9,
+        "suggestion": 26,
+        "neutral": 39
       },
       "trend": [
         81,
@@ -2409,6 +2433,9 @@
       "sourceLinks": {
         "roblox": "https://www.roblox.com/games/2753915549/Blox-Fruits",
         "reddit": "https://www.reddit.com/r/bloxfruits/"
+      },
+      "evidenceProvenance": {
+        "kind": "curated_sample"
       },
       "summary": {
         "overall": "玩家讨论集中在战斗手感、成长路线、刷取压力和平衡性。游戏的长线目标和收集体系很成熟，但新手门槛高、付费优势明显是核心争议。",
@@ -2465,6 +2492,7 @@
         "pipelineVersion": "1.0",
         "dryRun": true,
         "calibratedCount": 12,
+        "sentimentBasis": "23 条展示样本的完整分布，其中 12 条经 AI 校准",
         "topEvidenceIds": [
           "bf-sim-c03",
           "bf-sim-c01",

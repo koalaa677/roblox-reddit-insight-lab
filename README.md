@@ -2,7 +2,7 @@
 
 [中文说明](#中文说明) | [English](#english)
 
-Roblox Reddit Insight Lab is a static market intelligence product for Roblox gameplay research. It turns Reddit player discussions into a public, traceable insight dashboard: trending games, sentiment structure, comment evidence, and AI-assisted decision reports.
+Roblox Reddit Insight Lab is a static market intelligence product for Roblox gameplay research. It turns Reddit player discussions into a public, evidence-aware insight dashboard: trending games, sentiment structure, comment evidence, and AI-assisted decision reports.
 
 As an applied AI project, the focus is practical use rather than model research. The repository shows how AI can support marketing and game-market analysis: unstructured player comments are cleaned, classified, scored, summarized, and turned into decision-ready insight reports.
 
@@ -14,7 +14,7 @@ https://koalaa677.github.io/roblox-reddit-insight-lab/
 
 ## 中文说明
 
-Roblox Reddit Insight Lab 是一个面向 Roblox 玩法研究和游戏出海研判的轻量级洞察工具。项目把 Reddit 玩家讨论整理成可公开访问的静态产品：先看热门游戏，再看评论证据，最后形成可追溯的玩法分析报告。
+Roblox Reddit Insight Lab 是一个面向 Roblox 玩法研究和游戏出海研判的轻量级洞察工具。项目把 Reddit 玩家讨论整理成可公开访问的静态产品：先看热门游戏，再看评论证据，最后形成带来源说明的玩法分析报告。
 
 从 AI 应用的角度看，这个项目重点展示的不是底层模型研究，而是如何把 AI 放进真实的营销传播和玩家洞察工作流里：把非结构化玩家评论清洗、分类、评分、总结，再转化成可以支持游戏出海和玩法研判的决策报告。
 
@@ -27,7 +27,7 @@ Roblox 是一个游戏平台，平台内包含大量独立游戏，但并不提�
 当前版本重点不是搭建大型后台系统，而是完成一个清晰、可信、可运行的产品闭环：
 
 - 用结构化数据快照驱动页面，保证公开站点稳定可访问。
-- 保留 Reddit 原评论、中文翻译、情绪分类、标签和来源链接。
+- 保留 Reddit 评论文本、中文翻译、情绪分类、标签和证据来源状态。
 - 用可解释热点评分帮助快速筛选值得研究的 Roblox 游戏。
 - 用 AI 分析管线把精选证据转化为玩法机会、风险边界和验证动作。
 
@@ -36,7 +36,7 @@ Roblox 是一个游戏平台，平台内包含大量独立游戏，但并不提�
 - **AI 赋能市场洞察**：用 AI 辅助整理 Reddit 玩家反馈，把分散评论转化为玩法机会、风险和验证建议。
 - **人机协作分析流程**：规则分类先完成基础判断，AI 负责校准、摘要和报告表达，避免把全部判断交给模型黑箱。
 - **低 token 设计**：先在本地完成去重、过滤和分类，只把精选证据和结构化指标交给 AI。
-- **可追溯输出**：AI 报告不只给结论，还保留被引用的原评论、来源链接和证据标签。
+- **分级证据来源**：Forest99 历史快照保留逐条原帖链接；策展样本明确标出未保留逐条链接，避免把社区首页误作单条证据来源。
 - **可展示的应用闭环**：用 `data/insights.json` 作为稳定数据契约，把分析结果直接转化为可公开访问的产品页面。
 
 ### 产品界面
@@ -66,6 +66,14 @@ Roblox 是一个游戏平台，平台内包含大量独立游戏，但并不提�
 
 公开版本使用结构化样本数据快照，数据结构与后续真实采集流程保持一致。
 
+当前快照采用分级证据来源：
+
+- Forest99：历史 Reddit public JSON 快照，38 条展示证据均保留逐条原帖或评论链接。
+- Dress To Impress：25 条策展样本，仅保留社区入口，不宣称逐条原帖可追溯。
+- Blox Fruits：23 条策展样本，仅保留社区入口，不宣称逐条原帖可追溯。
+
+看板和报告中的情绪百分比基于全部展示样本，其中每个游戏有 12 条代表证据经过 AI 校准；页面会直接标出完整样本数和校准数。
+
 Forest99 已接入历史 Reddit public JSON 快照。旧监控任务累计保留：
 
 - 10 天数据
@@ -74,7 +82,7 @@ Forest99 已接入历史 Reddit public JSON 快照。旧监控任务累计保留
 - 当前公开快照展示 38 条 Forest99 评论证据
 - 其中 6 条进入分析报告引用
 
-公开站点不会展示真实采集日期，只保留可追溯来源链接、情绪分类、主题标签、证据分和报告引用关系。
+公开站点不会展示真实采集日期。页面会分别显示逐条来源链接或“未保留逐条原帖链接”，并保留情绪分类、主题标签、证据分和报告引用关系。
 
 仓库也保留了低频 `public_json` 探测脚本，用于在 Reddit OAuth 审批前验证采集链路。如果该入口返回 `403 Forbidden`，脚本应停止重试；正式采集仍建议走 Reddit OAuth Data API。
 
@@ -89,6 +97,7 @@ Roblox 讨论热度全局
 定向分析
   -> 当前选中游戏
   -> Roblox 与 Reddit 外部入口
+  -> 近 3 天轻量展示窗口
   -> 近 7 天热度趋势
   -> 情绪占比
   -> 分类评论证据
@@ -136,7 +145,7 @@ AI 管线的目标是控制 token 成本，同时保留决策质量和证据可�
 - 抓取 Reddit 评论本身不消耗 AI token。
 - 只有精选证据、结构化指标或摘要被发送给模型时，才产生 AI token 成本。
 - AI 不直接处理全量评论，而是处理本地清洗后的高价值样本。
-- 报告中的结论必须能回到原始评论证据。
+- 报告中的结论必须能回到当前评论证据；只有保留原始标识的记录才提供逐条 Reddit 链接。
 
 相关文档：
 
@@ -262,12 +271,12 @@ docs/deployment-guide.md
 
 ## English
 
-Roblox Reddit Insight Lab is a lightweight market intelligence tool for Roblox gameplay research. It converts Reddit player discussions into a structured, public-facing dashboard with explainable scores, traceable comments, and AI-assisted decision reports.
+Roblox Reddit Insight Lab is a lightweight market intelligence tool for Roblox gameplay research. It converts Reddit player discussions into a structured, public-facing dashboard with explainable scores, explicit evidence provenance, and AI-assisted decision reports.
 
 The current version is intentionally static. It focuses on a complete and understandable product loop before adding live infrastructure:
 
 - A stable public site driven by structured JSON snapshots.
-- Original Reddit comments, Chinese translations, sentiment labels, tags, and source links.
+- Reddit comment text, Chinese translations, sentiment labels, tags, and evidence-provenance status.
 - Explainable scoring for quickly comparing Roblox gameplay opportunities.
 - AI-assisted reports grounded in selected evidence instead of unsupported summaries.
 
@@ -282,7 +291,7 @@ The workflow is designed for applied market analysis. When a team studies games 
 - **AI-enabled market insight**: uses AI to turn scattered Reddit player feedback into gameplay opportunities, risks, and validation suggestions.
 - **Human-AI analysis workflow**: rule-based classification handles the first pass, while AI supports calibration, summarization, and report writing.
 - **Token-aware design**: cleaning, deduplication, and classification happen locally before selected evidence is sent to AI.
-- **Traceable output**: decision reports remain connected to original comments, source links, and evidence tags.
+- **Tiered evidence provenance**: Forest99 retains direct source links; curated samples are explicitly marked when per-comment links were not preserved.
 - **Public product loop**: `data/insights.json` acts as the bridge between analysis output and a public-facing product page.
 
 ### Interface
@@ -312,6 +321,14 @@ The workflow is designed for applied market analysis. When a team studies games 
 
 The public version uses a structured sample snapshot with the same shape expected from the future live pipeline.
 
+Evidence provenance is explicit in the current snapshot:
+
+- Forest99: historical Reddit public JSON snapshot; all 38 displayed records retain direct post or comment links.
+- Dress To Impress: 25 curated samples with a community entry point, but no per-comment source links.
+- Blox Fruits: 23 curated samples with a community entry point, but no per-comment source links.
+
+Sentiment percentages in the dashboard and report use the full displayed sample. Twelve representative records per game receive AI calibration, and the interface labels both counts.
+
 Forest99 is backed by a historical Reddit public JSON snapshot. The previous monitor retained:
 
 - 10 days of data
@@ -320,7 +337,7 @@ Forest99 is backed by a historical Reddit public JSON snapshot. The previous mon
 - 38 Forest99 evidence comments in the current public snapshot
 - 6 cited comments in the decision report
 
-The public site hides exact collection dates while preserving source links, sentiment classes, tags, evidence scores, and report citation state.
+The public site hides exact collection dates. It shows either a direct source link or a clear “per-comment link not preserved” state, alongside sentiment, tags, evidence score, and report citation state.
 
 The repository also includes a low-volume `public_json` probe script for validating the collection path before Reddit OAuth approval. If the endpoint returns `403 Forbidden`, the script should stop retrying. The recommended production path remains Reddit OAuth Data API.
 
@@ -335,6 +352,7 @@ Roblox discussion overview
 Targeted analysis
   -> selected game profile
   -> Roblox and Reddit source links
+  -> 3-day lightweight display window
   -> 7-day heat trend
   -> sentiment split
   -> categorized comment evidence
@@ -382,7 +400,7 @@ Principles:
 - Reddit collection does not consume AI tokens.
 - AI token usage starts only when selected evidence or structured summaries are sent to a model.
 - The model does not process the full raw comment set.
-- Report conclusions must remain traceable to original comments.
+- Report conclusions must remain connected to the displayed evidence; direct Reddit links are provided only for records that retain original identifiers.
 
 Related files:
 
