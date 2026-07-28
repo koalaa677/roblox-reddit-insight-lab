@@ -160,7 +160,7 @@ Return the JSON summary object only.`;
 }
 
 /**
- * Stage 3: Generate a weekly decision report for gameplay research / eggy-party adaptation.
+ * Stage 3: Generate a weekly decision report for gameplay research / target-product adaptation.
  */
 export async function generateWeeklyReport(gameContext, dailySummaries, topEvidence) {
   if (!isConfigured()) {
@@ -187,7 +187,7 @@ Output a JSON object with exactly these keys:
 - pros: array of 3 strings, core strengths (Chinese)
 - cons: array of 3 strings, core weaknesses / risks (Chinese)
 - suggestions: array of 3 strings, what the original game could improve (Chinese)
-- eggyIdeas: array of 3 strings, how to adapt this loop for a cute party-game audience (Chinese)
+- transferIdeas: array of 3 strings, how to adapt this loop for a lightweight party-game audience (Chinese)
 - risks: array of 3 strings, adaptation risks to validate (Chinese)
 - decision: 1 sentence final recommendation (Chinese, e.g. "建议进入低成本原型拆解...")
 - evidenceCommentIds: array of comment IDs that most support the conclusion
@@ -328,9 +328,9 @@ function mockWeeklyReport(gameContext, dailySummaries, topEvidence) {
         "扩充免费可获取服装池，降低免费玩家的内容天花板。",
         "增加套装预设、收藏和分类功能，提升换装效率和体验。",
       ],
-      eggyIdeas: [
-        "可迁移主题挑战+短局投票结构，把时装替换为蛋仔外观、动作、道具搭配。",
-        "保留造型展示和社交分享环节，设计适合蛋仔风格的主题赛季。",
+      transferIdeas: [
+        "可迁移主题挑战+短局投票结构，把时装替换为目标产品的外观、动作和道具搭配。",
+        "保留造型展示和社交分享环节，设计适合轻量派对风格的主题赛季。",
         "把评分争议转化为趣味点，用更轻量、更娱乐化的投票方式降低挫败感。",
       ],
       risks: [
@@ -339,7 +339,7 @@ function mockWeeklyReport(gameContext, dailySummaries, topEvidence) {
         "UGC 造型的质量参差，需要设计好审核和展示机制。",
       ],
       decision:
-        "建议作为社交表达类玩法参考：主题挑战和短局投票结构可迁移，但需适配蛋仔的轻量审美与互动风格，暂不建议作为核心玩法复刻。",
+        "建议作为社交表达类玩法参考：主题挑战和短局投票结构可迁移，但需适配目标产品的轻量审美与互动风格，暂不建议作为核心玩法复刻。",
       evidenceCommentIds: topEvidence.filter((c) => c.usedInReport).map((c) => c.id),
     };
   }
@@ -364,13 +364,13 @@ function mockWeeklyReport(gameContext, dailySummaries, topEvidence) {
         "优化果实平衡性，减少少数强势套路垄断 PVP 的情况。",
         "增加海贼团专属合作内容，强化社交黏着和团队目标。",
       ],
-      eggyIdeas: [
+      transferIdeas: [
         "可借鉴能力收集和成长解锁的结构，但大幅压缩时长，做成短局内的技能拾取与进化。",
         "把 PVP 对抗改造成更娱乐化的派对乱斗，降低挫败感、增加随机性。",
         "保留版本更新驱动新目标的节奏，但用赛季制而非永久长线的方式适配派对用户。",
       ],
       risks: [
-        "重度成长和刷取与蛋仔派对的轻量定位差异较大，直接照搬会劝退核心用户。",
+        "重度成长和刷取与轻量派对产品的定位差异较大，直接照搬会劝退核心用户。",
         "PVP 平衡维护成本高，派对游戏用户对平衡性容忍度可能更低。",
         "长线目标需要持续内容供给，对更新节奏要求很高。",
       ],
@@ -399,7 +399,7 @@ function mockWeeklyReport(gameContext, dailySummaries, topEvidence) {
       "为关键物品增加防恶意丢失机制，例如蓝图回收、离线掉落或工作台备份。",
       "把高挫败事件拆成可预判、可反制的小挑战，降低纯惩罚感。",
     ],
-    eggyIdeas: [
+    transferIdeas: [
       "可迁移「白天收集、夜晚防守」的节奏，但改成更轻量的机关防守、道具协作和短局挑战。",
       "保留多人分工价值，把守家、探索、搬运、修复、触发机关设计成不同角色都能参与的任务。",
       "把恐怖表达改写成轻紧张、可爱但有压力的派对危机，避免直接照搬恐怖题材。",

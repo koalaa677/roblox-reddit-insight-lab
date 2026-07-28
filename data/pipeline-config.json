@@ -121,7 +121,7 @@
           "copyDecision",
           "adaptationPlan",
           "doNotCopy",
-          "eggyPartyValue",
+          "targetProductValue",
           "risks",
           "validationActions"
         ]
@@ -132,7 +132,7 @@
       "pros",
       "cons",
       "suggestions",
-      "eggyIdeas",
+      "transferIdeas",
       "risks",
       "decision",
       "evidenceCommentIds"

@@ -20,7 +20,7 @@ const sentimentCopy = {
 
 const reportBriefSections = [
   ["decision", "摘要结论", 1],
-  ["eggyIdeas", "最值得借鉴", 2],
+  ["transferIdeas", "最值得借鉴", 2],
   ["risks", "主要风险", 2],
   ["suggestions", "下一步验证", 2],
 ];
@@ -113,6 +113,7 @@ function bindEvents() {
 
 function renderAll() {
   renderMeta();
+  renderFlagshipCase();
   renderDashboardSummary();
   renderDashboardVisuals();
   renderGameList();
@@ -127,6 +128,118 @@ function renderMeta() {
   $("#datasetVersion").textContent = meta.version;
   $("#datasetPeriod").textContent = meta.period;
   $("#datasetTime").textContent = meta.updatedAt;
+}
+
+function renderFlagshipCase() {
+  const { meta, games } = state.data;
+  const historical = meta.historicalImport ?? {};
+  const quality = meta.qualityEvaluation;
+  const game = games.find((item) => item.id === "forest99") ?? games[0];
+  const citedEvidence =
+    historical.reportCitedEvidence ??
+    game.comments.filter((comment) => comment.usedInReport).length;
+  const calibratedEvidence =
+    game.aiMeta?.calibratedCount ??
+    game.comments.filter((comment) => comment.aiCalibrated).length;
+  const stages = [
+    ["历史数据池", `${historical.rawDays ?? "-"} 天`, `${historical.rawPosts ?? "-"} 个帖子`],
+    ["原始评论", historical.rawComments ?? "-", "历史快照中的原始评论池"],
+    ["本地处理", "清洗 + 四分类", "先去重、过滤和证据评分"],
+    ["展示证据", historical.currentDisplayEvidence ?? game.sampleCount, "保留代表性玩家评论"],
+    ["AI 校准", calibratedEvidence, "只处理精选高价值证据"],
+    ["报告引用", citedEvidence, "结论可回到原始链接"],
+  ];
+
+  $("#flagshipCaseFlow").innerHTML = stages
+    .map(
+      ([label, value, caption], index) => `
+        <article class="flagship-case-step">
+          <span>${index + 1}. ${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+          <p>${escapeHtml(caption)}</p>
+        </article>
+      `,
+    )
+    .join("");
+
+  $("#flagshipCaseOutcome").innerHTML = `
+    <div>
+      <span>Decision Outcome</span>
+      <strong>${escapeHtml(game.recommendation)}</strong>
+      <p>${escapeHtml(game.summary.decision)}</p>
+    </div>
+    <div class="flagship-case-actions">
+      <a href="#game-detail" data-jump-section="game-detail" data-page-title="定向分析">查看评论证据</a>
+      <a href="#decision-report" data-jump-section="decision-report" data-page-title="分析报告">查看分析报告</a>
+    </div>
+  `;
+
+  if (!quality) {
+    $("#qualityEvaluationGrid").innerHTML =
+      '<p class="quality-empty">运行 scripts/evaluate-analysis-quality.mjs --write 后生成评估结果。</p>';
+    $("#qualityEvaluationDetails").innerHTML = "";
+    return;
+  }
+
+  const metrics = [
+    [
+      "规则分类核验",
+      `${quality.classification.matchedSamples}/${quality.classification.reviewedSamples}`,
+      `${quality.classification.accuracyPercent}% · DTI 人工复核小型校准集`,
+    ],
+    [
+      "AI 校准覆盖",
+      quality.aiCalibration.calibratedEvidence,
+      `${quality.aiCalibration.games} 个游戏的代表性证据`,
+    ],
+    [
+      "证据契约检查",
+      `${quality.evidence.checksPassed}/${quality.evidence.checksTotal}`,
+      quality.evidence.allChecksPassed ? "当前快照全部通过" : "存在待处理检查项",
+    ],
+    [
+      "历史链接覆盖",
+      `${quality.evidence.historicalDirectLinks.covered}/${quality.evidence.historicalDirectLinks.total}`,
+      `报告引用 ${quality.evidence.historicalReportLinks.covered}/${quality.evidence.historicalReportLinks.total} 可逐条打开`,
+    ],
+  ];
+  $("#qualityEvaluationGrid").innerHTML = metrics
+    .map(
+      ([label, value, caption]) => `
+        <article>
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+          <p>${escapeHtml(caption)}</p>
+        </article>
+      `,
+    )
+    .join("");
+
+  const checkItems = quality.evidence.checks
+    .map(
+      (check) => `
+        <li>
+          <strong>${check.passed ? "通过" : "待处理"} · ${escapeHtml(check.label)}</strong>
+          <span>${escapeHtml(check.detail)}</span>
+        </li>
+      `,
+    )
+    .join("");
+  const limitations = quality.limitations
+    .map((item) => `<li>${escapeHtml(item)}</li>`)
+    .join("");
+  $("#qualityEvaluationDetails").innerHTML = `
+    <div class="quality-detail-columns">
+      <div>
+        <h4>检查结果</h4>
+        <ul class="quality-check-list">${checkItems}</ul>
+      </div>
+      <div>
+        <h4>评估局限</h4>
+        <ul class="quality-limit-list">${limitations}</ul>
+      </div>
+    </div>
+  `;
 }
 
 function renderDashboardSummary() {
@@ -1251,7 +1364,9 @@ function renderDecisionReport(game) {
   const decision = getDecisionModel(game, trendDelta);
   const evidenceComments = game.comments.filter((comment) => comment.usedInReport).slice(0, 3);
   const evidence = evidenceComments.length ? evidenceComments : game.comments.slice(0, 3);
-  const firstIdea = game.summary.eggyIdeas[0] ?? "先拆核心循环，再按蛋仔派对用户心智重写题材和表达。";
+  const firstIdea =
+    game.summary.transferIdeas[0] ??
+    "先拆核心循环，再按目标派对游戏的用户心智重写题材和表达。";
   const evidenceCount = game.comments.filter((comment) => comment.usedInReport).length;
   const evidenceBasis = formatEvidenceBasis(evidenceCount || evidence.length);
   const provenance = getEvidenceProvenance(game);
@@ -1281,7 +1396,7 @@ function renderDecisionReport(game) {
     </section>
 
     ${renderDecisionDisclosure("为什么值得看", `核心优点与玩家正向反馈，${evidenceBasis}`, game.summary.pros)}
-    ${renderDecisionDisclosure("复刻到蛋仔派对应保留什么", `可迁移为蛋仔派对体验的玩法要素，${evidenceBasis}`, game.summary.eggyIdeas)}
+    ${renderDecisionDisclosure("迁移到目标产品时保留什么", `可迁移为轻量派对体验的玩法要素，${evidenceBasis}`, game.summary.transferIdeas)}
     ${renderDecisionDisclosure("不能直接照搬的地方", `主要争议和迁移风险，${evidenceBasis}`, [
       ...game.summary.cons.slice(0, 2),
       ...game.summary.risks,
@@ -1441,7 +1556,7 @@ function getDecisionModel(game, trendDelta) {
     return {
       label: "建议继续验证",
       confidence,
-      reason: `${game.cnName} 有明确讨论热度，但仍需要进一步确认玩法能否迁移到蛋仔派对的用户和内容生态。`,
+      reason: `${game.cnName} 有明确讨论热度，但仍需要进一步确认玩法能否迁移到目标派对游戏的用户和内容生态。`,
       action: "建议继续收集 Reddit 评论和玩法视频样本，先完成纸面玩法拆解，再决定是否做可玩原型。",
     };
   }

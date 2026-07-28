@@ -39,6 +39,21 @@ Roblox 是一个游戏平台，平台内包含大量独立游戏，但并不提�
 - **分级证据来源**：Forest99 历史快照保留逐条原帖链接；策展样本明确标出未保留逐条链接，避免把社区首页误作单条证据来源。
 - **可展示的应用闭环**：用 `data/insights.json` 作为稳定数据契约，把分析结果直接转化为可公开访问的产品页面。
 
+### Forest99 旗舰案例
+
+Forest99 用一条完整证据链说明系统如何把历史社区数据转化为可验证的产品判断：
+
+```text
+10 天历史快照 / 147 个帖子 / 1579 条评论
+  -> 本地清洗、去重、规则四分类和证据评分
+  -> 38 条展示证据
+  -> 12 条代表证据进入 AI 校准
+  -> 6 条评论进入分析报告引用
+  -> 形成玩法机会、主要风险和 5-8 分钟原型验证建议
+```
+
+页面同时保留原始 Reddit 链接、评论分类、证据分和报告引用状态。报告结论可以回到原评论，而不是只展示不可验证的 AI 摘要。
+
 ### 产品界面
 
 #### Roblox 讨论热度全局
@@ -85,6 +100,28 @@ Forest99 已接入历史 Reddit public JSON 快照。旧监控任务累计保留
 公开站点不会展示真实采集日期。页面会分别显示逐条来源链接或“未保留逐条原帖链接”，并保留情绪分类、主题标签、证据分和报告引用关系。
 
 仓库也保留了低频 `public_json` 探测脚本，用于在 Reddit OAuth 审批前验证采集链路。如果该入口返回 `403 Forbidden`，脚本应停止重试；正式采集仍建议走 Reddit OAuth Data API。
+
+### 分类与证据质量评估
+
+仓库包含一个可重复运行的小型质量评估，用于检查当前规则分类器和证据数据契约：
+
+- 规则分类核验：DTI 的 13 条人工复核样本中，当前分类器匹配 12 条，结果为 92.3%。
+- AI 校准覆盖：3 个游戏共 36 条代表证据进入校准流程，每个游戏 12 条。
+- 证据契约：评论 ID、样本数、情绪比例、AI 代表证据 ID、报告引用和来源边界共 7 项检查全部通过。
+- 历史链接覆盖：Forest99 的 38/38 条展示证据和 6/6 条报告引用均保留逐条 Reddit 链接。
+
+13 条人工复核样本只用于小型回归校准，不代表跨游戏模型总体准确率；AI 校准覆盖也不等于 AI 分类准确率。真实模型接入后需要重新执行同一套评估。
+
+```bash
+# 只预览评估结果
+node scripts/evaluate-analysis-quality.mjs
+
+# 将评估快照写入 data/insights.json
+node scripts/evaluate-analysis-quality.mjs --write
+
+# 运行评估回归检查
+node scripts/test-analysis-quality.mjs
+```
 
 ### 产品流程
 
@@ -170,6 +207,9 @@ scripts/lib/rule-classifier.mjs
 
 scripts/lib/ai-client.mjs
   -> OpenAI 兼容 API 封装，支持 dry-run
+
+scripts/evaluate-analysis-quality.mjs
+  -> 分类校准与证据数据契约评估
 ```
 
 使用方式：
@@ -214,7 +254,7 @@ data/pipeline-config.json
   -> Reddit 采集和 AI 分析预算配置
 
 scripts/
-  -> AI 分析、历史数据导入、public JSON 探测、预算估算
+  -> AI 分析、质量评估、历史数据导入、public JSON 探测、预算估算
 
 docs/
   -> 部署、API、AI 管线和开源参考说明
@@ -254,8 +294,8 @@ docs/deployment-guide.md
 ### Roadmap
 
 - 接入 Reddit OAuth Data API，支持指定 subreddit 和游戏关键词采集。
-- 增强自动评论清洗、去重、语言识别和四分类。
-- 基于精选证据生成日摘要和周分析报告。
+- 使用真实 AI API 小样本验证分类、摘要和报告质量。
+- 扩大人工标注评估集，补充第二个真实历史或授权数据案例。
 - 增加数据新鲜度指标，例如抓取量、过滤量和引用证据数。
 - 扩展 Roblox 侧信号，例如在线人数、访问量、收藏量和更新频率。
 
@@ -293,6 +333,21 @@ The workflow is designed for applied market analysis. When a team studies games 
 - **Token-aware design**: cleaning, deduplication, and classification happen locally before selected evidence is sent to AI.
 - **Tiered evidence provenance**: Forest99 retains direct source links; curated samples are explicitly marked when per-comment links were not preserved.
 - **Public product loop**: `data/insights.json` acts as the bridge between analysis output and a public-facing product page.
+
+### Forest99 Flagship Case
+
+Forest99 demonstrates the full path from historical community data to a traceable product decision:
+
+```text
+10-day snapshot / 147 posts / 1,579 comments
+  -> local cleaning, deduplication, rule classification, and evidence scoring
+  -> 38 displayed evidence records
+  -> 12 representative records calibrated by AI
+  -> 6 comments cited in the decision report
+  -> gameplay opportunities, risks, and a 5-8 minute prototype test
+```
+
+The interface keeps direct Reddit links, sentiment labels, evidence scores, and report-citation state. The report can be traced back to player comments instead of presenting an unsupported AI summary.
 
 ### Interface
 
@@ -340,6 +395,28 @@ Forest99 is backed by a historical Reddit public JSON snapshot. The previous mon
 The public site hides exact collection dates. It shows either a direct source link or a clear “per-comment link not preserved” state, alongside sentiment, tags, evidence score, and report citation state.
 
 The repository also includes a low-volume `public_json` probe script for validating the collection path before Reddit OAuth approval. If the endpoint returns `403 Forbidden`, the script should stop retrying. The recommended production path remains Reddit OAuth Data API.
+
+### Classification And Evidence Quality Evaluation
+
+The repository includes a repeatable small-sample evaluation for the current rule classifier and evidence contract:
+
+- Rule-classification check: 12 of 13 human-reviewed DTI samples match the current classifier, or 92.3%.
+- AI calibration coverage: 36 representative records across three games, 12 per game.
+- Evidence contract: all 7 checks pass for IDs, sample counts, sentiment totals, AI evidence IDs, report citations, direct links, and provenance boundaries.
+- Historical link coverage: 38/38 displayed Forest99 records and 6/6 report citations retain direct Reddit links.
+
+The 13 reviewed samples form a regression calibration set, not a cross-game model benchmark. AI calibration coverage is also not an AI accuracy claim. The same evaluation should be rerun after connecting a real model.
+
+```bash
+# Preview the evaluation
+node scripts/evaluate-analysis-quality.mjs
+
+# Persist the evaluation snapshot to data/insights.json
+node scripts/evaluate-analysis-quality.mjs --write
+
+# Run the regression check
+node scripts/test-analysis-quality.mjs
+```
 
 ### Product Flow
 
@@ -425,6 +502,9 @@ scripts/lib/rule-classifier.mjs
 
 scripts/lib/ai-client.mjs
   -> OpenAI-compatible API client with dry-run support
+
+scripts/evaluate-analysis-quality.mjs
+  -> classification calibration and evidence-contract evaluation
 ```
 
 Usage:
@@ -469,7 +549,7 @@ data/pipeline-config.json
   -> Reddit collection and AI analysis budget configuration
 
 scripts/
-  -> AI analysis, history import, public JSON probe, budget estimation
+  -> AI analysis, quality evaluation, history import, public JSON probe, budget estimation
 
 docs/
   -> deployment, API, AI pipeline, and reference notes
@@ -509,8 +589,8 @@ docs/deployment-guide.md
 ### Roadmap
 
 - Connect Reddit OAuth Data API for selected subreddits and game keywords.
-- Improve comment cleaning, deduplication, language detection, and four-way classification.
-- Generate daily summaries and weekly reports from selected evidence.
+- Validate classification, summaries, and reports with a small real-model sample.
+- Expand the human-labeled evaluation set and add a second historical or authorized real-data case.
 - Add data freshness indicators for collected volume, filtered volume, and cited evidence count.
 - Expand Roblox-side signals for online users, visits, favorites, and update cadence.
 

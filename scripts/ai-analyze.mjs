@@ -24,6 +24,7 @@ import { dirname, join } from "node:path";
 
 import { cleanCommentBatch, evidenceScore } from "./lib/cleaner.mjs";
 import { ruleClassifyBatch, selectRepresentativeComments } from "./lib/rule-classifier.mjs";
+import { buildAnalysisQualityEvaluation } from "./lib/analysis-quality.mjs";
 import {
   isConfigured as aiIsConfigured,
   classifyComments as aiClassifyComments,
@@ -222,7 +223,7 @@ async function main() {
       pros: report.pros || game.summary?.pros || [],
       cons: report.cons || game.summary?.cons || [],
       suggestions: report.suggestions || game.summary?.suggestions || [],
-      eggyIdeas: report.eggyIdeas || game.summary?.eggyIdeas || [],
+      transferIdeas: report.transferIdeas || game.summary?.transferIdeas || [],
       risks: report.risks || game.summary?.risks || [],
       decision: report.decision || game.summary?.decision || "",
     },
@@ -255,6 +256,7 @@ async function main() {
   };
 
   if (args.write) {
+    insights.meta.qualityEvaluation = buildAnalysisQualityEvaluation(insights);
     await writeFile(INSIGHTS_PATH, `${JSON.stringify(insights, null, 2)}\n`, "utf8");
     console.log(`\n✓ Written back to data/insights.json`);
   } else {

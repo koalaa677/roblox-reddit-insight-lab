@@ -1,7 +1,7 @@
 {
   "meta": {
     "projectName": "Roblox Reddit Insight Lab",
-    "version": "Insight Snapshot 1.3",
+    "version": "Insight Snapshot 1.4",
     "datasetType": "mixed_historical_and_curated_snapshot",
     "updatedAt": "2026/7/28",
     "period": "历史样本池 + 近 3 天轻量展示窗口",
@@ -40,7 +40,198 @@
       "lastRunDryRun": true,
       "lastRunAt": "2026-07-08T11:56:34.582Z"
     },
-    "datasetExpansion": "multi-game-curated-sample-v2"
+    "datasetExpansion": "multi-game-curated-sample-v2",
+    "qualityEvaluation": {
+      "version": "1.0",
+      "evaluatedAt": "2026-07-28",
+      "classification": {
+        "scope": "DTI 人工复核小型校准集",
+        "reviewedSamples": 13,
+        "matchedSamples": 12,
+        "accuracyPercent": 92.3,
+        "mismatchIds": [
+          "dti-c01"
+        ],
+        "rows": [
+          {
+            "id": "dti-c01",
+            "gameId": "dress-to-impress",
+            "expected": "positive",
+            "predicted": "other",
+            "matched": false
+          },
+          {
+            "id": "dti-c02",
+            "gameId": "dress-to-impress",
+            "expected": "negative",
+            "predicted": "negative",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c01",
+            "gameId": "dress-to-impress",
+            "expected": "positive",
+            "predicted": "positive",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c02",
+            "gameId": "dress-to-impress",
+            "expected": "positive",
+            "predicted": "positive",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c05",
+            "gameId": "dress-to-impress",
+            "expected": "positive",
+            "predicted": "positive",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c06",
+            "gameId": "dress-to-impress",
+            "expected": "positive",
+            "predicted": "positive",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c10",
+            "gameId": "dress-to-impress",
+            "expected": "negative",
+            "predicted": "negative",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c11",
+            "gameId": "dress-to-impress",
+            "expected": "negative",
+            "predicted": "negative",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c12",
+            "gameId": "dress-to-impress",
+            "expected": "negative",
+            "predicted": "negative",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c14",
+            "gameId": "dress-to-impress",
+            "expected": "negative",
+            "predicted": "negative",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c17",
+            "gameId": "dress-to-impress",
+            "expected": "suggestion",
+            "predicted": "suggestion",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c19",
+            "gameId": "dress-to-impress",
+            "expected": "suggestion",
+            "predicted": "suggestion",
+            "matched": true
+          },
+          {
+            "id": "dti-sim-c21",
+            "gameId": "dress-to-impress",
+            "expected": "negative",
+            "predicted": "negative",
+            "matched": true
+          }
+        ]
+      },
+      "aiCalibration": {
+        "games": 3,
+        "calibratedEvidence": 36,
+        "perGame": [
+          {
+            "gameId": "forest99",
+            "calibratedCount": 12,
+            "dryRun": true
+          },
+          {
+            "gameId": "dress-to-impress",
+            "calibratedCount": 12,
+            "dryRun": true
+          },
+          {
+            "gameId": "blox-fruits",
+            "calibratedCount": 12,
+            "dryRun": true
+          }
+        ]
+      },
+      "evidence": {
+        "totalComments": 86,
+        "reportCitations": 18,
+        "historicalDirectLinks": {
+          "covered": 38,
+          "total": 38
+        },
+        "historicalReportLinks": {
+          "covered": 6,
+          "total": 6
+        },
+        "checksPassed": 7,
+        "checksTotal": 7,
+        "allChecksPassed": true,
+        "checks": [
+          {
+            "id": "unique-comment-ids",
+            "label": "评论 ID 唯一且非空",
+            "passed": true,
+            "detail": "86/86 条评论 ID 通过检查"
+          },
+          {
+            "id": "sample-count-contract",
+            "label": "样本数与评论数组一致",
+            "passed": true,
+            "detail": "3/3 个游戏通过检查"
+          },
+          {
+            "id": "sentiment-percentages",
+            "label": "情绪比例合计为 100%",
+            "passed": true,
+            "detail": "3/3 个游戏通过检查"
+          },
+          {
+            "id": "ai-top-evidence-ids",
+            "label": "AI 代表证据 ID 可回到评论",
+            "passed": true,
+            "detail": "3/3 个游戏通过检查"
+          },
+          {
+            "id": "report-citation-ids",
+            "label": "报告引用评论保留 ID",
+            "passed": true,
+            "detail": "18/18 条报告引用通过检查"
+          },
+          {
+            "id": "historical-direct-links",
+            "label": "历史快照保留逐条 Reddit 链接",
+            "passed": true,
+            "detail": "38/38 条历史证据可逐条打开"
+          },
+          {
+            "id": "curated-provenance-boundary",
+            "label": "策展样本未伪装成逐条原帖",
+            "passed": true,
+            "detail": "2/2 个策展样本游戏保持社区级来源标注"
+          }
+        ]
+      },
+      "limitations": [
+        "分类结果只基于 13 条 DTI 人工复核样本，用于回归校准，不代表跨游戏总体准确率。",
+        "AI 校准覆盖表示进入校准流程的代表证据数量，不等同于 AI 分类准确率。",
+        "当前 AI 报告为 dry-run 输出；真实模型接入后需要重新执行同一套评估。"
+      ]
+    }
   },
   "watchlist": [
     {
@@ -49,7 +240,7 @@
       "name": "99 Nights in the Forest",
       "cnName": "森林99",
       "status": "常驻关注",
-      "reason": "当前重点观察目标，合作生存节奏清晰，适合作为蛋仔派对限时组队玩法的参考对象。"
+      "reason": "当前重点观察目标，合作生存节奏清晰，适合作为轻量派对产品限时组队玩法的参考对象。"
     }
   ],
   "games": [
@@ -1056,7 +1247,7 @@
           "为关键物品增加防恶意丢失机制，例如蓝图回收、离线掉落或工作台备份。",
           "把高挫败事件拆成可预判、可反制的小挑战，降低纯惩罚感。"
         ],
-        "eggyIdeas": [
+        "transferIdeas": [
           "可迁移「白天收集、夜晚防守」的节奏，但改成更轻量的机关防守、道具协作和短局挑战。",
           "保留多人分工价值，把守家、探索、搬运、修复、触发机关设计成不同角色都能参与的任务。",
           "把恐怖表达改写成轻紧张、可爱但有压力的派对危机，避免直接照搬恐怖题材。"
@@ -1785,9 +1976,9 @@
           "扩充免费可获取服装池，降低免费玩家的内容天花板。",
           "增加套装预设、收藏和分类功能，提升换装效率和体验。"
         ],
-        "eggyIdeas": [
-          "可迁移主题挑战+短局投票结构，把时装替换为蛋仔外观、动作、道具搭配。",
-          "保留造型展示和社交分享环节，设计适合蛋仔风格的主题赛季。",
+        "transferIdeas": [
+          "可迁移主题挑战与短局投票结构，把时装替换为目标产品的角色外观、动作和道具搭配。",
+          "保留造型展示和社交分享环节，设计适合轻量派对产品的主题赛季。",
           "把评分争议转化为趣味点，用更轻量、更娱乐化的投票方式降低挫败感。"
         ],
         "risks": [
@@ -1795,7 +1986,7 @@
           "派对游戏用户对纯审美评分的接受度需要验证，可能需要加入更多玩法互动。",
           "UGC 造型的质量参差，需要设计好审核和展示机制。"
         ],
-        "decision": "建议作为社交表达类玩法参考：主题挑战和短局投票结构可迁移，但需适配蛋仔的轻量审美与互动风格，暂不建议作为核心玩法复刻。"
+        "decision": "建议作为社交表达类玩法参考：主题挑战和短局投票结构可迁移，但需适配目标产品的轻量审美与互动风格，暂不建议作为核心玩法复刻。"
       },
       "aiDailySummary": {
         "positiveDrivers": [
@@ -2454,13 +2645,13 @@
           "优化果实平衡性，减少少数强势套路垄断 PVP 的情况。",
           "增加海贼团专属合作内容，强化社交黏着和团队目标。"
         ],
-        "eggyIdeas": [
+        "transferIdeas": [
           "可借鉴能力收集和成长解锁的结构，但大幅压缩时长，做成短局内的技能拾取与进化。",
           "把 PVP 对抗改造成更娱乐化的派对乱斗，降低挫败感、增加随机性。",
           "保留版本更新驱动新目标的节奏，但用赛季制而非永久长线的方式适配派对用户。"
         ],
         "risks": [
-          "重度成长和刷取与蛋仔派对的轻量定位差异较大，直接照搬会劝退核心用户。",
+          "重度成长和刷取与轻量派对产品的定位差异较大，直接照搬会劝退核心用户。",
           "PVP 平衡维护成本高，派对游戏用户对平衡性容忍度可能更低。",
           "长线目标需要持续内容供给，对更新节奏要求很高。"
         ],

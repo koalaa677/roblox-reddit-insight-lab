@@ -9,10 +9,10 @@
     />
     <title>Roblox Reddit Insight Lab</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260728-1" />
+    <link rel="stylesheet" href="styles.css?v=20260728-2" />
     <script src="scripts/vendor/lucide.min.js?v=20260717-1" defer></script>
     <script src="scripts/lucide-fallback.js?v=20260717-1" defer></script>
-    <script src="app.js?v=20260728-1" defer></script>
+    <script src="app.js?v=20260728-2" defer></script>
   </head>
   <body>
     <div class="app-shell">
@@ -26,11 +26,11 @@
         </div>
 
         <nav class="nav-stack" aria-label="主导航">
-          <a class="nav-item" href="#portfolio-brief" data-jump-section="portfolio-brief" data-page-title="产品概览">
+          <a class="nav-item is-active" href="#portfolio-brief" data-jump-section="portfolio-brief" data-page-title="产品概览">
             <i data-lucide="radar"></i>
             <span>产品概览</span>
           </a>
-          <a class="nav-item is-active" href="#dashboard" data-jump-section="dashboard" data-page-title="洞察看板">
+          <a class="nav-item" href="#dashboard" data-jump-section="dashboard" data-page-title="洞察看板">
             <i data-lucide="layout-dashboard"></i>
             <span>洞察看板</span>
           </a>
@@ -58,7 +58,7 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">AI 玩家评论洞察平台</p>
-            <h2 id="pageTitle">洞察看板</h2>
+            <h2 id="pageTitle">产品概览</h2>
           </div>
           <div class="topbar-actions">
             <span class="data-pill">
@@ -91,6 +91,36 @@
               <small>覆盖热点游戏、定向追踪、评论证据与分析报告。</small>
             </div>
           </div>
+
+          <section class="flagship-case" aria-labelledby="flagshipCaseTitle">
+            <div class="flagship-case-heading">
+              <div>
+                <p class="eyebrow">Flagship Case</p>
+                <h3 id="flagshipCaseTitle">Forest99：从历史评论池到可验证决策</h3>
+              </div>
+              <span class="case-source-badge">历史 Reddit 快照 · 逐条可追溯</span>
+            </div>
+            <div class="flagship-case-flow" id="flagshipCaseFlow" aria-label="Forest99 分析闭环"></div>
+            <div class="flagship-case-outcome" id="flagshipCaseOutcome"></div>
+          </section>
+
+          <section class="quality-evaluation" aria-labelledby="qualityEvaluationTitle">
+            <div class="quality-evaluation-heading">
+              <div>
+                <p class="eyebrow">Quality Check</p>
+                <h3 id="qualityEvaluationTitle">分类校准与证据质量</h3>
+              </div>
+              <p>小型校准集与数据契约检查，不作为跨游戏模型总体基准。</p>
+            </div>
+            <div class="quality-evaluation-grid" id="qualityEvaluationGrid"></div>
+            <details class="quality-evaluation-details">
+              <summary>
+                <span>查看评估口径与局限</span>
+                <small>人工复核样本、AI 校准覆盖、证据链接与引用检查</small>
+              </summary>
+              <div id="qualityEvaluationDetails"></div>
+            </details>
+          </section>
 
           <details class="brief-disclosure">
             <summary>
@@ -146,7 +176,7 @@
                 <article>
                   <span>Decision Report</span>
                   <strong>行动建议</strong>
-                  <p>从“玩家在聊什么”推进到“蛋仔派对该怎么验证”。</p>
+                  <p>从“玩家在聊什么”推进到“目标产品该验证什么”。</p>
                 </article>
               </div>
             </div>
